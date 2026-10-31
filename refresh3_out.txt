@@ -1,3 +1,0 @@
-shrine-quests sections: 1
-rows: 30
-zeldacentral shrine urls: 0

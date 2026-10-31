@@ -1,3 +1,0 @@
-id="shrine-quests"><h2><span class="num">📜</span> Shrine Quests (32)</h2><div class="card"><p>Các shrine mở bằng shrine quest (nhiệm vụ nhỏ). Mỗi shrine cho Light of Blessing.</p><table><tr><th>Shrine</th><th>Trial</th><th>Type</th><th>Location</th></tr>
-<tr><td>Quest</td><td>Shrine</td><td>Region</
-zeldacentral shrine urls: 31

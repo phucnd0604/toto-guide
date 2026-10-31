@@ -1,3 +1,0 @@
-sections: 1
-En-oma in shrine-quests: True
-zeldacentral shrine urls: 31
