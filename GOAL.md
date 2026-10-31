@@ -58,7 +58,7 @@ Tạo website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom (TO
 5. **Image attribution**: ✅ ganondorf.jpg có source URL + license; footer ghi nguồn ảnh.
 6. **Large images**: ✅ đã xóa shrine-list.svg và zonai-parts.svg.
 7. **Image count**: ✅ mỗi trang ≥3 ảnh, alt tiếng Việt.
-8. **Mixed language**: Tạm bỏ qua (batch riêng sau). ⏸️
+8. **Mixed language**: ✅ Đã dịch batch walkthrough/temple (chỉ còn tên riêng/thuật ngữ game). ⏸️ (không còn pending)
 
 ## Các bước tiếp theo (theo thứ tự ưu tiên)
 1. **Thêm giải pháp ngắn per-shrine** (hoặc link đến guide chi tiết — nhưng no external links, nên inline).

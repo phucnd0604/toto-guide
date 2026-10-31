@@ -24,7 +24,7 @@
 - **vercel.json** + **.gitignore** đã tạo.
 
 ### Vấn đề tồn động (chưa fix)
-1. **Dịch chưa hoàn thiện**: Nhiều bước walkthrough còn tiếng Anh (temple, quest 5-12). Tạm bỏ qua (batch riêng). ⏸️
+1. **Dịch**: ✅ Đã dịch batch walkthrough/temple (chỉ còn tên riêng/thuật ngữ game). Deploy lại Vercel ✅.
 2. **Nội dung chi tiết**: ✅ Shrine solutions, Shrine Quests details, Side content, Dragon's Tears coordinates đã bổ sung.
 3. **Ảnh minh họa**: ✅ mỗi trang ≥3 ảnh, alt tiếng Việt, 0 broken.
 4. **Image attribution**: ✅ ganondorf.jpg có source URL + license; footer ghi nguồn ảnh.
