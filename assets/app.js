@@ -24,10 +24,11 @@
       });
     }
   }
+  function norm(v){return (v||'').replace(/\.html$/,'').replace(/\/$/,'')||'index';}
   function initActiveLinks(){
-    const path=location.pathname.split('/').pop()||'index.html';
+    const path=norm(location.pathname.split('/').pop());
     document.querySelectorAll('.navbar nav a, .toc a').forEach(a=>{
-      const href=(a.getAttribute('href')||'').split('/').pop().split('#')[0];
+      const href=norm((a.getAttribute('href')||'').split('/').pop().split('#')[0]);
       if(href===path) a.classList.add('active');
     });
   }
