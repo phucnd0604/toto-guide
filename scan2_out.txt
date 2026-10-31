@@ -1,0 +1,34 @@
+pages/main-story.html:38 :: 2. To the Kingdom of Hyrule
+pages/main-story.html:43 :: 7. The Sludge-Covered Statue
+pages/main-story.html:49 :: 13. Secret of the Ring Ruins
+pages/main-story.html:50 :: 14. Guidance from Ages Past
+pages/main-story.html:52 :: 16. Camera Work in the Depths
+pages/main-story.html:53 :: 17. A Mystery in the Depths
+pages/main-story.html:54 :: 18. Crisis at Hyrule Castle
+pages/main-story.html:55 :: 19. Trail of the Master Sword
+pages/main-story.html:56 :: 20. Recovering the Hero's Sword
+pages/main-story.html:57 :: 21. Impa and the Geoglyphs
+pages/main-story.html:66 :: 1. The Closed Door  Great Sky Island
+pages/main-story.html:78 :: 2. To the Kingdom of Hyrule  Surface
+pages/main-story.html:88 :: 3. Find Princess Zelda  Lookout Landing / Temple of Time
+pages/main-story.html:143 :: 7. The Sludge-Covered Statue  Lanayru – Zora
+pages/main-story.html:155 :: 8. The Broken Slate  Zora's Domain
+pages/main-story.html:166 :: 9. Restoring the Zora Armor  Zora's Domain
+pages/main-story.html:215 :: 13. Secret of the Ring Ruins  Necluda / Sky
+pages/main-story.html:225 :: 14. Guidance from Ages Past  Depths / Sky
+pages/main-story.html:235 :: 15. Find the Fifth Sage  Lookout Landing / Dragonhead Island
+pages/main-story.html:244 :: 16. Camera Work in the Depths  Depths
+pages/main-story.html:254 :: 17. A Mystery in the Depths  Depths
+pages/main-story.html:263 :: 18. Crisis at Hyrule Castle  Hyrule Castle / Lookout Landing
+pages/main-story.html:273 :: 19. Trail of the Master Sword  Great Hyrule Forest / Depths
+pages/main-story.html:282 :: 20. Recovering the Hero's Sword  Sky
+pages/main-story.html:292 :: 21. Impa and the Geoglyphs  Tabantha
+pages/main-story.html:301 :: 22. The Dragon's Tears  Map
+pages/main-story.html:310 :: 23. Destroy Ganondorf  Hyrule Castle Depths – Final
+pages/temples.html:7 :: Temple & Boss – TOTK Guide
+pages/temples.html:50 :: 🌬️  Wind Temple (Rito) – Boss: Colgera
+pages/temples.html:101 :: 🔥  Fire Temple (Goron) – Boss: Marbled Gohma
+pages/temples.html:146 :: 💧  Water Temple (Zora) – Boss: Mucktorok
+pages/temples.html:188 :: ⚡  Lightning Temple (Gerudo) – Boss: Queen Gibdo
+pages/temples.html:242 :: 🤖  Spirit Temple (Depths) – Boss: Seized Construct
+pages/temples.html:266 :: 🏰  Hyrule Castle – Phantom Ganon

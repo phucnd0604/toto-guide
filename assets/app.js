@@ -17,7 +17,11 @@
     const toggle=document.querySelector('.nav-toggle');
     const nav=document.querySelector('.navbar nav');
     if(toggle&&nav){
-      toggle.addEventListener('click',()=>nav.classList.toggle('open'));
+      toggle.setAttribute('aria-expanded','false');
+      toggle.addEventListener('click',()=>{
+        const open=nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded',open?'true':'false');
+      });
     }
   }
   function initActiveLinks(){
