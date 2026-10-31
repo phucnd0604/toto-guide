@@ -1,0 +1,10 @@
+s=open(r"E:\GameGuide/index.html",encoding="utf-8").read()
+print("Gamma remaining:", s.count("Γ"))
+print("temples.html links:", s.count("temples.html"))
+print("endgame.html links:", s.count("endgame.html"))
+print("dieu-khien links:", s.count("dieu-khien"))
+print("fuse id count:", s.count('id="fuse"'))
+print("recall id count:", s.count('id="recall"'))
+print("armor id count:", s.count('id="armor"'))
+print("q1 id count:", s.count('id="q1"'))
+PY

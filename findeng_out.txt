@@ -1,0 +1,319 @@
+38 || Tears of the Kingdom (TOTK)  là phần tiếp theo của Breath of the Wild. Link và Zelda khám phá tàn tích Hyrule. Sau sự kiện Tears, Zelda mất tích, Link bị mất sức mạnh và có cánh tay Zonai của Rauru. M
+94 || ❤️ Máu (Hearts)  Bắt đầu 3 tim. 4 Light of Blessing → 1 tim/stamina (Goddess Statue). Hồi bằng đồ ăn/fairy/giường. Gloom giảm máu tối đa → nấu Sunny (Sundelion).
+95 || ⚡ Thể lực (Stamina)  Dùng cho leo, bơi, lướt, kéo Ultrahand, Ascend. Hồi khi đứng yên. Nâng cấp bằng Light of Blessing. Món stamina: Stamella Shroom, Endura Carrot.
+96 || 🌡️ Nhiệt độ  Lạnh (Hebra, núi): Warm Doublet / Archaic Warm Greaves / món cay. Nóng (Eldin, sa mạc): Desert Voe armor / món mát. HUD có icon nhiệt độ.
+97 || 🔋 Pin Zonai (Energy Cell)  Dùng Zonai device tốn pin. Nâng cấp bằng Crystalizing Zonai (Forge Construct). Ban đầu 1 cell nhỏ. Thu Zonaite ở Depths.
+100 || 🕳️ Gloom & Depths  Depths: thế giới ngầm tối, có Gloom. Cần Brightbloom Seed chiếu sáng, Lightroot mở bản đồ. Gloom giảm máu tối đa → nấu Sunny Veggie Rice Balls (Sundelion). Có quặng, Zonaite, minibo
+107 || Mở bằng L (Ability Wheel). 4 năng lực chính học ở Great Sky Island; Autobuild mở sau từ Depths.
+109 || Ultrahand  Nhặt, di chuyển, xoay vật thể (gỗ, kim loại, Zonai device, đá). Dán vật này vào vật kia tạo cầu, thuyền, xe, máy bay, thang. Giữ R xoay, A dán/huỷ. Tầm với có hạn; kéo vật lớn tốn stamina. 
+110 || Fuse  Dán vật liệu vào vũ khí/cung/khiên → tăng damage, durability, hiệu ứng. Kiếm+đá=búa phá đá/tường; kiếm+horn quái=damage cao; cung+fire/ice/shock fruit=tên nguyên tố; cung+Keese eyeball=homing; k
+112 || Recall  Đảo ngược chuyển động vật thể (đá rơi, bánh xe, tên bắn, water wheel). Cưỡi đá bay lên sky islands. Lấy lại vũ khí ném. Giải puzzle shrine (clock hands cùng chiều). Hiệu lực có thời gian.
+113 || Autobuild  Mở qua quest A Mystery in the Depths (Robbie) → Great Abandoned Central Mine. Ghép nhanh theo bản vẽ (schematic) đã lưu, dùng Zonaite. Tiết kiệm thời gian.
+114 || Khác  Camera (Purah Pad): chụp ảnh, quest, Hyrule Compendium. Shrine Sensor: tìm shrine gần nhất. Amiibo: gọi chest/ngựa. Sage Vows: sau temple, đồng đội hỗ trợ chiến đấu (Tulin, Yunobo, Sidon, Riju, 
+126 || Tỉnh dậy, nhặt Decayed Master Sword.  Điều tra vòng tròn giữa phòng → mở cửa.  Đi theo đường, nhặt Archaic Legwear (mặc vào).  Thấy ánh sáng → nhảy xuống đảo.
+128 || Gặp Construct ostility → đánh bằng cành cây hoặc bỏ qua.  Đi đến cuối đảo, chạm Construct ngủ → nhận Purah Pad, Zelda ở Temple of Time.  Đi theo Sky Islands về phía bắc đến Temple of Time. Cửa đóng → 
+130 || Ukouh Shrine – Ultrahand  Tây Temple of Time, lên cầu thang. Học Ultrahand. Làm cầu qua khe, dán hook lên ván → ski-lift. Nhận Light of Blessing.
+131 || In-isa Shrine – Fuse  Nam, qua hồ. Học Fuse. Fuse đá vào kiếm phá tường; Fuse fire fruit vào tên bắn lá; Fuse vào khiên. Nhận Light of Blessing + Energy Cell.
+132 || Gutanbac Shrine – Ascend  Đông nam, qua Pondside Cave, Mining Cave. Học Ascend. Qua hang tối (Brightbloom), làm thuyền fan, minecart. Nhận Light of Blessing.
+134 || Dùng Wing Zonai device lướt về Temple. Cửa mở một phần → vào trong → pedestal → cutscene → học Recall.  Dùng Recall trên bánh xe nước phía sau để ra sau temple.  Goddess Statue: chưa đủ Blessing (cần 
+136 || Fast travel về Room of Awakening. Dùng Recall trên bánh xe để vào phòng trên-trái.  Đi đến Nachoyah Shrine: dùng Recall trên bánh xe; ở phòng cuối chỉnh kim đồng hồ chồng lên nhau cùng chiều. Nhận Lig
+138 || Quay Temple of Time, Goddess Statue → đổi 4 Blessing → Heart Container (4 tim), mở cửa sau.  Đi theo đường (dùng Ascend), cutscene → nhảy xuống Hyrule.
+140 || Archaic Warm Greaves:  trong cây rỗng gần Gutanbac Shrine (Ascend vào). Kháng lạnh quan trọng.  Archaic Tunic (không kháng lạnh).  Zonai device, quặng, Energy Cell.
+149 || Skydive xuống Hyrule Field → đi bộ đến Lookout Landing (trung tâm map). Gặp Purah.  Kích hoạt Skyview Tower tại Lookout Landing để mở bản đồ.  Nói chuyện Purah → nhận nhiệm vụ Regional Phenomena (4 vù
+155 || Đến Castle Ruins theo main quest → về Lookout Landing → Paraglider.
+157 || Skyview Tower đầu tiên: Lindor's Brow (-1903, 1243, 0297) northwest. Vùng dễ, tài nguyên nhiều, gần Rito.
+159 || Shrine hữu ích sớm: Kyonosis, Ekochiu, Makasura, Sinakawak, Orochium.
+160 || Autobuild: theo Robbie → Depths → A Mystery in the Depths → Great Abandoned Central Mine.
+163 || Rito Village (Wind Temple) đầu tiên (Purah gợi ý). Cần đồ kháng lạnh. Temple dễ, thưởng Tulin (lướt) rất hữu ích. Sau đó: Goron City (Fire) → Zora's Domain (Water) → Gerudo Town (Lightning). Mỗi templ
+165 || Archaic Warm Greaves, Archaic Tunic (Sky Island).  Hyrule Castle Ruins: vũ khí/giáp sớm, chest 4-star.  Climbing Gear: tìm sớm.  Zonaite: Depths, nâng pin.
+173 || Theo thứ tự Zelda Central. Mỗi quest có bước làm chi tiết + mẹo. Temple puzzle chi tiết xem phần Temple.
+178 || Hoàn thành Ukouh Shrine (Ultrahand), In-isa Shrine (Fuse), Gutanbac Shrine (Ascend).  Nhận Energy Cell.  Quay Temple of Time, examine glyph → cửa mở một phần.  Vào trong → pedestal → cutscene → học Re
+179 || Mẹo:  Thu thập 4 Light of Blessing → đổi Heart Container tại Goddess Statue.
+184 || Nhảy từ Temple of Time, skydive xuống Hyrule Field.  Đi bộ theo đường chính đến Lookout Landing (trung tâm map).  Gặp Purah.
+188 || 3. Tìm Princess Zelda  Lookout Landing / Temple of Time
+190 || Nhận Purah Pad.  Mở Temple of Time (đã học Recall).  Hoàn thành Nachoyah Shrine (Recall test: chỉnh kim đồng hồ chồng lên nhau cùng chiều).  Nhận Heart Container từ Goddess Statue.
+195 || Đến Hebra, Eldin, Lanayru, Gerudo.  Hoàn thành mỗi Temple (xem phần Temple).  Báo cáo Purah tại Lookout Landing.
+196 || Thứ tự khuyến nghị:  Rito (Wind) → Goron (Fire) → Zora (Water) → Gerudo (Lightning).
+199 || 5. Tulin of Rito Village  Hebra – Wind Temple
+202 || Nói chuyện Teba & Tulin:  Đến Rito Village (Lake Totori, NW Lookout Landing). Cầu chính bị gãy → thả Hylian Pine Cone vào lửa để tạo luồng khí nóng rồi lướt, hoặc xây cầu/lướt từ Rospro Pass Skyview T
+203 || Tìm Harth:  Đi theo đường về phía bắc. Lodge đánh dấu bằng 2 đống lửa. Harth: Tulin đi với Laissa & Gesane đến Hebra South Summit Cave. Leo 2 thang sau lodge, theo đường núi, lửa trại, cửa hang (~-338
+204 || Tìm trong hang:  Nói chuyện Laissa. Dây gai → đốt (Fire Fruit). Phòng lớn có luồng khí nóng → lướt lên. Đốt lại lửa trại lạnh (đá lửa/mũi tên Fire Fruit). Thả Hylian Pine Cone → luồng khí nóng → lối đ
+205 || Tìm Tulin trên Tolonto Peak:  Ra khỏi hang, leo về phía bắc đến cây tuyết tùng đơn độc (~-3152,2688,0567). Dùng gió tự nhiên. Nói chuyện Tulin. Aerocuda đã cắp Swallow Bow. Tulin gia nhập, cho gust.
+206 || Lấy lại cung:  Ra lệnh Tulin gust → lướt đến platform. Bắn Aerocuda → rơi cung. Thêm Aerocuda + Bokoblin đến; bắn từ platform. Harth & Gesane đuổi kịp → điều tra bão trên Hebra Peak.
+207 || Leo Hebra Peak:  Theo marker leo núi (yellow stone ledges). Dùng gust vượt khe. Mở chest trên yellow structure đầu. Nói chuyện Huck ở summit. Tiếp tục lên floating islands.
+208 || Rising Island Chain:  Lướt + gust. Ship sails = launch pads. Ascend qua pillars. Kích hoạt Mayaumekis Shrine (chest phía sau trên platform trái qua Ascend). Balloon platform: metal plate + Flame Emitt
+209 || Mở 5 khóa:  Kích hoạt travel point trên deck, examine terminal gần central hatch. Locks 1-5 (xem Wind Temple): (1) gắn icicle vào bị gãy lever nâng gate, gust turbine; (2) lướt updraft lên roof tall s
+210 || Đánh bại Colgera:  3 large ice plates. Lặn qua exposed plates to shatter; hoặc arrows. Phase 2 adds tornadoes → steer around. Phá all 3 plates again. ~10 min, high damage. Mang healing meals không ghi
+211 || Quay về Rito Village:  Nhận Heart Container, nói chuyện Tulin. Teba cho Great Eagle Bow, Tulin = Sage of Wind (Secret Stone). Mayaumekis & Kahatanaum Shrines remain fast travel. Tính vào Regional Phen
+216 || 6. Yunobo of Goron City  Eldin – Fire Temple
+219 || Nói chuyện Bludo:  Goron City, Eldin. Bludo near Marbled Rock Roast pile. Points to YunoboCo HQ phía bắc. Kích hoạt Marakuguc Shrine.
+220 || Đi đến HQ:  NE exit, minecart tracks. Fan on cart, left rail, ride. Hoặc đi bộ. Cave entrance: nói chuyện Offrak & Slergo (first option) → inside. Cần Flame Guard (Flamebreaker/fireproof elixir).
+221 || Phá mặt nạ:  Yunobo masked, rolls. Dodge, he crashes wall → stunned → strike mask. Lặp 3 lần. Yunobo joins, gains charge attack. Aim at red boulders blocking exit (2 charges).
+222 || Cưỡi tracks đến Death Mountain:  West side tracks. Fan on cart, ride uphill, Yunobo charge break rocks/enemies. At junctions use green switch targets. Sitsum Shrine near upper tracks. Nói chuyện Yunob
+223 || Đánh bại Moragia:  Fanplane at crater edge. Position with Ultrahand, climb aboard, activate fans. Hold control stick (roll Yunobo away first). Steer toward each head, command Yunobo charge. 1 hit/head
+224 || Đến Fire Temple qua Depths:  Dive crater, steer to dark ground. Kích hoạt Mustis Lightroot. Follow marker west, Brightbloom Seeds light, avoid gloom, Yunobo break red boulders. Send Yunobo into red ro
+225 || Rung 5 gong:  Gong1 southern (Hydrant slabs bridge, Yunobo charge barrier). Gong2 western (rails, Recall slab). Gong3 southwestern (rocket cart, repair bridge, Recall block up). Gong4 northern. Gong5 
+226 || Đánh bại Marbled Gohma:  Fuse stone to arrows hit eyes when open; when down, attack legs; dodge rocks. Reward Heart Container + Vow of Yunobo (Fire). Hoàn thành Eldin hazard.
+227 || Quay về Goron City:  Report Bludo. Yunobo becomes Sage of Fire (Secret Stone).
+234 || Đến Zora's Domain (bị sludge).  Rửa tượng bằng Splash Fruit.  Nói Yona.  Đến Mipha Court gặp Sidon.
+244 || Mang Ancient Arowana cho Yona ở Zora's Domain.  Nhận Zora Armor (bơi ngược thác).
+245 || Mẹo:  Ancient Arowana ở Lulu Lake / Zora River.
+250 || Nhận King's Scale từ Dorephan ở Pristine Sanctum (dưới Zora's Domain).  Bắn một King's Scale qua stone tear trên Floating Scales Island (sky).
+256 || Sludge-Covered Statue:  Đến Zora's Domain (bị sludge). Rửa tượng bằng Splash Fruit. Nói Yona. Đến Mipha Court gặp Sidon.
+257 || Broken Slate:  Rửa bùn ở mảnh phiến của Jiahto tại Toto Lake. Ghép vào tường → đọc manh mối về bầu trời.
+258 || Restoring Zora Armor:  Mang Ancient Arowana cho Yona → nhận Zora Armor (bơi ngược thác). Ancient Arowana ở Lulu Lake/Zora River.
+259 || Clues to the Sky:  Nhận King's Scale từ Dorephan ở Pristine Sanctum. Bắn qua stone tear trên Floating Scales Island.
+260 || Đến Water Temple:  Follow trail: Yona, Jiahto, Sidon → King Dorephan, Floating Scales Island, Ancient Zora Waterworks → raise water → waterfall opens route to Wellspring Island. Wellspring Island low 
+261 || 4 Faucets:  Faucet1 B1 behind flames (Sidon shield, Hover Stone ball socket). Faucet2 left bubble lift (gate+Hover Stone). Faucet3 lower-right spinning tower (water-fused arrow clean switch). Faucet4 
+262 || Đánh bại Mucktorok:  Rửa sludge shark with Sidon's water wave / Splash Fruit / water-fused arrow. May need multiple hits. Exposed: stun with arrow before it dives back. Attack while stunned. At half h
+272 || Giải 3-pillar light puzzle:  Pillar1 climb top break cracked floor → light; mirror send beam. Pillar2 smaller tower turn wheel counterclockwise. Pillar3 break floor, repair wheel with sticks+platforms
+273 || Đuổi Queen Gibdo khỏi entrance:  Riju lightning on purple hive above doors. Queen emerges. Keep moving (charge, sand tornadoes). When Riju's field ready, draw power, fire arrow at Queen inside field →
+274 || Đến Room of Ascension:  Entry room Korok-Frond Guster blow sand from floor switch. B1: collapsing floor, flame jets, rolling fireballs (Ascend if fall, Recall fireball). Mirror angle beam to yellow sw
+275 || Charge 4 batteries:  Battery1 hidden room behind terminal (Ultrahand sandstone blocks). Room of Natural Light (stone upright in beam + mirror, slide pillars). Room of Offered Light (grate+balloon plat
+276 || Kích hoạt lift & Boss Queen Gibdo:  Quay về to Room of Ascension, terminal → lift to 7F. Prepare healing, strong weapons, arrows with Bomb Flowers/elemental. Vulnerable after elemental hit (Riju light
+283 || Chụp ảnh Rung Ruin tablet (Kakariko).  Tìm Charged armor (Thunderhead Isles).  Dâng Zonai Charge.  Đến Dragonhead Island.
+288 || Theo beam của mask xuống Depths.  Rebuild Mineru's Construct (thu thập parts).  Đánh Seized Construct.
+292 || 15. Tìm the Fifth Sage  Lookout Landing / Dragonhead Island
+294 || Nói Purah, Paya, Tauro.  Theo Zonai relic trên Dragonhead Island.  Gặp Mineru (Sage of Spirit).
+299 || Nhảy vào Hyrule Field Chasm.  Thắp 2 Lightroots.  Chụp ảnh statue.  Nhận Zonaite x5 từ Josha.
+304 || Theo trail tượng từ Iayusus Lightroot.  Đến Great Abandoned Central Mine.  Học Autobuild.
+309 || Tìm Captain Hoz tại First Gatehouse.  Báo cáo Purah.  Nhận Paraglider.  Kích hoạt Lookout Landing Skyview Tower.
+312 || 19. Trail of the Master Sword  Great Hyrule Forest / Depths
+314 || Vào Korok Forest qua Depths (Lost Woods).  Đánh Phantom Ganon.  Nói Great Deku Tree.
+319 || Theo marker Light Dragon.  Phóng từ Skyview Tower.  Kéo Master Sword từ đầu rồng.
+325 || Gặp Impa gần New Serenne Stable.  Sửa balloon bằng Ultrahand.  Bay lên glide đến Dragon's Tear → memory.
+330 || Tìm geoglyphs trên map (Impa quest).  Mỗi Dragon's Tear cho memory.  Có 12 tears + 1 hidden (13 total).
+333 || 23. Destroy Ganondorf  Hyrule Castle Depths – Final
+335 || Xuống dưới Hyrule Castle (chasm).  Đánh quân đội Phantom Ganon.  Đánh Ganondorf (pha 1).  Đánh Demon Dragon (pha 2): bay paraglider, Fuse light vào tên, bắn mắt/corn.  Skydive bắt Zelda.
+347 || Vùng:  Hebra.  Quest:  Tulin of Rito Village. Cần 2 cấp kháng lạnh (Snowquill set).
+349 || Giúp Tulin lấy cung ở Hebra South Summit Cave → Tulin gia nhập, mở Wind ability.  Dùng Tulin's gust khi lướt để vượt khe giữa floating islands.  Fabric sails trên ships bounce Link lên cao; dùng Ascen
+352 || Kích hoạt green terminal ở main deck → fast travel + đánh dấu 5 turbine trên map. Map tabs: 1F, B1, B2.
+354 || Turbine 1: Repair lever (1F bow)  Nhặt icicle bằng Ultrahand → attach vào bị gãy lever → xoay để nâng gate. Vào trong, stand near turbine, dùng Tulin's gust. Room bên cạnh: lever tương tự → chest Opal
+356 || Turbine 2: Drop through tower (1F→B1)  Glide từ updraft trung tâm lên roof tall structure phía bắc. Mở metal doors bằng Ultrahand, drop vào shaft. Tránh red lasers. Paraglider near bottom → turbine al
+358 || Turbine 3: Spinning wheel (B1)  Phá icicles blocking opening (fire). Inside: large spinning wheel over gap. Dùng Recall trên wheel → reverse spin → ride across. Room tiếp: lever Ultrahand mở bars; wal
+360 || Turbine 4: Underside (B2)  Ladder từ B1 xuống B2, follow icy corridor past Construct (ice blocks hide Time Bomb/Portable Pot). Leave window, glide beneath hull, dùng Tulin's gust cross to underside de
+362 || Turbine 5: Pole spin (B1→1F)  Corridor có red lasers + bị gãy gap. Pass lasers (Ruby chest beyond), cross gap bằng Tulin's gust, defeat Construct, Ascend lên floor above. Pole treo trần: attach stone 
+365 || Weak points = purple sections trên body, covered by ice.  Bắn tên từ dưới (khó) hoặc dive từ trên (đóng paraglider khi Colgera expose ice trên upper side sau khi fire spikes).  Fire Fruit/Bomb Flower 
+370 || 🔥 Fire Temple (Goron) – Boss: Marbled Gohma
+371 || Vùng:  Eldin/Death Mountain.  Quest:  Yunobo of Goron City. Cần Flame Guard (Flamebreaker armor / Fireproof Elixir).
+373 || Moragia: dùng Zonai wing (có steering stick), activate Yunobo's charge khi approach mỗi head. 1 hit/head.  Dive qua crater → Death Mountain Chasm. Kích hoạt Mustis Lightroot. Follow mine-cart rails we
+376 || Kích hoạt green terminal ở central chamber → opens map + marks 5 gongs (1F, 2F, 3F hub, 4F, 5F).
+378 || Gong 1: Southern room (1F)  Cross lava: hop stone slabs; wider pool dùng Hydrant tạo stone slabs. Minecart + fan; bell-shaped switch redirect route bằng Yunobo. Bridge lava: Hydrant make slabs, join w
+380 || Gong 2: Western room (2F)  Cưỡi rails north to 2F (bell turn cart, Yunobo break rock). Turn cart around, arrow-shaped switch redirect. Cross lava room: place minecart trên lowered rail, ride into west
+382 || Gong 3: Southwestern room (5F)  3F hub → bị gãy tracks southwest. Attach Zonai Rocket to minecart → ride across gap to 4F. Repair bridge (Ultrahand join planks). Check behind bridge for Ruby chest. Ai
+384 || Gong 4: Northern room (4F)  Quay về to 3F hub. Use bị gãy tracks northeast. Cưỡi cart, shoot bell arrow to raise track → up to central room on 3F (hub). From hub, routes to upper floors. Gong 4 ở nort
+385 || Gong 5: Northern room (1F)  Route từ hub xuống 1F northern room; hit gong Yunobo.
+387 || Fuse đá vào tên bắn mắt khi mở.  Khi hạ xuống, đánh chân (legs).  Né đá rơi.  Reward: Heart Container + Vow of Yunobo (Fire). Hoàn thành hazard Eldin.
+393 || Vùng:  Lanayru.  Quest:  Sidon of the Zora. Zora Armor chest piece hữu ích (bơi ngược thác).
+395 || Follow trail: Yona, Jiahto, Sidon → King Dorephan, Floating Scales Island, Ancient Zora Waterworks → raise water → waterfall opens route to Wellspring Island.  Wellspring Island low gravity: jump cao,
+398 || Faucet 1: B1 behind flames  Glide down to basement entrance. Sidon's shield pass flame jets. Nếu Sidon kẹt ngoài, dùng Hover Stone giữ floor switch → tắt flames → Sidon follow. Glide across spike pit 
+400 || Faucet 2: left side bubble lift  Cross floating platforms to lower-left island. Hoàn thành sludge from bubble emitter. Place stone ball in bubble → ride second bubble up. Lift gate with Ultrahand, pin
+402 || Faucet 3: lower-right spinning tower  Hoàn thành sludge from waterfall, swim up. Đánh bại Fire Like (chest). Switch inside rotating tower covered in sludge: fire water-fused arrow through opening to c
+404 || Faucet 4: upper-right repair wheel  Water bubble + Recall reach upper-right island. Water wheel missing paddle → attach stone slab to extend. Move water bubble into gap between electrical contacts → c
+407 || Rửa sludge shark with Sidon's water wave / Splash Fruit / water-fused arrow. May need multiple hits.  Exposed: stun with arrow before it dives back.  Attack with strongest weapon while stunned; back a
+412 || ⚡ Lightning Temple (Gerudo) – Boss: Queen Gibdo
+413 || Vùng:  Gerudo.  Quest:  Riju of Gerudo Town. Cần heat resistance ban ngày + electric resistance (Rubber armor).
+415 || Pillar1 climb top break cracked floor → light; mirror send beam.  Pillar2 smaller tower turn wheel counterclockwise.  Pillar3 break floor, repair wheel with sticks+platforms, turn → triangle forms → a
+418 || Use Riju's lightning on purple hive above doors. Queen emerges. Keep moving (charge, sand tornadoes). When Riju's field ready, draw power, fire arrow at Queen inside field → strips armor. Attack, retr
+421 || Entry room Korok-Frond Guster blow sand from floor switch.  B1: collapsing floor, flame jets, rolling fireballs (Ascend if fall, Recall fireball).  Mirror angle beam to yellow switch → door. Leo to Ro
+423 || Battery 1: hidden room beside terminal  Behind terminal: 2 loose sandstone blocks in wall. Move with Ultrahand, go through. Riju lightning + arrow charge battery.
+424 || Mở Room of Natural Light  Corner of 1F: lift stone blocking updraft. Cưỡi wind to 5F, enter opening where beam shines down. Stand stone upright in beam, place mirror on top, angle light through openin
+426 || Room of Offered Light  Glide down to 3F door, step switch. Đánh bại Gibdos/Constructs. Build platform from grate + hot-air balloon. Attach mirror facing blocked wall. Place platform over beam. Light t
+428 || Cross flame shaft  Quay về to 5F mirror pillars. Redirect beam to far pillar, clear sand, slide into position. Adjust next mirror send beam up to 6F. Cưỡi updraft to switch → open room. Glide down sha
+429 || Room of Light and Shade  Cưỡi updraft to 4F. Opening north side central chamber. Đánh bại Construct, pass 2 rotating stone discs. Move blocks from light source. Recall disc until gaps line up → light 
+432 || Quay về to Room of Ascension, use terminal. Cưỡi lift to 7F. Prepare healing, strong weapons, arrows with Bomb Flowers/elemental.  Vulnerable only after elemental hit strips armor (Riju lightning reli
+437 || 🤖 Spirit Temple (Thunderhead Isles) – Boss: Seized Construct
+438 || Quest:  Guidance from Ages Past / Tìm the Fifth Sage. Finish Tìm the Fifth Sage first. Bring spare Zonai Charges/Energy Cells.
+440 || After all 4 parts fitted at Construct Factory, climb aboard, follow yellow waypoint SE. Kích hoạt Sitoju Lightroot. Phá rock walls with punches. Pause when battery low (refill). Near temple steep ledg
+443 || Interact owl statue while riding Construct → mask activates elevator. Cưỡi down, cross gloom floor to boss arena. Activating statue unlocks travel point.
+445 || Phase 1: Block (ZL) telegraphed punches. Counter with short punches → throws it back. Spiked Balls around arena; Cannon/Shock Emitter on arm stuns. Aim cannon shot at chest (hold ~1s). Push into elect
+452 || Vào Korok Forest qua Depths (Lost Woods).  Đánh Phantom Ganon.  Parry đòn; dùng light arrow.  Nhận Heart Container.
+461 || Trail of the Master Sword: Vào Korok Forest qua Depths, đánh Phantom Ganon, nói Great Deku Tree.  Recovering the Hero's Sword: Theo marker Light Dragon, phóng từ Skyview Tower, kéo Master Sword từ đầu
+463 || Tìm geoglyphs trên map (Impa quest).  Mỗi Dragon's Tear cho memory.  Có 12 tears + 1 hidden (13 total).
+466 || Xuống dưới Hyrule Castle (chasm). Đánh quân đội Phantom Ganon.  Ganondorf pha 1: né đòn, parry, Sage Vows, Master Sword.  Demon Dragon pha 2: bay paraglider, Fuse light vào tên, bắn mắt/corn.  Skydive
+469 || 152 Shrines → Ancient Hero's Aspect.  120 Lightroots.  147 caves.  900+ Korok seeds → Hestu's Gift.  Great Fairy upgrades.  Armor upgrades max.
+475 || Mỗi shrine cho Light of Blessing → đổi tim/stamina. Interact shrine (chạm vào) để mở fast travel, không cần giải ngay. Shrine Sensor (Purah Pad) tìm shrine gần nhất.
+479 || Domizuin Shrine  A Prone Pathway  Puzzle  Akkala Highlands
+480 || Gatanisis Shrine  A Well-Timed Bounce  Puzzle  Akkala Highlands
+481 || Gemimik Shrine  Turbine Power  Puzzle  Akkala Highlands
+483 || Jochi-ihiga Shrine  Rauru's Blessing  Rauru's Blessing  Akkala Highlands
+484 || Jochi-iu Shrine  Courage to Pluck  Puzzle  Deep Akkala
+485 || Kamatukis Shrine  A Precise Strike  Puzzle  Deep Akkala
+486 || Rasitakiwak Shrine  Proving Grounds: Vehicles  Proving Grounds  Akkala Highlands
+487 || Rasiwak Shrine  Flotational Brilliance  Puzzle  Akkala Sea
+488 || Sinatanika Shrine  Combat Training: Sneakstrike  Combat Training  Akkala Highlands
+490 || 📍  Central Hyrule (32)     Shrine  Trial  Type  Location
+491 || Ekochiu Shrine  Rise and Fall  Puzzle  Great Hyrule Forest
+493 || Ishodag Shrine  A Windy Device  Puzzle  Hyrule Field
+494 || Jiosin Shrine  Shape Rotation  Puzzle  Hyrule Field
+495 || Jojon Shrine  Proving Grounds: Rotation  Proving Grounds  Hyrule Field (trong hang)
+496 || Kamizun Shrine  Proving Grounds: Beginner  Proving Grounds  Hyrule Field
+497 || Kikakin Shrine  Shining in Darkness  Puzzle  Great Hyrule Forest
+498 || Kiuyoyou Shrine  Fire and Ice  Puzzle  Great Hyrule Forest
+499 || Kyokugon Shrine  Alignment of the Circles  Puzzle  Hyrule Field (trong hang)
+500 || Kyononis Shrine  Combat Training  Combat Training  Hyrule Field
+501 || Makurukis Shrine  Combat Training: Archery  Combat Training  Hyrule Ridge
+502 || Mayachin Shrine  A Fixed Device  Puzzle  Hyrule Field
+503 || Musanokir Shrine  Swing to Hit  Puzzle  Great Hyrule Forest
+504 || Ninjis Shrine  Rauru's Blessing  Rauru's Blessing  Great Hyrule Forest
+505 || Pupunke Shrine  Rauru's Blessing  Rauru's Blessing  Great Hyrule Forest
+506 || Ren-iz Shrine  Jump the Gaps  Puzzle  Hyrule Field
+507 || Riogok Shrine  Force Transfer  Puzzle  Hyrule Field
+508 || Runakit Shrine  Built to Carry  Puzzle  Hyrule Ridge
+509 || Sakunbomar Shrine  Rauru's Blessing  Rauru's Blessing  Great Hyrule Forest
+510 || Sepapa Shrine  Backtrack  Puzzle  Hyrule Field
+512 || Sinakawak Shrine  An Uplifting Device  Puzzle  Hyrule Field
+513 || Sonapan Shrine  Missing Pathways  Puzzle  Hyrule Ridge
+514 || Susuyai Shrine  A Spinning Device  Puzzle  Hyrule Field
+515 || Tadarok Shrine  Fire and Water  Puzzle  Hyrule Field (trong hang)
+516 || Tajikats Shrine  Building with Logs  Puzzle  Hyrule Field
+517 || Taki-ihaban Shrine  Rauru's Blessing  Rauru's Blessing  Hyrule Ridge (trong hang)
+518 || Teniten Shrine  Combat Training: Throwing  Combat Training  Hyrule Field
+519 || Tenmaten Shrine  Rauru's Blessing  Rauru's Blessing  Hyrule Field (trong hang)
+520 || Tsutsu-um Shrine  The Stakes Guide You  Puzzle  Hyrule Field
+521 || Usazum Shrine  Rauru's Blessing  Rauru's Blessing  Hyrule Ridge
+522 || Yamiyo Shrine  Combat Training: Throwing  Combat Training  Hyrule Field
+525 || Isisim Shrine  Proving Grounds: In Reverse  Proving Grounds  Eldin Canyon (trong hang)
+526 || Jiotak Shrine  Rauru's Blessing  Rauru's Blessing  Eldin Canyon (trong hang)
+527 || Kimayat Shrine  Proving Grounds: Smash  Proving Grounds  Eldin Canyon
+528 || Kisinona Shrine  Wind Power  Puzzle  Eldin Canyon
+529 || Marakuguc Shrine  Wheeled Wonders  Puzzle  Eldin Canyon
+530 || Mayachideg Shrine  Proving Grounds: The Hunt  Proving Grounds  Eldin Canyon
+531 || Mayak Shrine  Timely Catches  Puzzle  Eldin Mountains
+532 || Minetak Shrine  Rauru's Blessing  Rauru's Blessing  Eldin Mountains (trong hang)
+533 || Momosik Shrine  Rauru's Blessing  Rauru's Blessing  Eldin Canyon
+534 || Moshapin Shrine  Rauru's Blessing  Rauru's Blessing  Eldin Canyon
+535 || Sibajitak Shrine  Alignment  Puzzle  Eldin Canyon
+536 || Sikukuu Shrine  Spinning Gears  Puzzle  Eldin Mountains
+537 || Sitsum Shrine  A Controlling Device  Puzzle  Death Mountain
+538 || Timawak Shrine  Against the Flow  Puzzle  Eldin Canyon
+541 || Ishokin Shrine  Rauru's Blessing  Rauru's Blessing  Faron Grasslands
+542 || Jiukoum Shrine  Built for Rails  Puzzle  Faron Grasslands
+543 || Utsushok Shrine  Long or Wide  Puzzle  Faron Grasslands
+546 || Chichim Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Desert
+547 || Irasak Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Desert
+548 || Karahatag Shrine  Drifting Flame  Puzzle  Gerudo Desert
+549 || Kitawak Shrine  Upward and Forward  Puzzle  Gerudo Highlands
+550 || Kudanisar Shrine  Bridging the Sands  Puzzle  Gerudo Desert
+551 || Mayamats Shrine  A Route for a Ball  Puzzle  Gerudo Highlands
+552 || Mayatat Shrine  A Sliding Device  Puzzle  Gerudo Desert
+553 || Miryotanog Shrine  Proving Grounds: Lure  Proving Grounds  Gerudo Desert
+554 || Motsusis Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Highlands
+555 || Otutsum Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Highlands
+556 || Rakakudaj Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Highlands
+557 || Rotsumamu Shrine  A Balanced Plan  Puzzle  Gerudo Highlands
+558 || Siwakama Shrine  Moving the Spheres  Puzzle  Gerudo Desert
+559 || Soryotanog Shrine  Buried Light  Puzzle  Gerudo Desert
+560 || Suariwak Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Highlands
+561 || Turakamik Shrine  Hidden Metal  Puzzle  Gerudo Highlands
+564 || Eutoum Shrine  Proving Grounds: Infiltration  Proving Grounds  Hebra Mountains
+565 || Gasas Shrine  Well-Timed Cuts  Puzzle  Tabantha Frontier
+566 || Gatakis Shrine  Cưỡi the Winds  Puzzle  Tabantha Frontier
+567 || Ikatak Shrine  Rauru's Blessing  Rauru's Blessing  Tabantha Frontier
+568 || Iun-orok Shrine  The Right Roll  Puzzle  Tabantha Frontier (trong hang)
+569 || Mayaotaki Shrine  Rauru's Blessing  Rauru's Blessing  Hebra Mountains
+570 || Mayausiy Shrine  Building Blocks  Puzzle  Tabantha Frontier
+571 || Nouda Shrine  Proving Grounds: Intermediate  Proving Grounds  Tabantha Frontier (trong hang)
+572 || Orochium Shrine  Courage to Fall  Puzzle  Hebra Mountains
+573 || Oromuwak Shrine  A Launching Device  Puzzle  Tabantha Frontier
+574 || Oshozan-u Shrine  Mallet Smash  Puzzle  Hebra Mountains
+575 || Otak Shrine  Proving Grounds: Traps  Proving Grounds  Hebra Mountains (trong hang)
+576 || Rutafu-um Shrine  Rauru's Blessing  Rauru's Blessing  Hebra Mountains (trong hang)
+577 || Sahirow Shrine  Aid from Above  Puzzle  Hebra Mountains
+578 || Sisuran Shrine  Rauru's Blessing  Rauru's Blessing  Hebra Mountains
+579 || Tauyosipun Shrine  Forward or Backward?  Puzzle  Hebra Mountains
+580 || Turakawak Shrine  Stacking a Path  Puzzle  Tabantha Frontier
+581 || Wao-os Shrine  Lever Power  Puzzle  Hebra Mountains (trong hang)
+584 || Apogek Shrine  Wings on the Wind  Puzzle  Lanayru Great Spring
+585 || Ihen-a Shrine  Midair Perch  Puzzle  Lanayru Great Spring
+586 || Jikais Shrine  Jailbreak  Puzzle  Mount Lanayru
+587 || Joniu Shrine  Rauru's Blessing  Rauru's Blessing  Lanayru Great Spring
+588 || Jonsau Shrine  Deep Force  Puzzle  Lanayru Wetlands
+589 || Kurakat Shrine  Rauru's Blessing  Rauru's Blessing  Lanayru Great Spring
+590 || Maoikes Shrine  Rauru's Blessing  Rauru's Blessing  Lanayru Wetlands (trong hang)
+591 || Mogawak Shrine  The Power of Water  Puzzle  Lanayru Great Spring
+592 || Morok Shrine  A Bouncy Device  Puzzle  Lanayru Wetlands
+593 || O-ogim Shrine  Rauru's Blessing  Rauru's Blessing  Lanayru Great Spring (trong hang)
+594 || Tukarok Shrine  Forward Force  Puzzle  Lanayru Wetlands
+595 || Yomizuk Shrine  Rauru's Blessing  Rauru's Blessing  Lanayru Great Spring (trong hang)
+596 || Zakusu Shrine  Proving Grounds: Ascension  Proving Grounds  Mount Lanayru
+599 || Anedamimik Shrine  A Retraced Path  Puzzle  East Necluda (trong hang)
+600 || Bamitok Shrine  Rauru's Blessing  Rauru's Blessing  East Necluda (trong hang)
+601 || Eshos Shrine  Combat Training: Shields  Combat Training  West Necluda
+602 || Jochisiu Shrine  Rauru's Blessing  Rauru's Blessing  West Necluda
+603 || Jogou Shrine  Rauru's Blessing  Rauru's Blessing  East Necluda (trong hang)
+604 || Joju-u-u Shrine  Building Bridges  Puzzle  West Necluda
+605 || Makasura Shrine  An Upright Device  Puzzle  West Necluda
+606 || Marari-in Shrine  Rauru's Blessing  Rauru's Blessing  Necluda Sea (trong hang)
+607 || Mayahisik Shrine  Rauru's Blessing  Rauru's Blessing  East Necluda (trong hang)
+608 || Sifumim Shrine  Proving Grounds: Flow  Proving Grounds  East Necluda
+609 || Susub Shrine  Rauru's Blessing  Rauru's Blessing  West Necluda
+610 || Tokiy Shrine  Rauru's Blessing  Rauru's Blessing  West Necluda (trong hang)
+611 || Utojis Shrine  Rauru's Blessing  Rauru's Blessing  East Necluda
+612 || Zanmik Shrine  Scoop It Out  Puzzle  East Necluda
+614 || 📍  Central Hyrule Sky (8)     Shrine  Trial  Type  Location
+615 || Gutanbac Shrine  The Ability to Rise  Puzzle  Great Sky Island
+616 || In-isa Shrine  The Ability to Combine  Puzzle  Great Sky Island
+617 || Jinodok Shrine  Rauru's Blessing  Rauru's Blessing  Central Hyrule Sky
+618 || Mayam Shrine  Rauru's Blessing  Rauru's Blessing  Great Hyrule Forest Sky
+619 || Nachoyah Shrine  The Ability to Rewind  Puzzle  Great Sky Island
+620 || Simosiwak Shrine  Proving Grounds: Lights Out  Proving Grounds  Great Hyrule Forest Sky
+621 || Taunhiy Shrine  Combat Training: Archery  Combat Training  Hyrule Ridge Sky
+622 || Ukouh Shrine  The Ability to Create  Puzzle  Great Sky Island
+625 || Gikaku Shrine  Rauru's Blessing  Rauru's Blessing  Akkala Highlands Sky
+626 || Mogisari Shrine  Courage to Jump  Puzzle  Akkala Sea Sky
+627 || Natak Shrine  Rauru's Blessing  Rauru's Blessing  Akkala Highlands Sky
+630 || Kadaunar Shrine  Water Makes a Way  Puzzle  Eldin Canyon Sky
+633 || Joku-u Shrine  Rauru's Blessing  Rauru's Blessing  Faron Grasslands Sky
+634 || Joku-usin Shrine  Proving Grounds: Short Circuit  Proving Grounds  Faron Grasslands Sky
+637 || Mayasiar Shrine  Rauru's Blessing  Rauru's Blessing  Gerudo Highlands Sky
+638 || Rakashog Shrine  A Reflective Device  Puzzle  Gerudo Highlands Sky
+639 || Siyamotsus Shrine  Unlit Blessing  Puzzle  Gerudo Highlands Sky
+642 || Ga-ahisas Shrine  Rauru's Blessing  Rauru's Blessing  Tabantha Frontier Sky
+643 || Ganos Shrine  Rauru's Blessing  Rauru's Blessing  Tabantha Frontier Sky
+644 || Ijo-o Shrine  More than Defense  Puzzle  Hebra Mountains Sky
+645 || Kahatanaum Shrine  Rauru's Blessing  Rauru's Blessing  Hebra Mountains Sky
+646 || Mayaumekis Shrine  Downward Force  Puzzle  Hebra Mountains Sky
+647 || Taninoud Shrine  Rauru's Blessing  Rauru's Blessing  Hebra Mountains Sky
+648 || Tenbez Shrine  Gravity and Velocity  Puzzle  Hebra Mountains Sky
+651 || Igoshon Shrine  Orbs of Water  Puzzle  Lanayru Great Spring Sky
+652 || Jirutagumac Shrine  A Flying Device  Puzzle  Lanayru Great Spring Sky
+654 || Sihajog Shrine  Rauru's Blessing  Rauru's Blessing  Lanayru Great Spring Sky
+657 || Josiu Shrine  Rauru's Blessing  Rauru's Blessing  West Necluda Sky
+658 || Kumamayn Shrine  Rauru's Blessing  Rauru's Blessing  East Necluda Sky
+659 || Ukoojisi Shrine  Rauru's Blessing  Rauru's Blessing  West Necluda Sky
+660 || Yansamin Shrine  Proving Grounds: Low Gravity  Proving Grounds  East Necluda Sky
+666 || 📜  Shrine Quests (31)   Các shrine mở bằng shrine quest (nhiệm vụ nhỏ). Mỗi shrine cho Light of Blessing.    Quest  Shrine  Region
+667 || A Pretty Stone and Five Golden Apples  Pupunke Shrine  Central Hyrule
+669 || Keys Born of Water  Jochisiu Shrine  Necluda
+670 || Legend of the Soaring Spear  Utojis Shrine  Necluda
+671 || Maca's Special Place  Ninjis Shrine  Central Hyrule
+672 || None Shall Pass?  Sakunbomar Shrine  Central Hyrule
+674 || Rock for Sale  Jochi-ihiga Shrine  Akkala
+675 || The Death Caldera Crystal  Momosik Shrine  Eldin
+678 || The Gisa Crater Crystal  Ikatak Shrine  Hebra
+679 || The High Spring and the Light Rings  Zakusu Shrine  Lanayru
+680 || The Lake Hylia Crystal  En-oma Shrine  Central Hyrule
+681 || The Lake Intenoch Cave Crystal  Moshapin Shrine  Eldin
+684 || The North Hebra Mountains Crystal  Sisuran Shrine  Hebra
+685 || The North Hyrule Sky Crystal  Mayam Shrine  Central Hyrule Sky
+687 || The Northwest Hebra Cave Crystal  Rutafu-um Shrine  Hebra
+688 || The Oakle's Navel Cave Crystal  Tokiy Shrine  Necluda
+689 || The Ralis Channel Crystal  Joniu Shrine  Lanayru
+690 || The Satori Mountain Crystal  Usazum Shrine  Central Hyrule
+693 || The South Hyrule Sky Crystal  Jinodok Shrine  Central Hyrule Sky
+710 || Rauru's Blessing:  shrine không puzzle, chỉ lấy chest + blessing.
+720 || 🍳 Nấu ăn   Đồ ăn hồi máu: thịt + rau.  Buff stamina: Stamella Shroom, Endura Carrot.  Kháng lạnh: Spicy Pepper + thịt.  Kháng nóng: Hydromelon.  Kháng sét: Voltfruit.  Hồi Gloom: Sundelion (Sunny dish
+721 || ⚔️ Fuse recipes hay   Kiếm + đá = búa phá đá/tường.  Kiếm + horn quái = damage cao.  Cung + fire/ice/shock fruit = tên nguyên tố.  Cung + Keese eyeball = homing.  Khiên + rocket = bay; + spring = nhảy
+722 || 🛡️ Giáp & nâng cấp   Great Fairy (Cotera, Mija, Kaysa, Tera) nâng cấp giáp bằng nguyên liệu.  Armor set: Snowquill (lạnh), Desert Voe (nóng/sét), Zora (bơi), Climbing (leo), Rubber (sét).  Fairy Fount
+723 || 🗺️ Khám phá   Skyview Tower: mở bản đồ vùng.  Shrine Sensor: tìm shrine.  Lightroot: mở bản đồ Depths.  Korok: puzzle nhỏ, thưởng seed → Hestu nâng inventory.  Wells: hang nhỏ, chest.  Caves: Bubbul G
+724 || 💰 Rupee   Bán quặng (diamond, ruby, sapphire, topaz) cho shop.  Bán nguyên liệu dư.  Lulul (Rito) mua diamond giá cao.  Quặng ở Depths/mỏ.  Quest reward, chest.
+725 || 🕳️ Depths tips   Mang Brightbloom Seed nhiều.  Thắp Lightroot để mở map.  Gloom: nấu Sunny dish.  Mineru Construct: rebuild để đi nhanh.  Autobuild tiết kiệm thời gian.  Mang hammer để phá đá/quặng.
+726 || ☁️ Sky Islands tips   Dùng Recall trên đá rơi để bay lên.  Zonai device: fan, rocket, wheel.  Shrine trên sky islands.  Charged armor ở Thunderhead Isles.
+727 || 💯 100% Completion   152 Shrines → Ancient Hero's Aspect.  120 Lightroots.  147 caves.  900+ Korok seeds → Hestu's Gift.  Great Fairy upgrades.  Armor upgrades max.  Quest completion (side quests/adven
+734 || Làm temple theo thứ tự nào?  Khuyến nghị Rito (Wind) → Goron (Fire) → Zora (Water) → Gerudo (Lightning). Có thể đổi.
+736 || Làm sao có Paraglider?  Hoàn thành Crisis at Hyrule Castle (báo cáo Purah sau Castle Ruins).
+737 || Autobuild ở đâu?  Quest A Mystery in the Depths → Great Abandoned Central Mine (Depths).
+738 || Master Sword ở đâu?  Theo Light Dragon marker, phóng từ Skyview Tower, kéo từ đầu rồng.
+740 || Shrine Sensor ở đâu?  Mở từ quest với Purah/Robbie. Kiểm tra Purah Pad upgrades.
+744 || Hướng dẫn tổng hợp từ IGN (tương đương), Nintendo Life, Zelda Central, Polygon, Gamespot, Guardian.

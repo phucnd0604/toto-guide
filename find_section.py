@@ -1,0 +1,10 @@
+s=open(r"E:\GameGuide/index.html",encoding="utf-8").read()
+i=s.find('The Lake Hylia Crystal')
+j=s.rfind('<section',0,i)
+k=s.find('</section>',i)
+out=open(r"E:\GameGuide/find_section_out.txt","w",encoding="utf-8")
+out.write("START: "+repr(s[j:j+100])+"\n")
+out.write("ENDPOS: "+str(k)+"\n")
+out.write("ENDSNIP: "+repr(s[k-20:k+15])+"\n")
+out.close()
+PY

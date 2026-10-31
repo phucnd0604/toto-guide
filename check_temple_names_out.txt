@@ -1,0 +1,7 @@
+Wind Temple remaining: 0
+Wind Đền thờ remaining: 0
+Đền thờ Gió count: 5
+Fire Đền thờ remaining: 0
+Water Đền thờ remaining: 0
+Lightning Đền thờ remaining: 0
+Spirit Đền thờ remaining: 0

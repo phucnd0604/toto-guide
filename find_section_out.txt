@@ -1,0 +1,3 @@
+START: '<section id="shrine-quests"><h2><span class="num">📜</span> Shrine Quests (32)</h2><div class="card">'
+ENDPOS: 78164
+ENDSNIP: '</tr>\n</table></div></section>\n<div'

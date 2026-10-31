@@ -1,0 +1,56 @@
+p=r"E:\GameGuide\index.html"
+s=open(p,encoding="utf-8").read()
+reps=[
+ ("Fast travel","Di chuyển nhanh"),
+ ("Interact Shrine","Tương tác Shrine"),
+ ("Interact shrine","Tương tác shrine"),
+ ("VITAL","QUAN TRỌNG"),
+ ("ostility","ostility"),
+ ("broken","bị gãy"),
+ ("stole","đã cắp"),
+ ("checkpoint","checkpoint"),
+ ("Temp","Temp"),
+ ("cold resistance","kháng lạnh"),
+ ("gives","cho"),
+ ("remain fast travel","remain fast travel"),
+ ("Dive through Colgera's ice plate","Dive through Colgera's ice plate"),
+ ("Dive crater","Dive crater"),
+ ("steer to dark ground","steer to dark ground"),
+ ("non-wooden gear (wood burns)","non-wooden gear (wood burns)"),
+ ("Moragia defeated","Moragia defeated"),
+ ("Mucktorok exposed","Mucktorok exposed"),
+ ("Queen Gibdo exposed","Queen Gibdo exposed"),
+ ("Weak points","Weak points"),
+ ("purple sections trên body, covered by ice","purple sections trên body, covered by ice"),
+ ("Xóa sludge from waterfall, swim up","Xóa sludge from waterfall, swim up"),
+ ("Rửa sludge shark with Sidon's water wave / Splash Fruit / water-fused arrow","Rửa sludge shark with Sidon's water wave / Splash Fruit / water-fused arrow"),
+ ("May need multiple hits","May need multiple hits"),
+ ("Exposed: stun with arrow before it dives back","Exposed: stun with arrow before it dives back"),
+ ("heat resistance ban ngày + electric resistance (Rubber armor)","heat resistance ban ngày + electric resistance (Rubber armor)"),
+ ("Keep moving (charge, sand tornadoes)","Keep moving (charge, sand tornadoes)"),
+ ("When Riju's field ready, draw power, fire arrow at Queen inside field → strips armor","When Riju's field ready, draw power, fire arrow at Queen inside field → strips armor"),
+ ("Attack, retreat, repeat","Attack, retreat, repeat"),
+ ("Vulnerable only after elemental hit strips armor","Vulnerable only after elemental hit strips armor"),
+ ("When pale, attack with strongest weapon/arrows","When pale, attack with strongest weapon/arrows"),
+ ("At half health","At half health"),
+ ("Phase 1: Block (ZL) telegraphed punches","Phase 1: Block (ZL) telegraphed punches"),
+ ("Counter with short punches → throws it back","Counter with short punches → throws it back"),
+ ("stand near turbine","stand near turbine"),
+ ("Pass lasers","Pass lasers"),
+ ("cross gap","cross gap"),
+ ("defeat Construct","defeat Construct"),
+ ("Ascend lên floor above","Ascend lên floor above"),
+ ("repair bridge (Ultrahand join planks)","repair bridge (Ultrahand join planks)"),
+ ("Move water bubble into gap","Move water bubble into gap"),
+ ("carries current","carries current"),
+ ("gate opens","gate opens"),
+ ("marker","marker"),
+ ("hazard","hazard"),
+ ("memory","ký ức"),
+]
+for a,b in reps:
+    if a in s:
+        s=s.replace(a,b)
+open(p,"w",encoding="utf-8").write(s)
+print("done")
+PY
