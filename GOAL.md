@@ -88,7 +88,7 @@ Tạo website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom (TO
 - Content Phase 2: PASS (shrines, shrine quests, side content, Dragon's Tears, FAQ).
 - Translation batch: PASS (walkthrough/temple steps đã dịch; chỉ còn tên riêng/thuật ngữ game).
 - Deploy: PASS (Vercel HTTP 200).
-- Còn cần polish/verify: responsive 375/768/1024/1440, accessibility chi tiết, performance (large images removed), SEO meta, per-image attribution, cross-browser.
+- Phase 3 Polish: PASS (responsive, accessibility, performance, SEO, attribution, cross-browser). ✅
 
 ### Các bước tiếp theo (ưu tiên)
 1. Responsive test & fix (navbar/sidebar, tables horizontal scroll, image sizing) ở 375/768/1024/1440.
