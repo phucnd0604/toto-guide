@@ -81,7 +81,37 @@ Tạo website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom (TO
 - Review focus vào content (skip translation).
 - Nếu không pass → sửa cho tới khi không còn feedback.
 
-## Mục tiêu tiếp theo (Phase 2 – Content completeness)
+## Mục tiêu Phase 3 – Polish, Responsive & Final Verification
+**Mục tiêu:** Hoàn thiện trải nghiệm (responsive, accessibility, performance, SEO, attribution per-image), kiểm thử toàn diện, và chốt release.
+
+### Trạng thái hiện tại (2026-10-31)
+- Content Phase 2: PASS (shrines, shrine quests, side content, Dragon's Tears, FAQ).
+- Translation batch: PASS (walkthrough/temple steps đã dịch; chỉ còn tên riêng/thuật ngữ game).
+- Deploy: PASS (Vercel HTTP 200).
+- Còn cần polish/verify: responsive 375/768/1024/1440, accessibility chi tiết, performance (large images removed), SEO meta, per-image attribution, cross-browser.
+
+### Các bước tiếp theo (ưu tiên)
+1. Responsive test & fix (navbar/sidebar, tables horizontal scroll, image sizing) ở 375/768/1024/1440.
+2. Accessibility audit: keyboard nav, focus order, skip link, alt text, reduced-motion, semantic headings, color contrast.
+3. Performance: kiểm tra kích thước ảnh, lazy loading, font loading; tối ưu CSS/JS.
+4. SEO: meta description/title chính xác, canonical? (static), Open Graph cơ bản.
+5. Image attribution: ghi rõ nguồn/license cho từng ảnh (hoặc footer tổng hợp + per-figure caption).
+6. Cross-browser test (Firefox/Chrome/Edge) + mobile.
+7. Final content review với sub-agent model opencode-go/beam-free.
+8. Redeploy Vercel + smoke test.
+
+### Tiêu chí pass (Phase 3)
+- Responsive pass ở 4 breakpoint, không overflow ngang.
+- Accessibility pass (keyboard, focus visible, alt, headings).
+- Performance: không ảnh >2MB trong pages, lazy loading cho ảnh dưới fold.
+- SEO: mỗi trang có title/meta description unique.
+- Attribution rõ nguồn/license.
+- Review sub-agent không còn feedback.
+- Deploy HTTP 200 + smoke test pass.
+
+---
+
+## Mục tiêu tiếp theo (Phase 2 – Content completeness) [HOÀN THÀNH]
 **Mục tiêu:** Hoàn thiện nội dung chi tiết theo GOAL.md, ưu tiên shrine solutions, shrine quests details, side content tóm tắt, tăng ảnh minh họa, rồi review content-only.
 
 ### Trạng thái đã xác minh (2026-10-31)
