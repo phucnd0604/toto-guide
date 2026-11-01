@@ -21,29 +21,42 @@ Tham chiếu mẫu đã hoàn thành: section `#prologue` trong `pages/progress-
 1. Từ trang Walkthrough (đã fetch qua proxy), trích tất cả URL ảnh dạng:
    `https://static0.fextralifeimages.com/file/zeldatearsofthekingdom/.../<filename>.png`
    (bao gồm cả thumbnail 400px và full).
-2. Tải toàn bộ ảnh về `images/gsi/` (hoặc `images/<region>/`) bằng script, đặt tên theo tên file gốc để dễ truy vết.
+2. Tải toàn bộ ảnh về `images/<region>/` bằng script, đặt tên theo tên file gốc để dễ truy vết.
 3. Ghi chú thứ tự ảnh theo thứ tự xuất hiện trong trang (để đặt đúng chỗ).
 
-## Bước 3: Dịch nội dung
-- Dịch toàn bộ text sang **tiếng Việt**.
-- Giữ nguyên: thuật ngữ chuyên môn (Ultrahand, Fuse, Ascend, Recall, Zonai, …) và tên riêng (Link, Zelda, Rauru, tên shrine/temple/NPC).
-- Không để sót câu tiếng Anh.
+## Bước 3: Dịch nội dung (QUAN TRỌNG)
+- Dịch **toàn bộ** text sang tiếng Việt. Không để sót câu/đoạn tiếng Anh.
+- Giữ nguyên: thuật ngữ chuyên môn (Ultrahand, Fuse, Ascend, Recall, Zonai, …) và tên riêng (Link, Zelda, Rauru, tên shrine/temple/NPC, tên item).
+- **Không** dịch máy móc (word-for-word). Phải đọc hiểu rồi viết lại bằng tiếng Việt tự nhiên.
+- Kiểm tra bằng cách search các từ tiếng Anh còn sót (gather, hammer, ignite, advise, discover, deal, time, cut, straightforward, Keese, pond, hop, etc.) và dịch chúng.
+- Dùng @translation skill nếu cần.
 
 ## Bước 4: Trình bày (cấu trúc section)
-Mỗi vùng là 1 `<section id="<region>">` chứa 1 `<div class="card">`:
+Mỗi vùng là 1 `<section id="<region>">` chứa layout 2 cột:
 
-### 4.1 Index (đánh số)
+### 4.1 Layout 2 cột
 ```html
-<ol>
-  <li><strong>Tiêu đề bước (tiếng Việt).</strong> Mô tả chi tiết bước...</li>
-  ...
-</ol>
+<div class="region-cols">
+  <div class="col-left">
+    <h3>Game Progress Route (N bước)</h3>
+    <ol>  <!-- index steps, Vietnamese, no images -->
+      <li>Tiêu đề bước (tiếng Việt).</li>
+      ...
+    </ol>
+  </div>
+  <div class="col-right">
+    <!-- detailed walkthrough with h3 sub-sections + images in details -->
+  </div>
+</div>
 ```
-- Mỗi `<li>` bắt đầu bằng `<strong>` tiêu đề bước, sau đó mô tả chi tiết.
-- Số `<li>` phải khớp số bước trong Game Progress Route.
 
-### 4.2 Ảnh inline trong `<details>` (gộp theo bước)
-Mỗi bước có **một thẻ `<details>` duy nhất** chứa tất cả ảnh minh họa của bước đó (gộp liên tiếp, không tách nhiều thẻ):
+### 4.2 Walkthrough chi tiết (col-right)
+- Chia thành các `<h3>` sub-section (theo fextralife: Prologue, Room of Awakening, Temple of Time, Ukouh Shrine, In-isa Shrine, Gutanbac Shrine, Return to Temple, Nachoyah Shrine).
+- Mỗi sub-section có `<p>` mô tả chi tiết (tiếng Việt) + `<details>` chứa ảnh.
+- Ảnh đặt **ngay sau bước** mà nó minh họa (khớp thứ tự PDF).
+
+### 4.3 Ảnh inline trong `<details>` (gộp theo bước)
+Mỗi bước/sub-section có **một thẻ `<details>` duy nhất** chứa tất cả ảnh minh họa (gộp liên tiếp, không tách nhiều thẻ):
 ```html
 <details style="margin:.4rem 0">
   <summary style="cursor:pointer;color:var(--primary);font-weight:600">📷 Xem ảnh (N)</summary>
@@ -51,15 +64,15 @@ Mỗi bước có **một thẻ `<details>` duy nhất** chứa tất cả ảnh
     <img loading="lazy" decoding="async" src="../images/<region>/<file>.png" alt="Mô tả tiếng Việt" style="max-width:100%">
     <figcaption>Mô tả (Fextralife)</figcaption>
   </figure>
-  <figure style="margin:.6rem 0">...</figure>
+  ...
 </details>
 ```
-- Ảnh đặt **ngay sau bước** mà nó minh họa (khớp thứ tự PDF).
 - `alt` tiếng Việt; `figcaption` tiếng Việt.
 - Không border/radius (đã set trong CSS), căn giữa (figure margin auto).
 - Nếu nhiều ảnh liên tiếp trong cùng 1 bước → gộp chung 1 `<details>`, không tách.
+- **Không để ảnh trùng lặp** trong cùng section.
 
-### 4.3 Mẹo & hoàn tất
+### 4.4 Mẹo & hoàn tất
 ```html
 <p><strong>Mẹo:</strong> ...</p>
 <p><em><Region> – chi tiết hoàn tất.</em></p>
@@ -73,6 +86,7 @@ Chạy script audit:
 - Không link ngoài (chỉ Google Fonts).
 - Số `<li>` trong index khớp fextralife.
 - HTML balanced.
+- **Kiểm tra không còn từ tiếng Anh sót** (search: gather, hammer, ignite, advise, discover, deal, time, cut, straightforward, Keese, pond, hop, surprise, melee, Leo stone, Pick Rushroom, gifts, elevated, Inside tree, Touch glowing, clearing, hop in, etc.)
 
 ## Bước 6: Commit & Deploy
 1. `git add pages/progress-route.html images/<region>/`
@@ -83,7 +97,9 @@ Chạy script audit:
 ## Checklist trước khi chuyển vùng tiếp
 - [ ] Số bước index khớp fextralife.
 - [ ] Tất cả ảnh trong PDF/CDN đã tải và đặt đúng chỗ.
-- [ ] Nội dung dịch tiếng Việt (trừ thuật ngữ/tên riêng).
-- [ ] Mỗi ảnh bọc trong `<details>`.
+- [ ] Nội dung dịch tiếng Việt 100% (trừ thuật ngữ/tên riêng).
+- [ ] Không còn từ tiếng Anh sót trong nội dung.
+- [ ] Mỗi ảnh bọc trong `<details>` (gộp theo bước).
+- [ ] Không ảnh trùng lặp.
 - [ ] Audit ALL OK.
 - [ ] Commit + push + deploy verified.
