@@ -3,3 +3,9 @@ node_modules/
 *.log
 .env
 .vercel
+
+fextralife/
+audit.py
+extract.py
+count.py
+balance_check.py
