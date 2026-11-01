@@ -28,8 +28,11 @@ Tham chiếu mẫu đã hoàn thành: section `#prologue` trong `pages/progress-
 - Dịch **toàn bộ** text sang tiếng Việt. Không để sót câu/đoạn tiếng Anh.
 - Giữ nguyên: thuật ngữ chuyên môn (Ultrahand, Fuse, Ascend, Recall, Zonai, …) và tên riêng (Link, Zelda, Rauru, tên shrine/temple/NPC, tên item).
 - **Không** dịch máy móc (word-for-word). Phải đọc hiểu rồi viết lại bằng tiếng Việt tự nhiên.
-- Kiểm tra bằng cách search các từ tiếng Anh còn sót (gather, hammer, ignite, advise, discover, deal, time, cut, straightforward, Keese, pond, hop, etc.) và dịch chúng.
-- Dùng @translation skill nếu cần.
+- Theo **`docs/translation-standard.md`** (bắt buộc): dịch theo ý, cấm Vietglish, đại từ "bạn", đủ ý đi đâu / làm gì / nhận gì.
+- **Heading (`h2`, `h3`) giữ tiếng Anh gốc + chú thích tiếng Việt trong ngoặc**, ví dụ
+  `Clear Ishodag Shrine (Hoàn thành Đền Thờ Nhỏ Ishodag)`. Heading thuần khái niệm thì chỉ tiếng Việt.
+- Kiểm tra tự động thay vì grep tay: `python scripts/check-vietnamese.py` (0 lỗi HARD mới được commit).
+- **Cấm** để lại placeholder kiểu "... (content continues: ...)", "sẽ bổ sung", "chi tiết hoàn tất" khi chưa xong.
 
 ## Bước 4: Trình bày (cấu trúc section)
 Mỗi vùng là 1 `<section id="<region>">` chứa layout 2 cột:
@@ -78,15 +81,15 @@ Mỗi bước/sub-section có **một thẻ `<details>` duy nhất** chứa tấ
 <p><em><Region> – chi tiết hoàn tất.</em></p>
 ```
 
-## Bước 5: Kiểm tra (audit)
-Chạy script audit:
-- 0 broken images (mọi src resolve được).
-- 0 broken anchors.
-- Mỗi trang 1 `<h1>`, meta description present.
-- Không link ngoài (chỉ Google Fonts).
-- Số `<li>` trong index khớp fextralife.
-- HTML balanced.
-- **Kiểm tra không còn từ tiếng Anh sót** (search: gather, hammer, ignite, advise, discover, deal, time, cut, straightforward, Keese, pond, hop, surprise, melee, Leo stone, Pick Rushroom, gifts, elevated, Inside tree, Touch glowing, clearing, hop in, etc.)
+## Bước 5: Kiểm tra tự động (bắt buộc, cả 3 script phải pass)
+1. `python audit.py` → 0 broken images, 0 broken anchors, mỗi trang 1 `<h1>`, meta description, không link ngoài (chỉ Google Fonts), HTML balanced.
+2. `python scripts/check-vietnamese.py` → **0 lỗi HARD**. Script bắt: heading còn tiếng Anh (đã trừ heading song ngữ có chú thích Việt), cụm Vietglish trong blacklist, mẫu số liệu kiểu `x3`/`5x`. WARN là cụm tiếng Anh lạ cần xem lại.
+3. `python scripts/verify-regions.py <region>` → bảng đối chiếu từng vùng:
+   - `step/want`: số `<li>` index so với số bước fextralife (EXPECT trong script).
+   - `cover`: độ phủ nội dung — mỗi bước index phải xuất hiện trong walkthrough cột phải.
+   - `img/uni/ms`: số ảnh dùng, số ảnh khác nhau, ảnh thiếu file.
+   - `en`: heading còn tiếng Anh; `xN`: mẫu `x3`; `ph`: placeholder; `layout`: phải là `2col`.
+   - Không còn dòng "vùng có vấn đề" cho vùng đang làm.
 
 ## Bước 6: Commit & Deploy
 1. `git add pages/progress-route.html images/<region>/`
@@ -95,11 +98,10 @@ Chạy script audit:
 4. Verify HTTP 200 cho trang và các ảnh mới.
 
 ## Checklist trước khi chuyển vùng tiếp
-- [ ] Số bước index khớp fextralife.
-- [ ] Tất cả ảnh trong PDF/CDN đã tải và đặt đúng chỗ.
-- [ ] Nội dung dịch tiếng Việt 100% (trừ thuật ngữ/tên riêng).
-- [ ] Không còn từ tiếng Anh sót trong nội dung.
-- [ ] Mỗi ảnh bọc trong `<details>` (gộp theo bước).
-- [ ] Không ảnh trùng lặp.
-- [ ] Audit ALL OK.
-- [ ] Commit + push + deploy verified.
+- [ ] `verify-regions.py`: số bước khớp fextralife **và** độ phủ = đủ số bước (vd 19/19).
+- [ ] `verify-regions.py`: `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
+- [ ] Tất cả ảnh trong `images/<region>/` đã dùng hết, không trùng (`uni` = `img`).
+- [ ] Heading song ngữ đúng chuẩn; nội dung 100% tiếng Việt (trừ tên riêng/thuật ngữ trong glossary).
+- [ ] `check-vietnamese.py`: 0 lỗi HARD cho vùng này.
+- [ ] `audit.py`: ALL OK.
+- [ ] Commit + push + deploy verified (HTTP 200 trang + ảnh mới).

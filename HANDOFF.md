@@ -1,55 +1,59 @@
 # Handoff – TOTK Guide Site
 
-## Tiến độ hiện tại
+Cập nhật: sau khi hoàn tất vùng 1-2-3 (Prologue, Central Hyrule, Hebra).
 
-### Đã hoàn thành
-- **Multi-page static site** (11 trang): index.html (overview) + pages/*.html (mechanics, abilities, tutorial, early-game, main-story, temples, endgame, shrines, tips, faq).
-- **Self-contained**: tất cả ảnh (30+ webp/jpg/svg) đã download về `images/`, không có external content links (chỉ Google Fonts CDN).
-- **Git repo**: khởi tạo local, commit, push lên GitHub: https://github.com/phucnd0604/toto-guide
-- **Vercel deploy**: https://toto-guide-five.vercel.app (HTTP 200, CSS/pages load OK).
-- **Dark/Light mode toggle** hoạt động (app.js).
-- **Nội dung chính**:
-  - 23 main quests (main-story.html), granular cho Tulin, Yunobo, Sidon, Riju.
-  - 5 Temple + Boss (temples.html) với walkthrough chi tiết + ảnh.
-  - 152 Shrine + 31 Shrine Quests (shrines.html) theo vùng.
-  - Endgame: Master Sword, Dragon's Tears (13 locations), Ganondorf final.
-  - Tips: nấu ăn, Fuse, giáp, Depths, Sky, Korok, 100%.
-  - FAQ 8 mục.
-  - Early game, mechanics, abilities, tutorial.
-- **Ảnh minh họa**: 30+ ảnh (Zelda Central screenshots + Wikimedia SVGs + local SVGs).
-- **Controls table** đã sửa (B=X, X=jump, R=throw).
-- **Meta description** đã thêm cho tất cả pages.
-- **Footer** đã chuẩn hóa.
-- **h1** có trên mỗi trang.
-- **vercel.json** + **.gitignore** đã tạo.
+## Trạng thái thực tế của site
+- Repo: https://github.com/phucnd0604/toto-guide (branch `master`)
+- Deploy: https://toto-guide-five.vercel.app (Vercel auto-deploy khi push)
+- Cấu trúc: `index.html` + `pages/{mechanics,abilities,shrines,tips,faq,progress-route}.html`
+  (bản multi-page 11 trang cũ đã rút gọn; các trang tutorial/early-game/main-story/temples/endgame/tutorial **không còn tồn tại**)
+- Ảnh: chỉ có `images/gsi` (79), `images/central` (47), `images/hebra` (66)
+- Trang canonical cho walkthrough: `pages/progress-route.html`, 9 section:
+  prologue, central, hebra, eldin, lanayru, mastersword, gerudo, fifth, final.
+  Mỗi vùng: 2 cột — cột trái là index bước (Game Progress Route), cột phải là walkthrough chi tiết
+  (`<h3>` song ngữ + `<details>` chứa ảnh).
 
-### Vấn đề tồn động (chưa fix)
-1. **Dịch**: ✅ Đã dịch batch walkthrough/temple (chỉ còn tên riêng/thuật ngữ game). Deploy lại Vercel ✅.
-2. **Nội dung chi tiết**: ✅ Shrine solutions, Shrine Quests details, Side content, Dragon's Tears coordinates đã bổ sung.
-3. **Ảnh minh họa**: ✅ mỗi trang ≥3 ảnh, alt tiếng Việt, 0 broken.
-4. **Image attribution**: ✅ ganondorf.jpg có source URL + license; footer ghi nguồn ảnh.
-5. **Large images**: ✅ đã xóa shrine-list.svg và zonai-parts.svg.
-6. **Nav consistency**: ✅ Đã chuẩn hóa navbar across all pages (Vietnamese labels).
-7. **Unreachable pages**: ✅ Đã có nav links từ index.html đến tất cả pages.
+## Đã hoàn thành
+### Vùng 1-2-3 (đã verify bằng script)
+| Vùng | Bước index | Độ phủ | Ảnh dùng | Heading EN | xN | Placeholder |
+|---|---|---|---|---|---|---|
+| 1. Prologue & Great Sky Island | 19/19 | 19/19 | 78/78 | 0 | 0 | 0 |
+| 2. Central Hyrule | 27/27 | 27/27 | 46/46 | 0 | 0 | 0 |
+| 3. Hebra | 31/31 | 31/31 | 66/66 | 0 | 0 | 0 |
 
-### Goal đang thực hiện
-- **Mục tiêu chính**: Hoàn thiện nội dung guide (chi tiết, không bỏ sót bước nào) với ảnh minh họa.
-- **Tạm bỏ qua**: Lỗi dịch (mixed language) — sẽ làm batch riêng sau.
-- **Focus hiện tại**: Nội dung completeness, image attribution, missing content.
+- Toàn bộ heading `h2`/`h3` đã chuyển **song ngữ**: tiếng Anh gốc + "(chú thích tiếng Việt)".
+- Nội dung viết lại theo `docs/translation-standard.md`: không còn Vietglish, đại từ "bạn", đủ ý đi đâu / làm gì / nhận gì.
+- Central được mở rộng từ 3 lên 9 mục con: Lookout Landing, Lâu Đài Hyrule & Hoz, Tháp Quan Sát & Dù Lượn,
+  U Ám & Daval, Đền Thờ Nhỏ Jiosin, Camera Work in the Depths, Chụp tượng & trả nhiệm vụ,
+  Impa và Hình Vẽ Mặt Đất, các việc phụ quanh Lookout Landing.
+- Hebra: 19 mục con bám beat fextralife, thêm mục "Side Stops in Hebra" (Giọt Lệ Rồng, Forgotten Temple,
+  Mayausiy, Makurukis, Meeshy/Misko's Treasure, Flight Range/Kaneli, Molli the Fletcher, Eye of the Storm).
 
-### Các bước tiếp theo
-1. Thêm giải pháp ngắn per-shrine (hoặc link đến guide chi tiết).
-2. Thêm chi tiết shrine quests (giver, trigger, steps).
-3. Thêm side quests, Korok, Wells, Caves sections.
-4. Thêm ảnh minh họa cho các trang còn ít ảnh.
-5. Fix image attribution (source URLs, licenses).
-6. Xóa large images không dùng (shrine-list.svg 44MB).
-7. Review content-only với sub-agent (model chính opencode-go/beam-free).
-8. Khi content pass → làm batch dịch (translation).
-9. Deploy lại Vercel sau khi fix.
+### Công cụ / tài liệu
+- `docs/translation-standard.md` – chuẩn dịch: 7 nguyên tắc, quy tắc tên riêng, quy tắc heading song ngữ, 3 bảng thuật ngữ, blacklist Vietglish.
+- `docs/workflow-region.md` – workflow 6 bước, bước 5 kiểm tra tự động bằng 3 script.
+- `AGENTS.md` – 5 điều cấm + bắt buộc chạy `scripts/check-vietnamese.py` 0 lỗi HARD trước commit.
+- `scripts/audit.py` (audit.py gốc) – broken images/anchors, h1, meta, external links.
+- `scripts/check-vietnamese.py` – HARD: heading EN, Vietglish blacklist, mẫu xN; WARN: cụm EN lạ.
+- `scripts/verify-regions.py` – bảng đối chiếu bước index / độ phủ / ảnh / heading / placeholder / layout cho từng vùng.
+- `fextralife/*.txt` – text nguồn đã extract từ PDF walkthrough (dùng khi viết lại nội dung).
 
-### Trạng thái deploy
-- GitHub: https://github.com/phucnd0604/toto-guide (pushed)
-- Vercel: https://toto-guide-five.vercel.app (deployed, HTTP 200)
-- Local server: http://localhost:8000 (chạy start-server.bat)
-PY
+## Còn tồn đọng
+1. **Vùng 4-9** (eldin, lanayru, mastersword, gerudo, fifth, final) mới có index dạng card phẳng,
+   0 ảnh, ghi "Chi tiết walkthrough sẽ bổ sung ở Phase B". Cần làm đúng quy trình như vùng 3:
+   tải ảnh → extract text nguồn → viết walkthrough → verify.
+2. `scripts/check-vietnamese.py` toàn site còn **25 lỗi HARD**, tất cả nằm trong vùng 4-9
+   (Vietglish kiểu "main quest", "spot geoglyph", "5x Arrow", "Proceed to chasm").
+3. `pages/shrines.html` (282 HARD) và `mechanics/abilities/tips` còn Vietglish — chưa xử lý, ngoài phạm vi vùng 1-3.
+
+## Bước tiếp theo
+1. Vùng 4 Eldin: 25 bước → làm đủ quy trình, rồi 5 Lanayru (36), 6 Master Sword (14), 7 Gerudo (23), 8 Fifth Sage (35), 9 Demon King (14).
+2. Dọn Vietglish ở shrines.html + mechanics/abilities/tips theo cùng chuẩn dịch.
+3. Cập nhật lại bảng tiến độ ở trên và HANDOFF này sau mỗi vùng.
+
+## Lệnh kiểm tra nhanh
+```
+python audit.py
+python scripts/check-vietnamese.py
+python scripts/verify-regions.py -v prologue central hebra
+```
