@@ -42,20 +42,22 @@ Mỗi vùng là 1 `<section id="<region>">` chứa 1 `<div class="card">`:
 - Mỗi `<li>` bắt đầu bằng `<strong>` tiêu đề bước, sau đó mô tả chi tiết.
 - Số `<li>` phải khớp số bước trong Game Progress Route.
 
-### 4.2 Ảnh inline trong `<details>`
-Mỗi ảnh được bọc trong thẻ đóng để trang gọn:
+### 4.2 Ảnh inline trong `<details>` (gộp theo bước)
+Mỗi bước có **một thẻ `<details>` duy nhất** chứa tất cả ảnh minh họa của bước đó (gộp liên tiếp, không tách nhiều thẻ):
 ```html
 <details style="margin:.4rem 0">
-  <summary style="cursor:pointer;color:var(--primary);font-weight:600">📷 Xem ảnh</summary>
+  <summary style="cursor:pointer;color:var(--primary);font-weight:600">📷 Xem ảnh (N)</summary>
   <figure style="margin:.6rem 0">
     <img loading="lazy" decoding="async" src="../images/<region>/<file>.png" alt="Mô tả tiếng Việt" style="max-width:100%">
     <figcaption>Mô tả (Fextralife)</figcaption>
   </figure>
+  <figure style="margin:.6rem 0">...</figure>
 </details>
 ```
 - Ảnh đặt **ngay sau bước** mà nó minh họa (khớp thứ tự PDF).
 - `alt` tiếng Việt; `figcaption` tiếng Việt.
 - Không border/radius (đã set trong CSS), căn giữa (figure margin auto).
+- Nếu nhiều ảnh liên tiếp trong cùng 1 bước → gộp chung 1 `<details>`, không tách.
 
 ### 4.3 Mẹo & hoàn tất
 ```html
