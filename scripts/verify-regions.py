@@ -11,10 +11,10 @@ Cột:
   ms    : ảnh thiếu file                     xN   : mẫu "x1"/"5x" còn sót
   en    : heading còn tiếng Anh              ph   : placeholder "..."/"sẽ bổ sung"
 """
-import os, re, sys
+import io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = os.path.join(ROOT, 'pages', 'progress-route.html')
+DIR = os.path.join(ROOT, 'pages')
 
 EXPECT = {'prologue': 19, 'central': 27, 'hebra': 31, 'eldin': 25, 'lanayru': 36,
           'mastersword': 14, 'gerudo': 23, 'fifth': 35, 'final': 14}
@@ -43,10 +43,9 @@ way thing first second next last main objective step area section dungeon puzzle
 good bad new old high low long short big small left right north south east west day night time times""".split())
 QUEST_OK = {'camera work in the depths', 'regional phenomena', 'tulin of rito village'}
 
-src = open(PAGE, encoding='utf-8').read()
-secs = {}
-for m in re.finditer(r'<section id="([a-z]+)">(.*?)</section>', src, re.S):
-    secs[m.group(1)] = m.group(2)
+def page_of(rid):
+    p = os.path.join(DIR, 'route-%s.html' % rid)
+    return p, io.open(p, encoding='utf-8').read()
 
 
 def clean(h):
@@ -58,21 +57,25 @@ def toks(s):
 
 
 def stats(rid):
-    body = secs[rid]
-    left_m = re.search(r'<div class="col-left">(.*?)<div class="col-right">', body, re.S)
-    twocol = left_m is not None
-    idx = left_m.group(1) if twocol else body
-    walk = body[left_m.end():] if twocol else body
+    path, body = page_of(rid)
+    idx_m = re.search(r'<aside[^>]*class="sidebar rail"[^>]*>(.*?)</aside>', body, re.S)
+    main_m = re.search(r'<main[^>]*class="content"[^>]*>(.*?)</main>', body, re.S)
+    twocol = idx_m is not None and main_m is not None
+    idx = idx_m.group(1) if idx_m else body
+    walk = main_m.group(1) if main_m else body
+    # bỏ phần tiêu đề trang khỏi walkthrough khi tính từ/độ phủ
+    walk = re.sub(r'<p class="crumb">.*?</p>|<h1.*?</h1>|<p class="page-meta">.*?</p>', ' ', walk, flags=re.S)
+    walk = re.sub(r'<nav class="region-pager".*?</nav>', ' ', walk, flags=re.S)
     lis = [clean(x) for x in re.findall(r'<li>(.*?)</li>', idx, re.S)]
     h3s = [clean(x) for x in re.findall(r'<h3[^>]*>(.*?)</h3>', walk, re.S)]
     flat = clean(walk).lower()
     words = len(flat.split())
-    imgs = re.findall(r'src="([^"]+)"', walk)
+    imgs = re.findall(r'<img[^>]+src="([^"]+)"', walk)
     uniq = list(dict.fromkeys(imgs))
-    missing = [i for i in uniq if not os.path.exists(os.path.normpath(os.path.join(ROOT, 'pages', i)))]
+    missing = [i for i in uniq if not os.path.exists(os.path.normpath(os.path.join(DIR, i)))]
     dup = [i for i in uniq if imgs.count(i) > 1]
     covered, uncovered = 0, []
-    if twocol:
+    if twocol and h3s:
         for li in lis:
             kt = toks(li)
             if not kt:
@@ -110,7 +113,9 @@ def stats(rid):
     text_all = clean(body)
     viet = sum(1 for b in BLACK if b in text_all.lower())
     xn = len(re.findall(r'\b(?:x\d+|\d+x)\b', text_all))
-    ph = text_all.count('content continues') + text_all.count('sẽ bổ sung') + text_all.count('...')
+    ph = text_all.count('content continues') + text_all.count('...')
+    if h3s:
+        ph += text_all.count('sẽ bổ sung')
     return dict(steps=len(lis), h3=len(h3s), words=words, covered=covered, uncovered=uncovered,
                 imgs=len(imgs), uniq=len(uniq), missing=missing, dup=dup, en_heads=en_heads,
                 viet=viet, xn=xn, ph=ph, twocol=twocol)
@@ -123,19 +128,23 @@ bad = 0
 for rid in ids:
     s = stats(rid)
     flags = []
+    stub = s['h3'] == 0          # vùng mới có index bước, chưa có walkthrough
     if s['steps'] != EXPECT[rid]:
         flags.append('STEP')
-    if s['twocol'] and s['covered'] < s['steps']:
-        flags.append('COVER')
-    if s['missing'] or s['dup']:
-        flags.append('IMG')
-    if s['viet'] or s['xn'] or s['en_heads'] or s['ph']:
-        flags.append('LANG')
+    if not stub:
+        if s['twocol'] and s['covered'] < s['steps']:
+            flags.append('COVER')
+        if s['missing'] or s['dup']:
+            flags.append('IMG')
+        if s['viet'] or s['xn'] or s['en_heads'] or s['ph']:
+            flags.append('LANG')
     if not s['twocol']:
         flags.append('LAYT')
-    if flags:
+    if flags and flags != ['STEP']:
         bad += 1
-    cov = ('%d/%d' % (s['covered'], s['steps'])) if s['twocol'] else '  n/a'
+    if stub:
+        flags = ['stub']
+    cov = ('%d/%d' % (s['covered'], s['steps'])) if (s['twocol'] and not stub) else '  n/a'
     print('%-12s %-16s %4d %4d %3d %6d %7s %4d %4d %3d %3d %3d %3d %-6s %s' % (
         rid, NAMES[rid], s['steps'], EXPECT[rid], s['h3'], s['words'], cov,
         s['imgs'], s['uniq'], len(s['missing']), s['xn'], len(s['en_heads']), s['ph'],

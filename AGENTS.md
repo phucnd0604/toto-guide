@@ -18,7 +18,9 @@
 - Ảnh từ `static0.fextralifeimages.com` (tải về `images/<region>/`, giữ tên file gốc).
 
 ## Cấu trúc trang
-- Canonical progress route: `pages/progress-route.html` (9 vùng theo fextralife).
+- Canonical progress route: hub `pages/progress-route.html` + 9 trang vùng `pages/route-<slug>.html`
+  (slug: prologue, central, hebra, eldin, lanayru, mastersword, gerudo, fifth, final).
+- Mỗi trang vùng: cột trái sticky là mục lục + danh sách bước, cột phải là walkthrough.
 - Giữ multi-page: mechanics, abilities, shrines, tips, faq, index.
 - Mỗi trang: 1 `<h1>`, meta description, alt text tiếng Việt.
 

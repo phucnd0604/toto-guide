@@ -13,14 +13,28 @@
 <body>
 <a href="#main" class="skip-link">Bỏ qua đến nội dung</a>
 <header class="navbar">
-  <span class="brand">TOTK Guide</span>
+  <a class="brand" href="../index.html">TOTK Guide</a>
   <button class="theme-toggle" aria-label="Đổi giao diện sáng/tối">🌙 Tối</button>
-  <button class="nav-toggle" aria-label="Menu">☰</button>
-  <nav>
+  <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+  <nav id="main-nav">
     <a href="../index.html">Trang chủ</a>
     <a href="mechanics.html">Cơ chế</a>
-    <a href="abilities.html">Năng lực</a>
-    <a href="progress-route.html">Lộ trình</a>
+    <a href="abilities.html" class="active">Năng lực</a>
+    <div class="nav-item">
+      <a href="progress-route.html" class="nav-parent">Lộ trình</a>
+      <button class="nav-sub-toggle" aria-expanded="false" aria-controls="route-menu" aria-label="Mở danh sách vùng">▾</button>
+      <ul class="nav-sub" id="route-menu">
+        <li><a href="route-prologue.html">Prologue & Sky</a></li>
+        <li><a href="route-central.html">Central Hyrule</a></li>
+        <li><a href="route-hebra.html">Hebra – Tulin</a></li>
+        <li><a href="route-eldin.html">Eldin – Yunobo</a></li>
+        <li><a href="route-lanayru.html">Lanayru – Sidon</a></li>
+        <li><a href="route-mastersword.html">Master Sword</a></li>
+        <li><a href="route-gerudo.html">Gerudo – Riju</a></li>
+        <li><a href="route-fifth.html">Fifth Sage</a></li>
+        <li><a href="route-final.html">Demon King</a></li>
+      </ul>
+    </div>
     <a href="shrines.html">Đền thờ nhỏ</a>
     <a href="tips.html">Mẹo</a>
     <a href="faq.html">FAQ</a>

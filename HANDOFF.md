@@ -1,17 +1,19 @@
 # Handoff – TOTK Guide Site
 
-Cập nhật: sau khi hoàn tất vùng 1-2-3 (Prologue, Central Hyrule, Hebra).
+Cập nhật: sau khi tách 9 vùng thành 9 trang riêng + đổi bảng màu "khắc" (đá vàng).
 
 ## Trạng thái thực tế của site
 - Repo: https://github.com/phucnd0604/toto-guide (branch `master`)
 - Deploy: https://toto-guide-five.vercel.app (Vercel auto-deploy khi push)
-- Cấu trúc: `index.html` + `pages/{mechanics,abilities,shrines,tips,faq,progress-route}.html`
-  (bản multi-page 11 trang cũ đã rút gọn; các trang tutorial/early-game/main-story/temples/endgame/tutorial **không còn tồn tại**)
-- Ảnh: chỉ có `images/gsi` (79), `images/central` (47), `images/hebra` (66)
-- Trang canonical cho walkthrough: `pages/progress-route.html`, 9 section:
-  prologue, central, hebra, eldin, lanayru, mastersword, gerudo, fifth, final.
-  Mỗi vùng: 2 cột — cột trái là index bước (Game Progress Route), cột phải là walkthrough chi tiết
-  (`<h3>` song ngữ + `<details>` chứa ảnh).
+- Cấu trúc: `index.html` + `pages/{mechanics,abilities,shrines,tips,faq}.html`
+  + hub `pages/progress-route.html` + 9 trang vùng
+  `pages/route-{prologue,central,hebra,eldin,lanayru,mastersword,gerudo,fifth,final}.html`
+- Ảnh: `images/gsi` (79), `images/central` (47), `images/hebra` (66)
+- Menu "Lộ trình" trên navbar là **submenu 9 vùng** (hover trên desktop, bấm ▾ trên mobile).
+- Mỗi trang vùng: header chung (crumb + h1 + chip N bước / N mục / N ảnh / trạng thái) rồi 2 cột —
+  cột trái sticky (`aside.rail`): "Mục lục vùng" (gập được, có scrollspy) + "Danh sách N bước";
+  cột phải cuộn: walkthrough (`<h3>` song ngữ + `<details>` chứa ảnh).
+- `scripts/verify-regions.py` đọc thẳng 9 file `pages/route-*.html`; vùng chưa có walkthrough hiện `stub`.
 
 ## Đã hoàn thành
 ### Vùng 1-2-3 (đã verify bằng script)

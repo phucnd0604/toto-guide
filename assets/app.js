@@ -28,7 +28,9 @@
   function initActiveLinks(){
     const path=norm(location.pathname.split('/').pop());
     document.querySelectorAll('.navbar nav a, .toc a').forEach(a=>{
-      const href=norm((a.getAttribute('href')||'').split('/').pop().split('#')[0]);
+      const raw=a.getAttribute('href')||'';
+      if(raw.startsWith('#')) return;           // mục lục trong trang do scrollspy lo
+      const href=norm(raw.split('/').pop().split('#')[0]);
       if(href===path) a.classList.add('active');
     });
   }
@@ -36,10 +38,15 @@
   function syncIndexBox(){
     const mobile=window.matchMedia('(max-width:900px)').matches;
     document.querySelectorAll('.index-box').forEach(d=>{d.open=!mobile;});
+    // mục lục vùng cũng gập trên mobile; trên desktop mở nhưng không ép đóng nếu người dùng tự mở
+    document.querySelectorAll('.rail-toc-box').forEach(d=>{ if(mobile) d.open=false; else if(d.dataset.userClosed!=='1') d.open=true; });
   }
   function initIndexBox(){
     syncIndexBox();
     window.addEventListener('resize',syncIndexBox);
+    document.querySelectorAll('.rail-toc-box').forEach(d=>{
+      d.addEventListener('toggle',()=>{ d.dataset.userClosed = d.open ? '0' : '1'; });
+    });
   }
   // Thanh tiến độ đọc + nút lên đầu trang
   function initReadingChrome(){
@@ -64,5 +71,54 @@
     window.addEventListener('resize',update);
     update();
   }
-  document.addEventListener('DOMContentLoaded',()=>{initTheme();initNav();initActiveLinks();initIndexBox();initReadingChrome();});
+  // Menu con "Lộ trình": bấm nút mũi tên để mở/đóng, đóng khi bấm ra ngoài hoặc Esc
+  function initRouteMenu(){
+    const item=document.querySelector('.nav-item');
+    const btn=document.querySelector('.nav-sub-toggle');
+    if(!item||!btn) return;
+    const set=(open)=>{
+      item.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    };
+    btn.addEventListener('click',(e)=>{
+      e.preventDefault();e.stopPropagation();
+      set(!item.classList.contains('open'));
+    });
+    document.addEventListener('click',(e)=>{
+      if(!item.contains(e.target)) set(false);
+    });
+    document.addEventListener('keydown',(e)=>{if(e.key==='Escape') set(false);});
+  }
+  // Đánh dấu mục đang đọc trong rail trái khi cuộn walkthrough
+  function initScrollSpy(){
+    const links=[...document.querySelectorAll('.rail-toc a[href^="#"]')];
+    if(!links.length||!('IntersectionObserver' in window)) return;
+    const map=new Map();
+    links.forEach(a=>{
+      const el=document.getElementById(a.getAttribute('href').slice(1));
+      if(el) map.set(el,a);
+    });
+    if(!map.size) return;
+    const current=new Set();
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) current.add(en.target); else current.delete(en.target);
+      });
+      let active=null;
+      for(const el of map.keys()){ if(current.has(el)){ active=el; break; } }
+      if(!active){
+        // mục gần mép trên nhất
+        let best=null,bestTop=-Infinity;
+        map.forEach((a,el)=>{
+          const t=el.getBoundingClientRect().top;
+          if(t<160&&t>bestTop){bestTop=t;best=el;}
+        });
+        active=best;
+      }
+      links.forEach(a=>a.classList.remove('active'));
+      if(active&&map.has(active)) map.get(active).classList.add('active');
+    },{rootMargin:'-96px 0px -65% 0px',threshold:0});
+    map.forEach((_,el)=>io.observe(el));
+  }
+  document.addEventListener('DOMContentLoaded',()=>{initTheme();initNav();initActiveLinks();initIndexBox();initReadingChrome();initRouteMenu();initScrollSpy();});
 })();
