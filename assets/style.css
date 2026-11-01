@@ -87,6 +87,14 @@ body::before{
 
 /* Content */
 .content section{margin-bottom:2.5rem;scroll-margin-top:5rem}
+.region-cols{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,2fr);gap:1.5rem;align-items:start}
+.region-cols .col-left{position:sticky;top:6rem;max-height:calc(100vh - 7rem);overflow:auto;padding-right:.5rem}
+.region-cols .col-left h3{font-size:1rem;color:var(--primary);margin-bottom:.5rem}
+.region-cols .col-left ol{font-size:.9rem}
+.region-cols .col-left li{margin:.25rem 0}
+.region-cols .col-right h3{margin-top:1.2rem;color:var(--primary)}
+.region-cols .col-right h4{color:var(--accent);font-size:1rem;margin-top:1rem}
+@media(max-width:900px){.region-cols{grid-template-columns:1fr}.region-cols .col-left{position:static;max-height:none;overflow:visible}}
 html{scroll-padding-top:6rem}
 .content h2{font-size:clamp(1.4rem,2.5vw,1.8rem);border-bottom:2px solid var(--border);padding-bottom:.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
 .content h2 .num{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;padding:.15rem .5rem;border-radius:6px;font-size:.7em;font-weight:600}
