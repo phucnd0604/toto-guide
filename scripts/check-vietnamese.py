@@ -155,7 +155,16 @@ def scan(path):
         if hits:
             hard.append((line_no, 'HEADING "%s" (%s)' % (t[:70], ', '.join(hits[0][1][:4]))))
 
+    # Mục lục vùng lặp lại tiêu đề h3 (đã kiểm ở trên) -> bỏ qua để không báo trùng
+    skip = set()
+    for m in re.finditer(r'<details class="region-toc">.*?</details>', src, re.S):
+        first = src[:m.start()].count('\n') + 1
+        last = src[:m.end()].count('\n') + 1
+        skip.update(range(first, last + 1))
+
     for i, line in enumerate(src.split('\n'), 1):
+        if i in skip:
+            continue
         t = text_of(line)
         if not t or re.search(r'<h[1-4]\b', line):
             continue

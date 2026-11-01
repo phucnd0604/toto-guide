@@ -32,5 +32,37 @@
       if(href===path) a.classList.add('active');
     });
   }
-  document.addEventListener('DOMContentLoaded',()=>{initTheme();initNav();initActiveLinks();});
+  // Index bước: tự gập trên mobile để nội dung walkthrough không bị đẩy xuống quá xa
+  function syncIndexBox(){
+    const mobile=window.matchMedia('(max-width:900px)').matches;
+    document.querySelectorAll('.index-box').forEach(d=>{d.open=!mobile;});
+  }
+  function initIndexBox(){
+    syncIndexBox();
+    window.addEventListener('resize',syncIndexBox);
+  }
+  // Thanh tiến độ đọc + nút lên đầu trang
+  function initReadingChrome(){
+    const bar=document.createElement('div');
+    bar.id='read-progress';
+    document.body.appendChild(bar);
+    const btn=document.createElement('button');
+    btn.className='back-to-top';
+    btn.type='button';
+    btn.setAttribute('aria-label','Lên đầu trang');
+    btn.textContent='↑';
+    document.body.appendChild(btn);
+    btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const update=()=>{
+      const h=document.documentElement;
+      const max=h.scrollHeight-h.clientHeight;
+      const pct=max>0?(h.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(pct*100)+'%';
+      btn.classList.toggle('show',(h.scrollTop||document.body.scrollTop)>600);
+    };
+    document.addEventListener('scroll',update,{passive:true});
+    window.addEventListener('resize',update);
+    update();
+  }
+  document.addEventListener('DOMContentLoaded',()=>{initTheme();initNav();initActiveLinks();initIndexBox();initReadingChrome();});
 })();
