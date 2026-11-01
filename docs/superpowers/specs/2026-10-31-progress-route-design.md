@@ -14,10 +14,13 @@ Hiện tại nội dung cốt truyện đang rải rác giữa `tutorial`, `earl
 - Không dịch lại (giữ tiếng Việt hiện có).
 - Không tải ảnh mới từ fextralife (bị chặn transport); tái dùng 34 ảnh hiện có.
 
-## Approach (đã chọn: Hybrid)
-- Tạo `pages/progress-route.html` canonical.
-- Migrate nội dung từ `tutorial.html`, `early-game.html`, `main-story.html`, `temples.html`, `endgame.html` vào các section tương ứng.
-- Xóa 5 trang story cũ sau khi migrate.
+## Approach (đã chọn: Hybrid + Phased)
+- Nguồn nội dung: fextralife (Game Progress Route + Walkthrough) qua proxy Google Translate; ảnh từ static0.fextralifeimages.com.
+- Tạo `pages/progress-route.html` canonical theo 9 vùng fextralife: Prologue/Sky → Central Hyrule → Hebra → Eldin → Lanayru → Master Sword → Gerudo → Fifth Sage → Demon King.
+- **Phase A – Index:** Dựng trang với đầy đủ index (danh sách vùng + các bước theo fextralife) làm khung.
+- **Phase B – Detail (từng vùng):** Rà soát từng index, build progress route chi tiết + walkthrough + ảnh cho mỗi vùng.
+- Phase C: Verify (audit), commit, deploy.
+- Xóa 5 trang story cũ (đã làm) để tránh trùng lặp.
 - Cập nhật navbar/index trỏ đến `progress-route.html`.
 - Giữ `shrines.html`, `tips.html`, `faq.html`, `mechanics.html`, `abilities.html`.
 
