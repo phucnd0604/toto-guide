@@ -37,6 +37,10 @@ body{
   transition:background .3s,color .3s;
 }
 h1,h2,h3,h4{font-family:var(--font);font-weight:600;line-height:1.15;letter-spacing:.3px;margin:0 0 .6em}
+strong{color:var(--primary);font-weight:600}
+h4{color:var(--accent);font-weight:600;margin-top:1rem}
+mark{background:rgba(124,58,237,.25);color:var(--fg);padding:.1rem .35rem;border-radius:4px}
+.key{color:var(--accent);font-weight:600}
 a{color:var(--primary);text-decoration:none;transition:color .15s}
 a:hover{color:var(--accent)}
 img{max-width:100%;display:block;height:auto}
