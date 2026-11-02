@@ -21,6 +21,9 @@ Tham chiếu mẫu đã hoàn thành: `pages/route-prologue.html`.
 
 ## Bước 2: Lấy ảnh (dễ sai nhất — đọc kỹ)
 
+**Mỗi trang một folder riêng**: `pages/route-<slug>.html` ↔ `images/<slug>/` (prologue, central, hebra, eldin, …).
+Không dùng chung folder, không copy ảnh từ vùng khác sang — ảnh lẫn vùng là lỗi im lặng, verify không bắt được.
+
 Ảnh fextralife **không đánh số theo vùng**: trang 1 có `Walkthrough12-...`, trang 2 có `Walkthrough-gsi12-...`.
 Đổi tên kiểu `fx-sky-12` / `Walkthrough-gsi12` là tự tạo nhập nhằng — lần trước chính vì vậy mà ảnh bị gán sai bước.
 
@@ -117,6 +120,7 @@ Mỗi đoạn/bước có **một thẻ `<details>` duy nhất** chứa các ả
 - [ ] `verify-regions.py`: `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
 - [ ] Tất cả ảnh trong `images/<region>/` đã dùng hết, không trùng (`uni` = `img`, `ms=0`).
 - [ ] Mỗi `<h3>` khớp đúng subsection nguồn (không lệch bậc) và ảnh đặt đúng đoạn nó minh họa.
+- [ ] Trang chỉ dùng ảnh trong `images/<slug>/` của chính nó — không có ảnh copy từ vùng khác (kiểm: tên file ảnh phải khớp tiền tố của vùng, ví dụ `chr*` cho Central).
 - [ ] Tên file ảnh giữ nguyên gốc fextralife (không tự đổi tên/không có bản trùng độ phân giải).
 - [ ] Heading song ngữ đúng chuẩn; nội dung 100% tiếng Việt (trừ tên riêng/thuật ngữ trong glossary).
 - [ ] `check-vietnamese.py`: 0 lỗi HARD cho vùng này.

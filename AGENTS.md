@@ -23,15 +23,16 @@
 - Mỗi trang vùng: cột trái sticky là mục lục + danh sách bước, cột phải là walkthrough.
 - Giữ multi-page: mechanics, abilities, shrines, tips, faq, index.
 - Mỗi trang: 1 `<h1>`, meta description, alt text tiếng Việt.
+- **Ảnh tách riêng theo trang**: `pages/route-<slug>.html` chỉ dùng ảnh trong `images/<slug>/`. Cấm dùng chung folder, cấm copy ảnh của vùng khác sang (lỗi đã gặp: 12 ảnh Prologue nằm trong `images/central`).
 
 ## Kiểm tra trước commit
-- `python audit.py` → ALL OK (0 broken images, 0 broken anchors, 1 h1, meta present, không link ngoài trừ Google Fonts).
+- `python scripts/verify-regions.py` → mỗi vùng `step/want` khớp, `cover` đủ bước, `img = uni`, `ms=0`, `en=0`, `ph=0`, layout `2col`.
 - `python scripts/check-vietnamese.py` → 0 lỗi HARD.
-- Step count phải khớp fextralife cho mỗi vùng.
-- HTML balanced, không còn reference đến trang đã xóa.
+- HTML balanced, mọi `src` ảnh tồn tại, và không file nào trong `images/<slug>/` bị bỏ không dùng.
+- Không còn reference đến trang/file đã xóa.
 
 ## Quy trình Phase B
-- Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify audit + check-vietnamese → commit riêng → push/deploy → requesting-code-review.
+- Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify-regions + check-vietnamese → commit riêng → push/deploy → requesting-code-review.
 - Loop executing-plans + requesting-code-review cho đến khi chuẩn xác mới chuyển vùng tiếp.
 
 ## Commit & Deploy
