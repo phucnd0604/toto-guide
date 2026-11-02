@@ -46,6 +46,7 @@ PHRASES = [
     "bring peace to hyrule field", "impa and the geoglyphs", "first gatehouse",
     "new serenne stable", "new serenne", "hebra south summit cave", "hebra south summit",
     "hebra summit cave", "eye of the storm", "south summit",
+    "south akkala stable", "south akkala", "death mountain west site", "big wheel", "little frox",
     # dòng ghi nguồn ảnh / bản quyền: giữ nguyên tên nhà cung cấp
     "zelda dungeon wiki", "dungeon wiki", "wikimedia commons", "cc by", "polygon",
     "gamespot", "the guardian", "ign", "nintendo life",
