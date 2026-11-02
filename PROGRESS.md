@@ -71,7 +71,7 @@ Bốn vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2
    lanayru 8, mastersword 9, gerudo 5, fifth 8, final 4.
 2. Các trang phụ còn Vietglish/HARD: `shrines.html` 282, `mechanics.html` 9, `tips.html` 5,
    `abilities.html` 2, `index.html` 1, `faq.html` 1.
-   Toàn site hiện **351 lỗi HARD**, trong đó 3 vùng đã xong = 0.
+   Toàn site hiện **334 lỗi HARD**, trong đó 4 vùng đã xong = 0.
 3. Một số ảnh vùng 1–3 chỉ có bản 400px (fextralife chặn tải bản gốc / trả 429) — chấp nhận được,
    nâng cấp sau nếu cần nét hơn.
 
