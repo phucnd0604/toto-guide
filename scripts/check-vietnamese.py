@@ -47,6 +47,8 @@ PHRASES = [
     "new serenne stable", "new serenne", "hebra south summit cave", "hebra south summit",
     "hebra summit cave", "eye of the storm", "south summit",
     "south akkala stable", "south akkala", "death mountain west site", "big wheel", "little frox",
+    "the sludge-covered statue", "the broken slate", "restoring the zora armor", "clues to the sky",
+    "old map", "east reservoir lake", "east akkala plains",
     # dòng ghi nguồn ảnh / bản quyền: giữ nguyên tên nhà cung cấp
     "zelda dungeon wiki", "dungeon wiki", "wikimedia commons", "cc by", "polygon",
     "gamespot", "the guardian", "ign", "nintendo life",

@@ -48,13 +48,13 @@ host trên Vercel, không link ra domain khác.
 | 2. Central Hyrule | 27/27 | 27/27 | 34 | ✅ đã rà soát | ✅ xong |
 | 3. Hebra | 31/31 | 31/31 | 80 | ✅ đã rà soát | ✅ xong |
 | 4. Eldin | 25/25 | 25/25 | 63 | ✅ đã rà soát | ✅ xong |
-| 5. Lanayru | 36 | — | 0 | — | ⬜ mới có index phẳng |
+| 5. Lanayru | 36/36 | 36/36 | 84 | ✅ đã rà soát | ✅ xong |
 | 6. Master Sword | 14 | — | 0 | — | ⬜ mới có index phẳng |
 | 7. Gerudo | 23 | — | 0 | — | ⬜ mới có index phẳng |
 | 8. Fifth Sage | 35 | — | 0 | — | ⬜ mới có index phẳng |
 | 9. Demon King | 14 | — | 0 | — | ⬜ mới có index phẳng |
 
-Bốn vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
+Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
 
 ### Việc đã làm ngoài nội dung vùng
 - Rà soát lại **ảnh theo đúng subsection nguồn** cho vùng 1–3: trước đây ảnh bị chia theo thứ tự file
@@ -66,19 +66,19 @@ Bốn vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2
 - `docs/agents/`: cấu hình issue tracker (GitHub Issues), nhãn triage, domain docs.
 
 ## Còn tồn đọng
-1. **Vùng 5–9** (lanayru, mastersword, gerudo, fifth, final): chỉ có index phẳng, 0 ảnh,
+1. **Vùng 6–9** (mastersword, gerudo, fifth, final): chỉ có index phẳng, 0 ảnh,
    không có walkthrough. `verify-regions` báo `stub`; `check-vietnamese` còn HARD:
-   lanayru 8, mastersword 9, gerudo 5, fifth 8, final 4.
+   mastersword 9, gerudo 5, fifth 8, final 4.
 2. Các trang phụ còn Vietglish/HARD: `shrines.html` 282, `mechanics.html` 9, `tips.html` 5,
    `abilities.html` 2, `index.html` 1, `faq.html` 1.
-   Toàn site hiện **334 lỗi HARD**, trong đó 4 vùng đã xong = 0.
+   Toàn site hiện **326 lỗi HARD**, trong đó 5 vùng đã xong = 0.
 3. Một số ảnh vùng 1–3 chỉ có bản 400px (fextralife chặn tải bản gốc / trả 429) — chấp nhận được,
    nâng cấp sau nếu cần nét hơn.
 
 ## Thứ tự thực hiện tiếp
-1. Vùng 5 Lanayru theo quy trình `docs/workflow-region.md` (lấy đủ trang nguồn → tải ảnh vào `images/lanayru/`
+1. Vùng 6 Master Sword theo quy trình `docs/workflow-region.md` (lấy đủ trang nguồn → tải ảnh vào `images/mastersword/`
    → dịch → đặt ảnh đúng subsection → verify → commit/push).
-2. Lần lượt 6 → 9, mỗi vùng một commit riêng.
+2. Lần lượt 7 → 9, mỗi vùng một commit riêng.
 3. Dọn HARD cho shrines / mechanics / abilities / tips / index / faq.
 4. Cập nhật lại bảng trạng thái và mục "Còn tồn đọng" trong file này sau mỗi vùng.
 
