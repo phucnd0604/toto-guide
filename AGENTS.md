@@ -37,3 +37,18 @@
 ## Commit & Deploy
 - Commit message rõ ràng theo task (Phase/Task + tên vùng).
 - Push origin master → Vercel auto-deploy; verify HTTP 200 cho trang và ảnh.
+
+## Agent skills
+
+### Issue tracker
+
+Issue và đặc tả sống trên GitHub Issues của `phucnd0604/toto-guide`, thao tác bằng `gh` CLI. Xem `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Dùng bộ 5 label mặc định: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. Xem `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` + `docs/adr/` ở gốc repo. Xem `docs/agents/domain.md`.
+
