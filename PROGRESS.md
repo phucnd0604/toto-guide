@@ -41,7 +41,7 @@ host trên Vercel, không link ra domain khác.
    không thêm ảnh/logo ngoài nguồn.
 6. Commit riêng cho từng vùng → push `master` → Vercel deploy → HTTP 200 cho trang và ảnh mới.
 
-## Trạng thái hiện tại (cập nhật 2026-11-02)
+## Trạng thái hiện tại (cập nhật 2026-11-23)
 | Vùng | Bước | Độ phủ | Ảnh (img=uni) | Ảnh khớp subsection | Trạng thái |
 |---|---|---|---|---|---|
 | 1. Prologue & Great Sky Island | 19/19 | 19/19 | 77 | ✅ đã rà soát | ✅ xong |
@@ -55,6 +55,8 @@ host trên Vercel, không link ra domain khác.
 | 9. Demon King | 14 | — | 0 | — | ⬜ mới có index phẳng |
 
 Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
+Ảnh 5 vùng đã đối chiếu với **trang nguồn thật** (`scripts/check-image-match.py` → `FAIL=0`): mỗi ảnh nằm
+đúng subsection nguồn, đúng thứ tự xuất hiện, không lẫn ảnh vùng khác.
 
 ### Việc đã làm ngoài nội dung vùng
 - Rà soát lại **ảnh theo đúng subsection nguồn** cho vùng 1–3: trước đây ảnh bị chia theo thứ tự file
@@ -64,6 +66,11 @@ Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2c
 - `docs/workflow-region.md`: chuẩn hoá cách lấy nội dung/ảnh (nhiều trang Subcontent, giữ tên file gốc,
   bản full qua trang `File:`, ảnh đặt ngay sau đoạn minh họa, caption theo tên bước).
 - `docs/agents/`: cấu hình issue tracker (GitHub Issues), nhãn triage, domain docs.
+- **Cổng cứng ảnh ↔ nội dung**: thêm `scripts/check-image-match.py` + luật trong `AGENTS.md`. Đếm ảnh
+  (`img=uni`, `ms=0`) không bắt được ảnh sai chỗ, nên cổng này đối chiếu trực tiếp trang nguồn.
+- Tách các heading bị gộp nhiều subsection nguồn (làm ảnh nằm sai chủ đề): Prologue — Ukouh, In-Isa,
+  Gutanbac (Pondside/Mining/Pit/Bottomless Cave tách riêng), Return to Temple of Time; Hebra —
+  Get Tulin's Bow / Reach The Top of Hebra Peak, Post Kahatanaum Shrine / Clear Wind Temple.
 
 ## Còn tồn đọng
 1. **Vùng 6–9** (mastersword, gerudo, fifth, final): chỉ có index phẳng, 0 ảnh,
@@ -86,4 +93,5 @@ Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2c
 ```
 python scripts/verify-regions.py
 python scripts/check-vietnamese.py
+python scripts/check-image-match.py   # FAIL=0 mới được commit (so ảnh với trang nguồn)
 ```
