@@ -57,7 +57,7 @@ def heading_matches(ours, source):
     a, b = toks(ours), toks(source)
     if not a or not b:
         return False
-    return len(a & b) / min(len(a), len(b)) >= 0.6
+    return len(a & b) / min(len(a), len(b)) >= 0.8
 
 
 def wiki_body(html):
