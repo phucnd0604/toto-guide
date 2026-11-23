@@ -2,6 +2,12 @@
 
 Date: 2026-10-31
 
+> **Tài liệu lịch sử — không còn là nguồn chuẩn.** Bản này ghi quyết định ban đầu; hiện trạng dự án xem
+> `PROGRESS.md` (tiến độ, 9/9 vùng xong) và `docs/workflow-region.md` (quy trình vùng).
+> Hai điểm đã thay đổi so với bản này: (1) site **có** dùng ảnh chụp màn hình từ fextralife
+> (`images/<slug>/`, ghi công ở footer) thay vì chỉ ảnh CC; (2) cấu trúc cuối là 9 trang
+> `pages/route-<slug>.html` + hub `pages/progress-route.html`, không phải tutorial/early-game/main-story/temples.
+
 ## Intent & why
 Tạo website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom cho người mới (gà mờ), đầy đủ từ A-Z, host static. Tránh bỏ sót nội dung game. Nội dung phân lớp: tóm tắt + mẹo ở trang tổng quan, trang chi tiết riêng cho phần sâu.
 

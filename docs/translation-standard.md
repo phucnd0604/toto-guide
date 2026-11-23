@@ -153,6 +153,43 @@ Heading thuần khái niệm (không có tên riêng, ví dụ "Các điểm ph�
 | nearby | gần đó |
 | stock up | tích trữ |
 | Budget | (không dùng) |
+| Charged Shirt / Charged Set | Áo Điện / Bộ Điện |
+| Thunderhead Isles | Quần đảo Mây Sấm |
+| Spirit Temple | Đền Thờ Linh Hồn |
+| Sanctum | Chính Điện |
+| Gloom's Lair | Ổ U Ám |
+| Forgotten Foundation | Nền Móng Lãng Quên |
+| Imprisoning Chamber | Phòng Phong Ấn |
+| Imprisoning War | Cuộc Chiến Phong Ấn |
+| Secret Stone | Đá Bí Mật |
+| Vow of Mineru / Vow of Riju | Lời Thề của Mineru / Lời Thề của Riju |
+| Sage of Spirit / Sage of Lightning | Hiền Giả Linh Hồn / Hiền Giả Sấm Sét |
+| Demon King's Army | Đội Quân Ma Vương |
+| Regional Phenomena | Hiện Tượng Vùng Miền |
+| Royal Passage | Hành Lang Hoàng Gia |
+| Emergency Shelter | Khu Trú Ẩn Khẩn Cấp |
+| Hylian Set | Bộ Giáp Hylia |
+| Zonai Charge / Large Zonai Charge | Pin Zonai / Pin Zonai Cỡ Lớn |
+| Fairy Tonic | Thuốc Tiên |
+| Sand Seal | Hải Cẩu Cát |
+| Hover Stone | Đá Lơ Lửng |
+| Sled | Xe Trượt |
+| Strong Construct Bow | Cung Construct Chắc |
+| Seized Construct | Seized Construct *(giữ nguyên – tên boss)* |
+| Shrine Sensor | Cảm biến Đền Thờ Nhỏ |
+| Puzzle / Proving Grounds / Combat Training *(loại đền)* | Giải đố / Đấu trường thử thách / Luyện chiến đấu |
+| Rauru's Blessing *(loại đền)* | Chúc phúc |
+| "X" fan art by Y | ảnh fan art "X" của Y |
+| screenshot | ảnh chụp màn hình |
+
+### Ghi chú về tên riêng và kiểm tra tự động
+- Tên nhiệm vụ chính, tên thử thách trong đền, tên đền: **giữ nguyên tiếng Anh**. Muốn `check-vietnamese.py` không báo HARD,
+  tên đó phải được khai báo trong danh sách `PHRASES` của script (strip trước khi quét) — hiện đã khai báo tên nhiệm vụ
+  của 9 vùng + 72 tên thử thách/nhiệm vụ mở đền ở `pages/shrines.html`.
+- Heading: nguồn có heading tiếng Anh → viết **"English gốc (chú thích tiếng Việt)"**. Vùng text-only (nguồn chỉ có danh sách
+  bước, không có heading con) thì heading **thuần tiếng Việt** — checker coi là hợp lệ.
+- Dòng ghi công ảnh ở footer: viết tiếng Việt ("ảnh fan art ... của ..."), không để "fan art by ...".
+
 
 ## 6. Ví dụ chuẩn (before → after)
 

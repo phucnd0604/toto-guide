@@ -24,6 +24,9 @@
 - Giữ multi-page: mechanics, abilities, shrines, tips, faq, index.
 - Mỗi trang: 1 `<h1>`, meta description, alt text tiếng Việt.
 - **Ảnh tách riêng theo trang**: `pages/route-<slug>.html` chỉ dùng ảnh trong `images/<slug>/`. Cấm dùng chung folder, cấm copy ảnh của vùng khác sang (lỗi đã gặp: 12 ảnh Prologue nằm trong `images/central`).
+- **Gallery mở sẵn**: ảnh bọc trong `<details ... open>` để người đọc thấy ngay, không phải bấm mở.
+- **Vùng text-only là hợp lệ**: vùng không có trang Walkthrough nguồn (Master Sword, Fifth Sage, Demon King) thì trang 0 ảnh,
+  khai báo `NO_IMAGE` trong `check-image-match.py` và ghi lý do ở `PROGRESS.md`. Không bịa ảnh, không nhồi banner/logo.
 
 ## Kiểm tra trước commit
 - `python scripts/verify-regions.py` → mỗi vùng `step/want` khớp, `cover` đủ bước, `img = uni`, `ms=0`, `en=0`, `ph=0`, layout `2col`.
@@ -72,5 +75,6 @@ Dùng bộ 5 label mặc định: `needs-triage`, `needs-info`, `ready-for-agent
 
 ### Domain docs
 
-Single-context: `GLOSSARY.md` + `docs/adr/` ở gốc repo. Xem `docs/agents/domain.md`.
+Thuật ngữ + chuẩn dịch: `docs/translation-standard.md` (bảng glossary là nguồn chuẩn).
+Repo chưa có `GLOSSARY.md`/`docs/adr/` — nếu cần ADR thì tạo `docs/adr/` khi có quyết định thật. Xem `docs/agents/domain.md`.
 

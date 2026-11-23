@@ -34,6 +34,15 @@ Không dùng chung folder, không copy ảnh từ vùng khác sang — ảnh l�
    `.../<hash1>/<hash2>/<tên>.png` trong đó (bản full nằm ở hash khác, **không** suy ra bằng cách xoá `400px-`).
    Không lấy được thì chấp nhận 400px; fextralife trả **429** khi tải dồn → giãn nhịp, đừng retry liên tục.
 4. Tải hết về `images/<region>/`. Sau khi đặt ảnh vào trang, **file nào không được dùng thì xoá**
+
+### 2b. Vùng KHÔNG có nguồn ảnh (text-only)
+Chuỗi Walkthrough của fextralife chỉ có 7 phần (Prologue → Gerudo). Vùng **Master Sword, Fifth Sage, Demon King**
+không có trang walkthrough kèm ảnh — chỉ có chữ ở `Subcontent:Game_Progress_Route_<n>_*` (3 ảnh/trang: logo + banner).
+Khi làm vùng như vậy:
+1. **Không bịa ảnh**, không nhồi banner/logo cho đủ số; trang 0 ảnh.
+2. Khai báo slug trong `NO_IMAGE` của `scripts/check-image-match.py`; cổng sẽ kiểm "trang phải 0 ảnh".
+3. Ghi rõ lý do trong `PROGRESS.md` và trong meta trang: "0 ảnh · walkthrough đầy đủ (nguồn không có ảnh)".
+4. Mỗi bước lộ trình thành một `<h3>` (nguồn chỉ có danh sách bước, không có heading con).
    (ảnh trùng nội dung, logo trang trí không có trong nguồn).
 
 ## Bước 3: Dịch nội dung (QUAN TRỌNG)
@@ -73,6 +82,7 @@ Mỗi vùng là **một trang riêng** `pages/route-<slug>.html`; index nằm �
 
 ### 4.3 Ảnh inline trong `<details>` (gộp theo bước)
 Mỗi đoạn/bước có **một thẻ `<details>` duy nhất** chứa các ảnh minh họa cho đoạn đó (gộp liên tiếp, không tách nhiều thẻ):
+**Gallery để `open` sẵn** — người đọc thấy ảnh ngay, không phải bấm mở (chốt 2026-11-23).
 ```html
 <details style="margin:.4rem 0">
   <summary style="cursor:pointer;color:var(--primary);font-weight:600">📷 Xem ảnh (N)</summary>
@@ -102,7 +112,8 @@ Mỗi đoạn/bước có **một thẻ `<details>` duy nhất** chứa các ả
 1. **Cân bằng thẻ + ảnh tồn tại** (repo không có `audit.py`): mỗi thẻ mở/đóng bằng nhau, mọi `src="../images/...`
    phải tồn tại, và không còn file ảnh nào trong `images/<region>/` mà trang không dùng.
 2. `python scripts/check-vietnamese.py` → **0 lỗi HARD**. Script bắt: heading còn tiếng Anh (đã trừ heading song ngữ có chú thích Việt), cụm Vietglish trong blacklist, mẫu số liệu kiểu `x3`/`5x`. WARN là cụm tiếng Anh lạ cần xem lại.
-3. `python scripts/verify-regions.py <region>` → bảng đối chiếu từng vùng:
+3. `python scripts/check-image-match.py <region>` → **`FAIL=0`**. Cổng đối chiếu ảnh với **trang nguồn thật** (không lẫn vùng, đúng thứ tự, đúng subsection nguồn). Vùng text-only phải ra `NO-IMAGE ... OK`. `verify-regions.py` chỉ đếm ảnh nên **không thay thế** được cổng này.
+4. `python scripts/verify-regions.py <region>` → bảng đối chiếu từng vùng:
    - `step/want`: số `<li>` index so với số bước fextralife (EXPECT trong script).
    - `cover`: độ phủ nội dung — mỗi bước index phải xuất hiện trong walkthrough cột phải.
    - `img/uni/ms`: số ảnh dùng, số ảnh khác nhau, ảnh thiếu file.
@@ -124,5 +135,7 @@ Mỗi đoạn/bước có **một thẻ `<details>` duy nhất** chứa các ả
 - [ ] Tên file ảnh giữ nguyên gốc fextralife (không tự đổi tên/không có bản trùng độ phân giải).
 - [ ] Heading song ngữ đúng chuẩn; nội dung 100% tiếng Việt (trừ tên riêng/thuật ngữ trong glossary).
 - [ ] `check-vietnamese.py`: 0 lỗi HARD cho vùng này.
+- [ ] `check-image-match.py`: `FAIL=0` cho vùng này (ảnh đúng vùng/thứ tự/subsection; text-only phải `NO-IMAGE ... OK`).
+- [ ] Gallery ảnh dùng `<details ... open>` (mở sẵn).
 - [ ] Thẻ HTML cân bằng, mọi `src` ảnh tồn tại (repo không có `audit.py`).
 - [ ] Commit + push + deploy verified (HTTP 200 trang + ảnh mới).

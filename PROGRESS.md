@@ -23,7 +23,9 @@ host trên Vercel, không link ra domain khác.
   - cột trái `aside.sidebar.rail` (sticky): mục lục vùng + danh sách bước index (tiếng Việt, không ảnh);
   - cột phải `main.content`: walkthrough, `<h3>` bám đúng subsection của fextralife,
     ảnh để trong `<details>` đặt **ngay sau đoạn mà ảnh minh họa**.
-- Heading `h2`/`h3`: **tiếng Anh gốc + "(chú thích tiếng Việt)"**.
+- Gallery ảnh để `<details ... open>` — mở sẵn, người đọc thấy ảnh ngay (chốt 2026-11-23).
+- Heading `h2`/`h3`: nguồn có heading tiếng Anh thì viết **tiếng Anh gốc + "(chú thích tiếng Việt)"**;
+  vùng text-only (nguồn chỉ có danh sách bước) thì heading **thuần tiếng Việt**.
 - **Ảnh tách riêng theo trang**: `pages/route-<slug>.html` ↔ `images/<slug>/`, không dùng chung,
   không copy ảnh giữa các vùng. Giữ nguyên tên file gốc fextralife (không thêm tiền tố lạ).
 
@@ -37,9 +39,11 @@ host trên Vercel, không link ra domain khác.
    (Repo **không có** `audit.py` — đừng chạy.)
 4. Nội dung 100% tiếng Việt theo `docs/translation-standard.md`: không Vietglish, đại từ "bạn",
    đủ ý đi đâu / làm gì / nhận gì; giữ tên riêng, dịch thuật ngữ theo glossary.
-5. Ảnh: mỗi nhóm ảnh nằm đúng subsection nguồn; caption/alt = tên bước + `(ảnh k/N)`;
+5. `python scripts/check-image-match.py` → **`FAIL=0`**: mỗi ảnh nằm đúng trang nguồn của vùng, không lẫn vùng,
+   đúng thứ tự, đúng subsection nguồn; vùng text-only khai báo `NO_IMAGE` và phải ra `NO-IMAGE ... OK`.
+6. Ảnh: caption/alt = tên bước + `(ảnh k/N)`;
    không thêm ảnh/logo ngoài nguồn.
-6. Commit riêng cho từng vùng → push `master` → Vercel deploy → HTTP 200 cho trang và ảnh mới.
+7. Commit riêng cho từng vùng → push `master` → Vercel deploy → HTTP 200 cho trang và ảnh mới.
 
 ## Trạng thái hiện tại (cập nhật 2026-11-23)
 | Vùng | Bước | Độ phủ | Ảnh (img=uni) | Ảnh khớp subsection | Trạng thái |
@@ -58,7 +62,7 @@ host trên Vercel, không link ra domain khác.
 **Vùng 6 Master Sword làm text-only**: fextralife không có trang Walkthrough cho vùng này (chỉ có
 `Subcontent:Game_Progress_Route_6_*`, 3 ảnh logo/banner) → trang 0 ảnh, khai báo `NO_IMAGE` trong
 `check-image-match.py`. Vùng 8/9 cũng thuộc diện này; vùng 7 Gerudo **có** ảnh thật (128 ảnh).
-Ảnh 5 vùng đã đối chiếu với **trang nguồn thật** (`scripts/check-image-match.py` → `FAIL=0`): mỗi ảnh nằm
+Ảnh 6 vùng có ảnh (1–5 và 7) đã đối chiếu với **trang nguồn thật**
 đúng subsection nguồn, đúng thứ tự xuất hiện, không lẫn ảnh vùng khác.
 
 ### Việc đã làm ngoài nội dung vùng
@@ -77,6 +81,19 @@ host trên Vercel, không link ra domain khác.
 - Tách các heading bị gộp nhiều subsection nguồn (làm ảnh nằm sai chủ đề): Prologue — Ukouh, In-Isa,
   Gutanbac (Pondside/Mining/Pit/Bottomless Cave tách riêng), Return to Temple of Time; Hebra —
   Get Tulin's Bow / Reach The Top of Hebra Peak, Post Kahatanaum Shrine / Clear Wind Temple.
+
+## Nhật ký giai đoạn
+
+- **A – chốt ảnh ↔ nội dung (2026-11-23)**: thêm `scripts/check-image-match.py` + cổng trong `AGENTS.md`;
+  tách heading bị gộp ở Prologue (Ukouh, In-Isa, Gutanbac + 4 hang, Return to Temple of Time) và Hebra
+  (Post Kahatanaum, Reach The Top of Hebra Peak); mở sẵn toàn bộ gallery (`<details open>`).
+  Commit: `85f5616`, `3da9436`, `c2e1105`, `8109e09`.
+- **B – 4 vùng còn thiếu (2026-11-23)**: Master Sword 14 bước, Gerudo 23 bước + 37 ảnh, Fifth Sage 35 bước,
+  Demon King 14 bước; thêm chế độ `NO_IMAGE` cho vùng không có nguồn ảnh; hub báo 9/9 vùng đầy đủ.
+  Commit: `78aae7b`, `47d68e5`, `af3718a`, `4f9fe28`, `b431e6f`.
+- **C – dọn ngôn ngữ (2026-11-23)**: shrines 282→0, mechanics 9→0, tips 5→0, abilities 2→0, index 1→0,
+  faq 1→0; thêm 72 tên thử thách/nhiệm vụ vào allowlist của checker. Commit: `c2ec4e0`, `dfb9630`,
+  `ce370ab`, `511ab03`, `cc94717`, `cf2c396`, `4424e38`.
 
 ## Còn tồn đọng
 1. ~~Vùng 9~~ — đã xong (Giai đoạn B hoàn tất 9/9 vùng).
