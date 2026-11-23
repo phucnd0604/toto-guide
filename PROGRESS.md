@@ -51,10 +51,10 @@ host trên Vercel, không link ra domain khác.
 | 5. Lanayru | 36/36 | 36/36 | 84 | ✅ đã rà soát | ✅ xong |
 | 6. Master Sword | 14/14 | 14/14 | 0 | — (nguồn không có ảnh) | ✅ xong (text-only) |
 | 7. Gerudo | 23/23 | 23/23 | 37 | ✅ đã rà soát | ✅ xong |
-| 8. Fifth Sage | 35 | — | 0 | — | ⬜ mới có index phẳng |
+| 8. Fifth Sage | 35/35 | 35/35 | 0 | — (nguồn không có ảnh) | ✅ xong (text-only) |
 | 9. Demon King | 14 | — | 0 | — | ⬜ mới có index phẳng |
 
-Bảy vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
+Tám vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
 **Vùng 6 Master Sword làm text-only**: fextralife không có trang Walkthrough cho vùng này (chỉ có
 `Subcontent:Game_Progress_Route_6_*`, 3 ảnh logo/banner) → trang 0 ảnh, khai báo `NO_IMAGE` trong
 `check-image-match.py`. Vùng 8/9 cũng thuộc diện này; vùng 7 Gerudo **có** ảnh thật (128 ảnh).
@@ -71,15 +71,15 @@ Bảy vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2
 - `docs/agents/`: cấu hình issue tracker (GitHub Issues), nhãn triage, domain docs.
 - **Cổng cứng ảnh ↔ nội dung**: thêm `scripts/check-image-match.py` + luật trong `AGENTS.md`. Đếm ảnh
   (`img=uni`, `ms=0`) không bắt được ảnh sai chỗ, nên cổng này đối chiếu trực tiếp trang nguồn.
-- Giai đoạn B: vùng 6 Master Sword + vùng 7 Gerudo xong (Gerudo lấy 37 ảnh từ walkthrough nguồn,
+- Giai đoạn B: vùng 6 Master Sword, 7 Gerudo, 8 Fifth Sage xong (Gerudo lấy 37 ảnh từ walkthrough nguồn,
   bỏ các subsection thuộc vùng khác như Hyrule Field / Faron / side quest đại tiên).
 - Tách các heading bị gộp nhiều subsection nguồn (làm ảnh nằm sai chủ đề): Prologue — Ukouh, In-Isa,
   Gutanbac (Pondside/Mining/Pit/Bottomless Cave tách riêng), Return to Temple of Time; Hebra —
   Get Tulin's Bow / Reach The Top of Hebra Peak, Post Kahatanaum Shrine / Clear Wind Temple.
 
 ## Còn tồn đọng
-1. **Vùng 8–9** (fifth, final): chỉ có index phẳng, không có walkthrough.
-   `verify-regions` báo `stub`; `check-vietnamese` còn HARD: fifth 8, final 4.
+1. **Vùng 9** (final): chỉ có index phẳng, không có walkthrough.
+   `verify-regions` báo `stub`; `check-vietnamese` còn HARD: final 4.
 2. Các trang phụ còn Vietglish/HARD: `shrines.html` 282, `mechanics.html` 9, `tips.html` 5,
    `abilities.html` 2, `index.html` 1, `faq.html` 1.
    Toàn site hiện **326 lỗi HARD**, trong đó 5 vùng đã xong = 0.
@@ -87,10 +87,8 @@ Bảy vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2
    nâng cấp sau nếu cần nét hơn.
 
 ## Thứ tự thực hiện tiếp
-1. Vùng 8 Fifth Sage: chữ từ `Subcontent:Game_Progress_Route_8_*` (text-only như vùng 6), 35 bước —
-   nếu một lượt quá dài thì chia 2 lượt viết nhưng vẫn 1 commit/vùng.
-2. Vùng 9 Demon King: chữ từ `Subcontent:Game_Progress_Route_9_*` (text-only), 14 bước.
-3. Dọn HARD cho shrines / mechanics / abilities / tips / index / faq.
+1. Vùng 9 Demon King: chữ từ `Subcontent:Game_Progress_Route_9_*` (text-only), 14 bước.
+2. Dọn HARD cho shrines / mechanics / abilities / tips / index / faq.
 4. Cập nhật lại bảng trạng thái và mục "Còn tồn đọng" trong file này sau mỗi vùng.
 
 ## Lệnh kiểm tra nhanh
