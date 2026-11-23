@@ -31,8 +31,26 @@
 - HTML balanced, mọi `src` ảnh tồn tại, và không file nào trong `images/<slug>/` bị bỏ không dùng.
 - Không còn reference đến trang/file đã xóa.
 
+## Cổng cứng: ảnh ↔ nội dung (bắt buộc)
+`python scripts/check-image-match.py` phải in **`FAIL=0`** trước khi commit một vùng.
+Lý do có cổng này: `verify-regions.py` chỉ đếm ảnh, nên đã có lần `img=uni`, `ms=0` đầy đủ mà ảnh vẫn sai chỗ —
+ảnh hang (Pondside Cave, Mining Cave…) nằm dưới tiêu đề đền thờ Gutanbac, và ảnh vùng này lẫn sang vùng khác.
+Đếm đủ ảnh **không** thay thế được cổng này.
+
+Ba điều kiện, vi phạm 1 là FAIL:
+1. **Không lẫn vùng:** mọi ảnh dùng trong `pages/route-<slug>.html` phải có trong đúng trang nguồn của vùng đó.
+2. **Đúng thứ tự:** dãy ảnh trong trang phải là dãy con đúng thứ tự xuất hiện ở nguồn — không đảo.
+3. **Đúng mục:** mỗi ảnh phải nằm dưới `<h3>` khớp subsection nguồn. **Không gộp nhiều subsection nguồn vào một `<h3>`**
+   (gộp là FAIL: ảnh của mục Cave sẽ hiện dưới heading Shrine).
+
+- Trang nguồn khai báo trong `SOURCES` của script; một vùng có thể trải trên nhiều trang Subcontent — phải khai đủ.
+- Chưa có cache thì script tự fetch qua Google Translate proxy (lưu `.tmp-src/`, đã gitignore); dùng `--refresh` khi nguồn thay đổi.
+- Script chỉ ra mục nguồn đúng, ví dụ:
+  `Clear Wind Temple: ảnh walkthrough_hrx50... thuộc mục nguồn "Post Kahatanaum Shrine"` → tách heading rồi chạy lại.
+- Vùng 6–9 chưa có ảnh: bổ sung trang nguồn vào `SOURCES` ngay khi chốt được nguồn ảnh, rồi bật cổng cho vùng đó.
+
 ## Quy trình Phase B
-- Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify-regions + check-vietnamese → commit riêng → push/deploy → requesting-code-review.
+- Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify-regions + check-vietnamese + **check-image-match** → commit riêng → push/deploy → requesting-code-review.
 - Loop executing-plans + requesting-code-review cho đến khi chuẩn xác mới chuyển vùng tiếp.
 
 ## Commit & Deploy
