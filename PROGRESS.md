@@ -95,6 +95,10 @@ host trên Vercel, không link ra domain khác.
   faq 1→0; thêm 72 tên thử thách/nhiệm vụ vào allowlist của checker. Commit: `c2ec4e0`, `dfb9630`,
   `ce370ab`, `511ab03`, `cc94717`, `cf2c396`, `4424e38`.
 
+- **D – sạch hoá (2026-11-23)**: bỏ 33 link `index.html` (dùng `/` và `../`) → hết redirect 308 mỗi lần về trang chủ;
+  WARN 814→0: checker thêm bộ lọc âm tiết Việt không dấu (`VI_ASCII`) + danh sách từ tiếng Anh (`EN_EXTRA`),
+  bỏ qua cụm tên riêng, rồi dịch nốt 39 chỗ tiếng Anh lọt (damage/durability/armor/quest/boss…).
+
 ## Còn tồn đọng
 1. ~~Vùng 9~~ — đã xong (Giai đoạn B hoàn tất 9/9 vùng).
 2. ~~Giai đoạn C~~ — **xong, toàn site HARD=0**: shrines 282→0, mechanics 9→0, tips 5→0,
@@ -105,7 +109,7 @@ host trên Vercel, không link ra domain khác.
 
 ## Thứ tự thực hiện tiếp
 1. Nâng cấp ảnh 400px ở vùng 1–3 nếu tìm được bản gốc fextralife (nếu không thì giữ nguyên).
-2. Rà WARN còn lại (818) nếu muốn sạch hơn nữa — không chặn commit.
+2. ~~Rà WARN~~ — đã xong: **WARN=0** (checker chỉ còn báo cụm có từ tiếng Anh thật).
 4. Cập nhật lại bảng trạng thái và mục "Còn tồn đọng" trong file này sau mỗi vùng.
 
 ## Lệnh kiểm tra nhanh

@@ -129,6 +129,42 @@ PHRASES += [
     "wings on the wind",
 ]
 
+# Tên riêng/địa danh/thuật ngữ còn gặp trong nội dung (giữ nguyên tiếng Anh).
+PHRASES += [
+    "demon king",
+    "fifth sage",
+    "prologue sky",
+    "mysterious voice",
+    "lucky clover gazette",
+    "wellspring island",
+    "upland zorana",
+    "floating scales",
+    "ancient zora waterworks",
+    "jiahto toto lake",
+    "great deku tree",
+    "purah pad",
+    "lindor's brow",
+    "rospro pass",
+    "soldier construct ii",
+    "queen gibdo",
+    "master kohga",
+    "ice chuchu",
+    "brightbloom seed",
+    "combat training",
+    "proving grounds",
+    "fan art ganondorf",
+    "camera work",
+    "zonai device",
+    "energy cell",
+    "zonaite deposit",
+    "mipha court",
+    "sidon mipha court",
+    "toto lake",
+    "scales",
+    "sludge like",
+    "korok puzzle",
+]
+
 # Từ tiếng Anh thông dụng: nếu còn trong câu tiếng Việt => chưa dịch.
 COMMON_EN = set("""
 the a an of to in on at with from by for and or but is are was were be been being
@@ -171,6 +207,26 @@ def text_of(html):
     return re.sub(r'\s+', ' ', TAG_RE.sub(' ', html)).strip()
 
 
+# Từ tiếng Anh hay lọt vào nội dung (danh từ/động từ game) — cơ sở để WARN chỉ báo cụm có từ tiếng Anh thật.
+EN_EXTRA = set("""
+armor damage durability ability quest side boss item level area map save load sunny frost flame
+attack defense upgrade material weapon shield bow arrow stamina heart wheel rocket spring laser
+homing cart sled hook chain chest door key gate switch target ball mirror crystal cave island
+route seeds shroom carrot flower horn eye storm mystery courage peace find bring water sky
+""".split())
+
+
+# Âm tiết tiếng Việt không dấu (mang, theo, trong, hang…) — hay bị nhầm là tiếng Anh khi quét WARN.
+VI_ASCII = set("""
+theo trong hang sau khi qua mang cho khu bay xong quanh canh vua ra ngay con sang hai nhanh xoay anh men kim trao tay ta xe chi thanh cao leo hoa bom mua
+va de co do la ma na no so to tu vi vo xu yeu vao len xuong truoc tren duoi ngoai giua cung voi deu rat kha hon nhat moi nhung hoac nen boi tai den o
+mo mot vai bon nam sau bay chin muoi tram nghin nguoi cai chiec con chau em chi chu bac ong ba me bo anh chi em minh ban
+lam viec di dung can phai nen duoc bi se da dang cho lay dat nang tha nhat gap thay nghe nhin noi goi hoi tra loi
+nha cua duong loi nui song bien rung dong dat troi may mua nang gio tuyet lua nuoc
+dau cuoi truoc sau giua tren duoi trong ngoai canh ben phia huong
+rat kha hoi kha nhieu it vai chut phan nua deu cung lai roi van con het
+""".split())
+
 _PHRASES_DESC = sorted(PHRASES, key=len, reverse=True)
 
 
@@ -210,11 +266,58 @@ def untranslated(t):
     return out
 
 
+def _runs_raw(t):
+    """Như _runs nhưng KHÔNG bỏ PHRASES và giữ nguyên chữ hoa/thường (nhận diện tên riêng)."""
+    runs, run = [], []
+    for tok in tokens(t):
+        if WORD_RE.fullmatch(tok):
+            run.append(tok)
+        else:
+            if run:
+                runs.append(run)
+            run = []
+    if run:
+        runs.append(run)
+    return runs
+
+
+_PHRASES_RE = re.compile("|".join(re.escape(p) for p in _PHRASES_DESC), re.I)
+
+
+def _runs_raw(t):
+    """Tách cụm ASCII sau khi bỏ PHRASES nhưng GIỮ chữ hoa/thường (nhận diện tên riêng)."""
+    t = _PHRASES_RE.sub(" ", t)
+    runs, run = [], []
+    for tok in tokens(t):
+        if WORD_RE.fullmatch(tok):
+            run.append(tok)
+        else:
+            if run:
+                runs.append(run)
+            run = []
+    if run:
+        runs.append(run)
+    return runs
+
+
 def unknown_runs(t):
+    """Cụm ASCII lạ cần xem lại — chỉ báo khi CÓ từ tiếng Anh thật.
+
+    Bỏ qua: cụm toàn tên riêng/âm tiết Việt không dấu, cụm viết hoa toàn bộ (tên riêng),
+    và cụm không chứa từ tiếng Anh nào đã biết (phần còn lại chỉ là tên + âm tiết Việt).
+    """
     out = []
-    for r in _runs(t):
-        if len(r) >= 2 and any(w.lower() not in KEEP for w in r):
-            out.append(' '.join(r))
+    for r in _runs_raw(t):
+        if len(r) < 2:
+            continue
+        low = [w.lower() for w in r]
+        if all(w in KEEP or w in VI_ASCII for w in low):
+            continue
+        if all(w[:1].isupper() for w in r):
+            continue
+        if not any(w in COMMON_EN or w in EN_EXTRA for w in low):
+            continue
+        out.append(' '.join(r))
     return out
 
 

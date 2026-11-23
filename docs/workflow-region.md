@@ -111,7 +111,7 @@ Mỗi đoạn/bước có **một thẻ `<details>` duy nhất** chứa các ả
 ## Bước 5: Kiểm tra tự động (bắt buộc, tất cả phải pass)
 1. **Cân bằng thẻ + ảnh tồn tại** (repo không có `audit.py`): mỗi thẻ mở/đóng bằng nhau, mọi `src="../images/...`
    phải tồn tại, và không còn file ảnh nào trong `images/<region>/` mà trang không dùng.
-2. `python scripts/check-vietnamese.py` → **0 lỗi HARD**. Script bắt: heading còn tiếng Anh (đã trừ heading song ngữ có chú thích Việt), cụm Vietglish trong blacklist, mẫu số liệu kiểu `x3`/`5x`. WARN là cụm tiếng Anh lạ cần xem lại.
+2. `python scripts/check-vietnamese.py` → **0 lỗi HARD** (mục tiêu luôn là HARD=WARN=0). HARD bắt: heading còn tiếng Anh, cụm Vietglish trong blacklist, mẫu `x3`/`5x`. WARN chỉ báo cụm ASCII **có từ tiếng Anh thật** (bỏ qua tên riêng và âm tiết Việt không dấu) — WARN nên về 0.
 3. `python scripts/check-image-match.py <region>` → **`FAIL=0`**. Cổng đối chiếu ảnh với **trang nguồn thật** (không lẫn vùng, đúng thứ tự, đúng subsection nguồn). Vùng text-only phải ra `NO-IMAGE ... OK`. `verify-regions.py` chỉ đếm ảnh nên **không thay thế** được cổng này.
 4. `python scripts/verify-regions.py <region>` → bảng đối chiếu từng vùng:
    - `step/want`: số `<li>` index so với số bước fextralife (EXPECT trong script).
