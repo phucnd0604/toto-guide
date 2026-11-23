@@ -35,6 +35,7 @@ SOURCES = {
     "hebra": ["Subcontent:Walkthrough_4_Hebra_Region"],
     "eldin": ["Subcontent:Walkthrough_5_Eldin_Region"],
     "lanayru": ["Subcontent:Walkthrough_6_Lanayru_Region"],
+    "gerudo": ["Subcontent:Walkthrough_7_Gerudo_Region"],
     # vùng 6-9: bổ sung trang nguồn khi có ảnh
 }
 

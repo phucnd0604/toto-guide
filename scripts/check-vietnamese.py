@@ -43,7 +43,7 @@ PHRASES = [
     "zelda's golden horse", "to the kingdom of hyrule", "crisis at hyrule castle",
     "dragon's tears", "the dragon's tears", "sky islands", "depths tips",
     "find princess zelda", "the closed door", "the demon king", "the fifth sage",
-    "who goes there", "recovering the hero's sword",
+    "who goes there", "recovering the hero's sword", "piaffe packed away",
     "bring peace to hyrule field", "impa and the geoglyphs", "first gatehouse",
     "new serenne stable", "new serenne", "hebra south summit cave", "hebra south summit",
     "hebra summit cave", "eye of the storm", "south summit",
