@@ -47,7 +47,10 @@ Ba điều kiện, vi phạm 1 là FAIL:
 - Chưa có cache thì script tự fetch qua Google Translate proxy (lưu `.tmp-src/`, đã gitignore); dùng `--refresh` khi nguồn thay đổi.
 - Script chỉ ra mục nguồn đúng, ví dụ:
   `Clear Wind Temple: ảnh walkthrough_hrx50... thuộc mục nguồn "Post Kahatanaum Shrine"` → tách heading rồi chạy lại.
-- Vùng 6–9 chưa có ảnh: bổ sung trang nguồn vào `SOURCES` ngay khi chốt được nguồn ảnh, rồi bật cổng cho vùng đó.
+- Vùng **không có nguồn ảnh** (fextralife không có trang Walkthrough cho vùng đó): khai báo slug trong `NO_IMAGE` của
+  `check-image-match.py`; trang phải **0 ảnh** — không nhồi banner/logo cho đủ số — và `PROGRESS.md` phải ghi rõ lý do.
+  Hiện có: `mastersword`, `fifth`, `final` (chỉ vùng 7 Gerudo có walkthrough kèm ảnh).
+- Vùng có nguồn ảnh mới: bổ sung trang nguồn vào `SOURCES` rồi bật cổng cho vùng đó.
 
 ## Quy trình Phase B
 - Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify-regions + check-vietnamese + **check-image-match** → commit riêng → push/deploy → requesting-code-review.

@@ -24,6 +24,10 @@ PROXY = ("https://zeldatearsofthekingdom-wiki-fextralife-com.translate.goog/"
          "{}?_x_tr_sl=en&_x_tr_tl=vi&_x_tr_hl=en")
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/131.0 Safari/537.36"}
 
+# Vùng KHÔNG có nguồn ảnh: fextralife không có trang Walkthrough cho vùng này, chỉ có chữ.
+# Trang phải 0 ảnh (không nhồi banner/logo cho đủ số) và PROGRESS.md phải ghi rõ lý do.
+NO_IMAGE = {"mastersword", "fifth", "final"}
+
 # slug -> trang nguồn (Subcontent) chứa walkthrough của vùng
 SOURCES = {
     "prologue": ["Subcontent:Walkthrough_1_Prologue", "Subcontent:Walkthrough_2_Great_Sky_Island"],
@@ -134,12 +138,26 @@ def check(slug, refresh):
     return fails
 
 
+def check_no_image(slug):
+    path = os.path.join(ROOT, "pages", "route-%s.html" % slug)
+    html = open(path, encoding="utf-8").read()
+    used = re.findall(r'<img[^>]+src="[^"]*images/([^/"]+)/', html)
+    stray = [u for u in used if u != slug]
+    print("%-11s NO-IMAGE ảnh dùng=%d %s" % (slug, len(used), "OK" if not used else "FAIL: trang phải 0 ảnh"))
+    if stray:
+        print("    - ảnh lấy từ folder vùng khác: %s" % ", ".join(sorted(set(stray))))
+    return [] if not used else ["%s: trang no-image nhưng có %d ảnh" % (slug, len(used))]
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     refresh = "--refresh" in sys.argv
-    slugs = args or list(SOURCES)
+    slugs = args or list(SOURCES) + sorted(NO_IMAGE)
     bad = 0
     for slug in slugs:
+        if slug in NO_IMAGE:
+            bad += 1 if check_no_image(slug) else 0
+            continue
         if slug not in SOURCES:
             print("bỏ qua %s: chưa khai báo trang nguồn trong SOURCES" % slug)
             continue
