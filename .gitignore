@@ -9,4 +9,4 @@ audit.py
 extract.py
 count.py
 balance_check.py
-.tmp-src/
+.tmp-src/__pycache__/

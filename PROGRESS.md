@@ -80,16 +80,15 @@ host trên Vercel, không link ra domain khác.
 
 ## Còn tồn đọng
 1. ~~Vùng 9~~ — đã xong (Giai đoạn B hoàn tất 9/9 vùng).
-2. Giai đoạn C — dọn HARD trang phụ: ✅ `shrines.html` xong (282 → 0: dịch cột loại đền, 37 mẫu mô tả,
-   heading/footer, cho phép 72 tên thử thách/nhiệm vụ giữ nguyên tiếng Anh).
-   Còn lại: `mechanics.html` 9, `tips.html` 5, `abilities.html` 2, `index.html` 1, `faq.html` 1
-   → toàn site hiện **18 lỗi HARD**.
+2. ~~Giai đoạn C~~ — **xong, toàn site HARD=0**: shrines 282→0, mechanics 9→0, tips 5→0,
+   abilities 2→0, index 1→0, faq 1→0. Dịch thuật ngữ theo glossary (Ánh Sáng Chúc Phúc, Đền Thờ Nhỏ,
+   Siêu Tay/Hồi Tưởng/Xuyên/Ghép, Bình Thể Lực), giữ tên riêng, viết lại footer credits bằng tiếng Việt.
 3. Một số ảnh vùng 1–3 chỉ có bản 400px (fextralife chặn tải bản gốc / trả 429) — chấp nhận được,
    nâng cấp sau nếu cần nét hơn.
 
 ## Thứ tự thực hiện tiếp
-1. Dọn HARD còn lại của Giai đoạn C: mechanics (9) → tips (5) → abilities (2) → index (1) → faq (1).
-2. Nâng cấp ảnh 400px ở vùng 1–3 nếu tìm được bản gốc.
+1. Nâng cấp ảnh 400px ở vùng 1–3 nếu tìm được bản gốc fextralife (nếu không thì giữ nguyên).
+2. Rà WARN còn lại (818) nếu muốn sạch hơn nữa — không chặn commit.
 4. Cập nhật lại bảng trạng thái và mục "Còn tồn đọng" trong file này sau mỗi vùng.
 
 ## Lệnh kiểm tra nhanh
