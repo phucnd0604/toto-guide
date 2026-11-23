@@ -49,12 +49,15 @@ host trên Vercel, không link ra domain khác.
 | 3. Hebra | 31/31 | 31/31 | 80 | ✅ đã rà soát | ✅ xong |
 | 4. Eldin | 25/25 | 25/25 | 63 | ✅ đã rà soát | ✅ xong |
 | 5. Lanayru | 36/36 | 36/36 | 84 | ✅ đã rà soát | ✅ xong |
-| 6. Master Sword | 14 | — | 0 | — | ⬜ mới có index phẳng |
+| 6. Master Sword | 14/14 | 14/14 | 0 | — (nguồn không có ảnh) | ✅ xong (text-only) |
 | 7. Gerudo | 23 | — | 0 | — | ⬜ mới có index phẳng |
 | 8. Fifth Sage | 35 | — | 0 | — | ⬜ mới có index phẳng |
 | 9. Demon King | 14 | — | 0 | — | ⬜ mới có index phẳng |
 
-Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
+Sáu vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2col`.
+**Vùng 6 Master Sword làm text-only**: fextralife không có trang Walkthrough cho vùng này (chỉ có
+`Subcontent:Game_Progress_Route_6_*`, 3 ảnh logo/banner) → trang 0 ảnh, khai báo `NO_IMAGE` trong
+`check-image-match.py`. Vùng 8/9 cũng thuộc diện này; vùng 7 Gerudo **có** ảnh thật (128 ảnh).
 Ảnh 5 vùng đã đối chiếu với **trang nguồn thật** (`scripts/check-image-match.py` → `FAIL=0`): mỗi ảnh nằm
 đúng subsection nguồn, đúng thứ tự xuất hiện, không lẫn ảnh vùng khác.
 
@@ -73,9 +76,8 @@ Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2c
   Get Tulin's Bow / Reach The Top of Hebra Peak, Post Kahatanaum Shrine / Clear Wind Temple.
 
 ## Còn tồn đọng
-1. **Vùng 6–9** (mastersword, gerudo, fifth, final): chỉ có index phẳng, 0 ảnh,
-   không có walkthrough. `verify-regions` báo `stub`; `check-vietnamese` còn HARD:
-   mastersword 9, gerudo 5, fifth 8, final 4.
+1. **Vùng 7–9** (gerudo, fifth, final): chỉ có index phẳng, không có walkthrough.
+   `verify-regions` báo `stub`; `check-vietnamese` còn HARD: gerudo 5, fifth 8, final 4.
 2. Các trang phụ còn Vietglish/HARD: `shrines.html` 282, `mechanics.html` 9, `tips.html` 5,
    `abilities.html` 2, `index.html` 1, `faq.html` 1.
    Toàn site hiện **326 lỗi HARD**, trong đó 5 vùng đã xong = 0.
@@ -83,9 +85,9 @@ Năm vùng đã xong đều `hard=0`, `en=0`, `xN=0`, `ph=0`, `ms=0`, layout `2c
    nâng cấp sau nếu cần nét hơn.
 
 ## Thứ tự thực hiện tiếp
-1. Vùng 6 Master Sword theo quy trình `docs/workflow-region.md` (lấy đủ trang nguồn → tải ảnh vào `images/mastersword/`
-   → dịch → đặt ảnh đúng subsection → verify → commit/push).
-2. Lần lượt 7 → 9, mỗi vùng một commit riêng.
+1. Vùng 7 Gerudo: chữ từ `Subcontent:Game_Progress_Route_7_*`, ảnh từ `Subcontent:Walkthrough_7_Gerudo_Region`
+   (128 ảnh) → tải vào `images/gerudo/`, gắn đúng subsection → verify → commit/push.
+2. Lần lượt 8 Fifth Sage → 9 Demon King (cả hai text-only như vùng 6), mỗi vùng một commit riêng.
 3. Dọn HARD cho shrines / mechanics / abilities / tips / index / faq.
 4. Cập nhật lại bảng trạng thái và mục "Còn tồn đọng" trong file này sau mỗi vùng.
 
