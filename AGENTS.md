@@ -73,6 +73,9 @@ Trang trong `pages/` là **sản phẩm sinh ra** từ `content/`: sửa `conten
   merge commit; mỗi vé để lại các commit riêng của nó).
 - Sau khi merge: Vercel auto-deploy từ `master`; kiểm HTTP 200 cho trang mới và 1 ảnh mẫu.
 - CI `.github/workflows/gates.yml` chạy lại các cổng sau mỗi lần push và mỗi PR.
+- Nhánh `master` đã bật **branch protection** (từ retro T4): bắt buộc PR + required check `bảy cổng`,
+  lịch sử tuyến tính, cấm force-push và xoá nhánh. Push thẳng lên `master` sẽ bị từ chối — đó là
+  rào chắn, đừng tìm cách lách; tạo nhánh + PR như trên.
 
 ## Agent skills
 
