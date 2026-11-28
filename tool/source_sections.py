@@ -33,6 +33,17 @@ FIGURE_RE = re.compile(r"<figure\b.*?</figure>", re.I | re.S)
 PAGE_TYPES = ("walkthrough", "quests", "temples", "reference")
 CACHE_DIRNAME = ".tmp-src"
 
+# Khối "site-chrome" của trang nguồn: mục không phải nội dung chương. Dấu hiệu: nó KHÔNG nằm
+# trong mục lục của chính trang nguồn, và ruột toàn link quảng bá công cụ theo dõi của zeldacentral
+# ("Track all 5 Temples. Create a free account"). Bỏ ở CẢ HAI phía — nguồn và trang đã sinh — nên
+# hợp đồng "số mục trang = số mục nguồn" vẫn đúng mà không phải dịch một khối quảng cáo.
+# Gặp khối khác cùng loại thì thêm heading đã chuẩn hoá (chữ thường) vào đây, đừng bỏ riêng 1 cổng.
+IGNORED_SOURCE_HEADINGS = ("track them",)
+
+
+def is_chrome_heading(heading):
+    return " ".join(heading.split()).lower() in IGNORED_SOURCE_HEADINGS
+
 
 def read_text(path):
     with open(path, encoding="utf-8", errors="replace") as fh:
@@ -86,7 +97,7 @@ def split_sections(text, keep_image, article=True):
             if not sections:
                 sections.append(["", []])
             sections[-1][1].append(value)
-    return [(heading, images) for heading, images in sections]
+    return [(heading, images) for heading, images in sections if not is_chrome_heading(heading)]
 
 
 def source_split(text):
@@ -111,6 +122,8 @@ def text_sections(text):
     for index, start in enumerate(marks):
         end = marks[index + 1] if index + 1 < len(marks) else len(body)
         heading = norm_text(H2_RE.match(body, start).group(1))
+        if is_chrome_heading(heading):
+            continue
         sections.append((heading, body[start:end]))
     return sections
 

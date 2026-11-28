@@ -45,6 +45,13 @@ Hệ quả cho khuôn chương: nguồn có sẵn mục "Table of Contents" (16 
 trong bài. Đây là lý do chương T1 có mục "Mục lục" trùng mục lục cột trái — giữ thì đúng nguồn 1:1 và
 qua cổng; bỏ thì phải sửa cả hai cổng cùng lúc, không sửa lẻ.
 
+**Khối quảng bá của trang nguồn không phải "mục".** Từ T5, trang nguồn có thể kết thúc bằng một khối
+site-chrome (ví dụ `<h2>Track them</h2>` + bảng 5 link guide của zeldacentral + "Create a free account"):
+nó không nằm trong mục lục của chính nguồn và ruột chỉ là quảng bá. Danh sách `IGNORED_SOURCE_HEADINGS`
+trong `tool/source_sections.py` bỏ khối đó ở **cả hai phía** (nguồn và trang đã sinh), nên số mục vẫn
+khớp 1:1 mà bản dịch không phải bê quảng cáo vào. Gặp khối cùng loại ở chương khác thì thêm heading đã
+chuẩn hoá vào danh sách đó — đừng bỏ riêng một cổng, và đừng bỏ mục mà không ghi vào đây.
+
 ### Ảnh: đúng trang, đúng thứ tự, đúng mục
 
 Bốn điều kiện, vi phạm một là FAIL:

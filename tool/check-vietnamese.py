@@ -192,6 +192,20 @@ PHRASES += [
     "whirly swirly things",
     "sage's will",
     "an eerie voice",
+    # T5 — tên ký ức / nhiệm vụ / trang bị của ba chương Tabantha.
+    "where am i",
+    "boss bokoblin",
+    "battle talus",
+    "knight's bow",
+    "traveler's bow",
+    "soldier's bow",
+    "royal bow",
+    "traveler's shield",
+    "soldier's shield",
+    "royal shield",
+    "knight's shield",
+    "spiky shield",
+    "built to carry",
 ]
 
 # Từ tiếng Anh thông dụng: nếu còn trong câu tiếng Việt => chưa dịch.
@@ -259,9 +273,22 @@ rat kha hoi kha nhieu it vai chut phan nua deu cung lai roi van con het
 _PHRASES_DESC = sorted(PHRASES, key=len, reverse=True)
 
 
+QUOTES_RE = re.compile(r"[\u2018\u2019]", )
+
+
+def norm_quotes(t):
+    """Đưa dấu nháy cong (‘ ’) về dạng thẳng để PHRASES khớp được.
+
+    Vì sao: heading theo chuẩn dịch phải dùng ký tự ’ thật (T3), còn PHRASES viết bằng
+    dấu nháy thẳng. Không chuẩn hoá thì "The Dragon’s Tears" bị coi là chưa dịch chỉ vì
+    khác ký tự nháy.
+    """
+    return t.replace("\u2018", "'").replace("\u2019", "'")
+
+
 def strip_phrases(t):
     """Bỏ cụm tên riêng, ưu tiên cụm dài trước để không bị cụm ngắn ăn mất."""
-    low = t.lower()
+    low = norm_quotes(t).lower()
     for p in _PHRASES_DESC:
         low = low.replace(p, ' ')
     return low
@@ -320,7 +347,7 @@ _PHRASES_RE = re.compile("|".join(re.escape(p) for p in _PHRASES_DESC), re.I)
 
 def _runs_raw(t):
     """Tách cụm ASCII sau khi bỏ PHRASES nhưng GIỮ chữ hoa/thường (nhận diện tên riêng)."""
-    t = _PHRASES_RE.sub(" ", t)
+    t = _PHRASES_RE.sub(" ", norm_quotes(t))
     runs, run = [], []
     for tok in tokens(t):
         if WORD_RE.fullmatch(tok):
