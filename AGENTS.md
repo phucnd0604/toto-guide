@@ -20,6 +20,21 @@
   - Đặc tả kỹ thuật: https://github.com/phucnd0604/toto-guide/issues/33
   - Không thêm file mới vào `docs/superpowers/specs/` hay `docs/superpowers/plans/` (thư mục này đã xoá).
 
+## Cổng kiểm tra mới (hạ tầng T0 — chuẩn từ 2026-11-28)
+- Trang trong `pages/` (hub, chỉ mục và `walkthrough/quests/temples/reference`) là **sản phẩm sinh ra**
+  từ `content/`. Không sửa tay: sửa `content/<loại>/<slug>.json` + `.body.html` rồi chạy
+  `python tool/build-pages.py`.
+- Năm cổng bắt buộc trước mỗi commit:
+  1. `python tool/build-pages.py --check` → 0 file lệch
+  2. `python tool/check-links.py` → 0 link chết, 0 ảnh thiếu, 0 link ra domain ngoài (trừ Google Fonts)
+  3. `python tool/verify-pages.py` → HARD=0
+  4. `python tool/check-image-match.py` → FAIL=0 (đối chiếu cache nguồn `.tmp-src/`; `--refresh` để tải lại)
+  5. `python tool/check-vietnamese.py` → HARD=0 toàn site
+- Ảnh của một trang nằm đúng trong `images/<loại>/<slug>/`; mọi file trong folder phải được dùng,
+  không dùng chéo giữa các trang.
+- 3 script trong `scripts/` là di sản bộ 9 vùng, chỉ dùng cho trang cũ tới vé T29; kết quả của chúng
+  **không** dùng làm bằng chứng cho trang mới.
+
 ## Nguồn nội dung
 - Nguồn chính: fextralife (Game Progress Route + Walkthrough) cho TOTK.
 - fextralife bị chặn trực tiếp ở VN → truy cập qua **Google Translate proxy**:
@@ -39,7 +54,8 @@
 - **Vùng text-only là hợp lệ**: vùng không có trang Walkthrough nguồn (Master Sword, Fifth Sage, Demon King) thì trang 0 ảnh,
   khai báo `NO_IMAGE` trong `check-image-match.py` và ghi lý do ở `PROGRESS.md`. Không bịa ảnh, không nhồi banner/logo.
 
-## Kiểm tra trước commit
+## Kiểm tra trước commit (bộ 9 vùng cũ — hết hiệu lực ở vé T29)
+> Trang mới dùng 5 cổng ở mục "Cổng kiểm tra mới" phía trên; mục này chỉ còn áp cho 9 trang `route-*.html`.
 - `python scripts/verify-regions.py` → mỗi vùng `step/want` khớp, `cover` đủ bước, `img = uni`, `ms=0`, `en=0`, `ph=0`, layout `2col`.
 - `python scripts/check-vietnamese.py` → 0 lỗi HARD.
 - HTML balanced, mọi `src` ảnh tồn tại, và không file nào trong `images/<slug>/` bị bỏ không dùng.
