@@ -14,8 +14,9 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 | T1 | Đảo Trời Lớn (1 chương, chương mẫu chốt khuôn) | ✅ xong 2026-11-28 (đã duyệt; commit `c266294` trên `master`, deploy HTTP 200) |
 | T2 | Hyrule Field & Hyrule Castle (1/3): Điểm Quan Sát, Đồng Bằng Hyrule, Phế Tích Thị Trấn Lâu Đài | ✅ xong 2026-11-28 (đã duyệt; commit `77eb6b5` trên `master`, deploy HTTP 200) |
 | T3 | Hyrule Field & Hyrule Castle (2/3): Vực Sâu Trung Tâm Hyrule, Phần Còn Lại Của Lâu Đài Hyrule | ✅ xong 2026-11-28 (đã duyệt; commit `9c8e701` + `2f90602` trên `master`, deploy HTTP 200) |
+| T4 | Hyrule Field & Hyrule Castle (3/3): Nam Đồng Bằng Hyrule, Vực Sâu Nam Đồng Bằng Hyrule | ✅ xong 2026-11-28 (chờ duyệt; 9 + 2 Đền Thờ Nhỏ, 60 + 22 rương, 268 + 77 ảnh, bảy cổng PASS) |
 
-- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) có 5 chương (2–6), 10 nhóm còn lại đang trống.
+- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) **đủ 7 chương (2–8)** sau T4, 10 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
 - Bảy cổng (thêm 2 cổng ngày 2026-11-28 sau retro T1): `tool/build-pages.py --check` →
   `tool/check-links.py` → `tool/verify-pages.py` → `tool/check-image-match.py` →
@@ -59,6 +60,23 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
   heading rỗng, cổng không đếm `h3` nên vẫn khớp 1:1;
   (4) heading chứa entity HTML (`&#8217;`) bị generator escape hai lần ở sidebar/TOC → viết **ký tự
   `’` thật** trong heading, đừng dùng entity.
+- T4 giữ đúng khuôn T1–T3 cho Vực Sâu Nam Đồng Bằng (17 mục, 77 ảnh), nhưng chương Nam Đồng Bằng
+  phải đổi **khuôn trang**: nguồn chia một trang thành **2 phần lớn** (`<h2>`) với tuyến đường nhanh và
+  mục đồ thu thập ở cấp `<h3>`, nên cả trang chỉ có 3 `<h2>` (Mục lục + 2 phần) và 36 `<h3>`.
+  Bốn điều gặp thật, các đợt sau áp dụng luôn:
+  (1) **cổng 3 phải tổng quát hoá**: `check_toc_summary` trước đây trừ cứng 2 mục khung ("Mục lục" +
+  "Tuyến đường nhanh") nên chương nhiều phần luôn FAIL dù viết đúng nguồn → nay chỉ trừ những mục khung
+  **có mặt**, và câu dẫn nhận "không có mục tổng kết" thay cho "0 mục tổng kết" (7 trang cũ không đổi byte nào);
+  (2) mục lục của chương nhiều phần là **danh sách hai cấp** — tự viết `id` cho `<h3>` trong file body
+  (generator chỉ thêm `id` cho `<h2>`), nên mục lục rail vẫn gọn 3 dòng còn mục lục trong bài nhảy được
+  tới từng mục con;
+  (3) **ảnh của bảng facts nằm trong mục `<h2>` đầu tiên của nguồn**, không phải vùng trước mục đầu: chương
+  Nam Đồng Bằng chỉ có một ảnh như vậy (`rubber-armor.webp`), đặt ở đầu đoạn dẫn của "Phần 1" để không sinh
+  thêm mục thứ tư; icon hồ sơ đứng **trước** `<h3>` của nó trong nguồn nên đặt ở đầu đoạn đầu tiên của mục đó;
+  (4) nguồn không có bảng facts và không tổng kết số rương → chủ dự án chốt **dựng bảng tóm tắt từ số liệu
+  đếm được trong chính nguồn** và ghi rõ rương "đếm theo mô tả nguồn" (60 rương; 74 hạt Korok ở chương Vực Sâu).
+- T4 sửa thêm `tool/check-vietnamese.py`: 7 cụm vào `PHRASES` (tên nhiệm vụ phụ của hai chương Nam Đồng Bằng)
+  và âm tiết Việt không dấu `in` vào `VI_ASCII`; `tool/README.md` ghi lại luật đếm mục của cổng 3.
 - T3 sửa thêm `tool/inspect-source.py`: thêm `--files` in **tên file ảnh đầy đủ** theo từng mục
   (bản cũ cắt 14 ký tự nên không tải ảnh được) và sửa lỗi `NameError: seen` khi folder ảnh đã tồn tại;
   `tool/check-vietnamese.py` thêm 6 cụm vào `PHRASES` (5 tên trang bị bộ Vực Sâu + `the rito rope bridge`).
