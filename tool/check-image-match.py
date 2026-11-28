@@ -79,21 +79,67 @@ def proxy_url(url):
     return urllib.parse.urlunsplit(("https", host, parts.path, query, ""))
 
 
+def wp_rest_url(url):
+    """Địa chỉ WP REST API cùng host, dùng khi trang chương không tải được nguyên vẹn."""
+    parts = urllib.parse.urlsplit(url)
+    segments = [seg for seg in parts.path.split("/") if seg]
+    if not segments:
+        return ""
+    query = "slug=%s&_fields=content" % urllib.parse.quote(segments[-1])
+    return urllib.parse.urlunsplit(
+        (parts.scheme or "https", parts.netloc, "/wp-json/wp/v2/pages", query, "")
+    )
+
+
+def rest_html(payload):
+    """content.rendered của REST API, bọc <article> để source_sections tách mục như trang thật."""
+    try:
+        items = json.loads(payload)
+    except ValueError:
+        return ""
+    if not isinstance(items, list) or not items:
+        return ""
+    html = (items[0].get("content") or {}).get("rendered") or ""
+    return "<article>" + html + "</article>" if html else ""
+
+
+def looks_like_chapter(text):
+    """Trang chương thật phải có <h2> và ảnh nguồn; trang chặn vài chục KB thì không có gì."""
+    return bool(re.search(r"<h2\b", text or "", re.I)) and "/uploads/" in (text or "")
+
+
 def refresh_cache(kind, slug, url):
+    """Tải trang nguồn: thử trang chương, rồi WP REST API, rồi proxy Google Translate.
+
+    Vì sao có ba đường: GitHub Actions bị chặn ở đường tải trang chương và chỉ nhận về
+    ~12 KB trang chặn, nên cổng ảnh báo 269 lỗi "không có trong nguồn" thay vì nói đúng
+    là không tải được nguồn. Mọi đường đều phải qua looks_like_chapter() trước khi ghi cache.
+    """
     errors = []
-    for target in (url, proxy_url(url)):
+    attempts = [("trang chương", url)]
+    rest = wp_rest_url(url)
+    if rest:
+        attempts.append(("WP REST API", rest))
+    attempts.append(("proxy Google Translate", proxy_url(url)))
+    for label, target in attempts:
         try:
             request = urllib.request.Request(target, headers=UA)
-            data = urllib.request.urlopen(request, timeout=90).read().decode("utf-8", "replace")
+            raw = urllib.request.urlopen(request, timeout=90).read().decode("utf-8", "replace")
         except (urllib.error.URLError, ValueError, OSError) as exc:
-            errors.append("%s: %s" % (target, exc))
+            errors.append("%s (%s): %s" % (label, target, exc))
+            continue
+        data = rest_html(raw) if label == "WP REST API" else raw
+        if not looks_like_chapter(data):
+            errors.append(
+                "%s (%s): trả về %d ký tự, không giống trang chương" % (label, target, len(raw))
+            )
             continue
         folder = os.path.join(CACHE_DIR, kind)
         os.makedirs(folder, exist_ok=True)
         path = os.path.join(folder, slug + ".html")
         with open(path, "w", encoding="utf-8", newline="\n") as fh:
             fh.write(data)
-        print("  đã cache nguồn %s/%s (%d ký tự)" % (kind, slug, len(data)))
+        print("  đã cache nguồn %s/%s (%d ký tự, qua %s)" % (kind, slug, len(data), label))
         return True
     print("  KHÔNG tải được nguồn %s/%s:" % (kind, slug))
     for message in errors:
@@ -115,10 +161,18 @@ SOURCE_OVERRIDE = None  # --from FILE: coi file cục bộ là nguồn của slu
 def check(entry, refresh, refresh_missing=False):
     kind, slug = entry["type"], entry["slug"]
     source_url = entry["meta"].get("source", "")
-    cached = os.path.exists(os.path.join(CACHE_DIR, kind, slug + ".html")) or os.path.exists(
-        os.path.join(CACHE_DIR, kind, slug + ".json")
+    cache_file = shared.cache_path(ROOT, kind, slug)
+    cached = bool(cache_file) and os.path.exists(cache_file)
+    # Cache hỏng (trang chặn vài chục KB) phải tải lại, kể cả khi tên file đã có: để nguyên thì
+    # cổng báo "không có trong nguồn" cho toàn bộ ảnh, che mất nguyên nhân thật là nguồn bị chặn.
+    corrupt = (
+        cached
+        and cache_file.endswith(".html")
+        and not looks_like_chapter(read_text(cache_file))
     )
-    if source_url and not SOURCE_OVERRIDE and (refresh or (refresh_missing and not cached)):
+    if corrupt:
+        print("  cache nguồn %s/%s hỏng/không giống trang chương -> tải lại" % (kind, slug))
+    if source_url and not SOURCE_OVERRIDE and (refresh or (refresh_missing and not cached) or corrupt):
         refresh_cache(kind, slug, source_url)
     sections = page_sections(entry)
     if sections is None:

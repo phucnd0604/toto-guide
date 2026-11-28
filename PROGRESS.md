@@ -75,6 +75,12 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
   thêm mục thứ tư; icon hồ sơ đứng **trước** `<h3>` của nó trong nguồn nên đặt ở đầu đoạn đầu tiên của mục đó;
   (4) nguồn không có bảng facts và không tổng kết số rương → chủ dự án chốt **dựng bảng tóm tắt từ số liệu
   đếm được trong chính nguồn** và ghi rõ rương "đếm theo mô tả nguồn" (60 rương; 74 hạt Korok ở chương Vực Sâu).
+- T4 cũng sửa `tool/check-image-match.py`: GitHub Actions bị chặn ở đường tải trang chương và chỉ nhận về
+  ~12 KB trang chặn, nên cổng ảnh báo 269 lỗi "không có trong nguồn" thay vì nói đúng là nguồn không tải được.
+  Nay `refresh_cache` thử lần lượt **trang chương → WP REST API** (`/wp-json/wp/v2/pages?slug=…&_fields=content`,
+  bọc `content.rendered` trong `<article>`, đã đối chiếu: cùng số mục và cùng thứ tự ảnh với trang thật)
+  **→ proxy Google Translate**, và mọi đường đều phải qua `looks_like_chapter()` trước khi ghi cache.
+  Cache hỏng nằm sẵn trên đĩa cũng bị coi là thiếu và tải lại.
 - T4 sửa thêm `tool/check-vietnamese.py`: 7 cụm vào `PHRASES` (tên nhiệm vụ phụ của hai chương Nam Đồng Bằng)
   và âm tiết Việt không dấu `in` vào `VI_ASCII`; `tool/README.md` ghi lại luật đếm mục của cổng 3.
 - T3 sửa thêm `tool/inspect-source.py`: thêm `--files` in **tên file ảnh đầy đủ** theo từng mục
