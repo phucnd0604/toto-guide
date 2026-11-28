@@ -9,6 +9,16 @@ Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng ti
 Một đơn vị của lộ trình, tương ứng đúng một trang walkthrough nguồn, có bảng tóm tắt riêng.
 _Avoid_: vùng, phần, mục
 
+**Mục** (section):
+Đơn vị tách trang theo `<h2>` mà mọi cổng dùng chung; nếu có ảnh trước `<h2>` đầu thì phần đó thành mục
+"(trước mục đầu)". Số mục của trang phải bằng số mục của trang nguồn.
+_Avoid_: phần, đoạn, heading
+
+**Mục khung của nguồn** (chrome section):
+Khối của trang nguồn **không thuộc nội dung chương** (quảng bá công cụ, widget), bị bỏ khi tách mục ở cả
+hai phía — danh sách ở `tool/source_sections.py`.
+_Avoid_: mục rác, quảng cáo
+
 **Nhóm vùng** (region group):
 Tập hợp các chương cùng một vùng địa lý, dùng để gom nhóm trên hub.
 _Avoid_: vùng

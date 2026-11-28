@@ -15,8 +15,9 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 | T2 | Hyrule Field & Hyrule Castle (1/3): Điểm Quan Sát, Đồng Bằng Hyrule, Phế Tích Thị Trấn Lâu Đài | ✅ xong 2026-11-28 (đã duyệt; commit `77eb6b5` trên `master`, deploy HTTP 200) |
 | T3 | Hyrule Field & Hyrule Castle (2/3): Vực Sâu Trung Tâm Hyrule, Phần Còn Lại Của Lâu Đài Hyrule | ✅ xong 2026-11-28 (đã duyệt; commit `9c8e701` + `2f90602` trên `master`, deploy HTTP 200) |
 | T4 | Hyrule Field & Hyrule Castle (3/3): Nam Đồng Bằng Hyrule, Vực Sâu Nam Đồng Bằng Hyrule | ✅ xong 2026-11-28 (duyệt qua PR #35, merge `040590a`; 9 + 2 Đền Thờ Nhỏ, 60 + 22 rương, 268 + 77 ảnh, bảy cổng PASS, CI xanh) |
+| T5 | Tabantha & Sườn Hyrule (1/2): Biên Giới Tabantha, Đền Thờ Bị Lãng Quên, Hẻm Núi Tanagar & Sườn Hyrule | ✅ xong 2026-11-28 (duyệt qua PR #37; 3 chương, 7 Đền Thờ Nhỏ, 4 hang, 25 hạt Korok, 42 rương, 274 ảnh / 13,1 MB, bảy cổng PASS, CI xanh) |
 
-- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) **đủ 7 chương (2–8)** sau T4, 10 nhóm còn lại đang trống.
+- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) **đủ 7 chương (2–8)** sau T4, nhóm 3 (Tabantha & Sườn Hyrule) có **3/6 chương (9–11)** sau T5, 9 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
 - Bài học từng vé (khuôn trang, bốn loại bẫy của nguồn, các bản vá cổng), việc đã làm ngoài nội dung
   vùng và nhật ký giai đoạn A–D đã tách sang **[docs/changelog-E.md](docs/changelog-E.md)** — mỗi vé đọc
@@ -25,8 +26,11 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 - Bảy cổng (thêm 2 cổng sau retro T1): `build-pages.py --check` → `check-links.py` → `verify-pages.py` → `check-image-match.py` → `check-vietnamese.py` → `check-mobile.py` → `check-coverage.py`; hợp đồng từng cổng ở `tool/README.md`. CI `.github/workflows/gates.yml` chạy lại cả bảy sau mỗi push và mỗi PR.
 - Khuôn chương đã chốt (T1–T4): bảng tóm tắt → Mục lục → Tuyến đường nhanh → các mục đi đường đúng thứ
   tự nguồn → Mẹo hoàn thành → Đồ thu thập; một gallery `<details open>` mỗi mục, caption = alt dịch +
-  `(ảnh k/N)`, icon trong bảng dùng `.inline-icon`. Chương nhiều phần dùng mục lục hai cấp.
-- Bộ ảnh hiện có: **8 chương, 1205 file, ~56 MB**.
+  `(ảnh k/N)`, icon trong bảng dùng `.inline-icon`. Chương nhiều phần dùng mục lục hai cấp; chương chỉ
+  có `<h3>` bên trong các mục lớn (Tanagar) vẫn dùng **mục lục một cấp theo `<h2>`**, `<h3>` giữ đúng
+  thứ tự trong bài và không cần `id` tay. Khối quảng bá của nguồn ("Track them") không phải mục —
+  xem `IGNORED_SOURCE_HEADINGS` và `tool/README.md`.
+- Bộ ảnh hiện có: **11 chương, 1479 file, ~69 MB**.
 
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo
@@ -97,6 +101,9 @@ host trên Vercel, không link ra domain khác.
    Siêu Tay/Hồi Tưởng/Xuyên/Ghép, Bình Thể Lực), giữ tên riêng, viết lại footer credits bằng tiếng Việt.
 3. Một số ảnh vùng 1–3 chỉ có bản 400px (fextralife chặn tải bản gốc / trả 429) — chấp nhận được,
    nâng cấp sau nếu cần nét hơn.
+4. Còn **6 WARN** của `tool/check-vietnamese.py` ở 4 trang cũ (cụm tên riêng có sẵn: "ra Blue Horn",
+   "con Frost Talus", "boss Tinh", "Phantom Armor mua", "Mighty Zonaite Shield trong"). Ba trang T5 đều
+   `warn=0`; WARN không chặn cổng — dọn khi có vé riêng.
 
 ## Thứ tự thực hiện tiếp
 1. Nâng cấp ảnh 400px ở vùng 1–3 nếu tìm được bản gốc fextralife (nếu không thì giữ nguyên).

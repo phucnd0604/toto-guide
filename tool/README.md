@@ -129,7 +129,9 @@ Hai luật của `verify-pages` đáng biết vì chúng có thể FAIL:
 
 - **Heading** bị coi là "chưa dịch" theo đúng luật của `check-vietnamese` (bỏ `PHRASES` rồi
   tìm từ tiếng Anh thông dụng). Nhờ vậy tên riêng đứng một mình như "Lookout Landing" hay
-  "Boss Bokoblin" qua được, còn "Table of Contents" thì không.
+  "Boss Bokoblin" qua được, còn "Table of Contents" thì không. Heading cũng viết **ký tự thật**
+  (`&`, `’`), không dùng entity HTML: `slug_id()` sinh `id` từ chính chuỗi heading nên `&amp;`
+  cho ra id có chữ "amp" và mục lục trỏ sai — không cổng nào bắt được.
 - **Câu dẫn dưới `<h2>Mục lục</h2>`** phải khai đúng số mục: "… N mục đi đường và M mục tổng
   kết", trong đó M là số heading cuối trang bắt đầu bằng "Mẹo hoàn thành" / "Đồ thu thập" /
   "Danh sách kiểm". Số đếm viết tay đã sai hai lần ở T2 mà không cổng nào bắt được.
@@ -150,6 +152,10 @@ Hai luật của `verify-pages` đáng biết vì chúng có thể FAIL:
 `check-vietnamese` coi một cụm là "chưa dịch" khi còn từ tiếng Anh thông dụng. Các âm tiết tiếng Việt
 không dấu trùng mặt chữ tiếng Anh (`to`, `co`, `do`, `so`, `no`) được miễn trừ qua tập `VI_ASCII`;
 gặp từ mới cùng loại thì thêm vào `VI_ASCII`, đừng bẻ câu cho vừa cổng.
+
+**Dấu nháy:** `PHRASES` viết bằng dấu nháy thẳng, còn heading theo chuẩn dịch dùng `’` thật. Checker
+chuẩn hoá `‘ ’` về `'` trước khi so (`norm_quotes()`), nên tên như "The Dragon’s Tears" vẫn khớp mà
+không phải khai hai biến thể.
 
 ## Nguồn nội dung & cách sinh trang
 
