@@ -14,7 +14,7 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 | T1 | Đảo Trời Lớn (1 chương, chương mẫu chốt khuôn) | ✅ xong 2026-11-28 (đã duyệt; commit `c266294` trên `master`, deploy HTTP 200) |
 | T2 | Hyrule Field & Hyrule Castle (1/3): Điểm Quan Sát, Đồng Bằng Hyrule, Phế Tích Thị Trấn Lâu Đài | ✅ xong 2026-11-28 (đã duyệt; commit `77eb6b5` trên `master`, deploy HTTP 200) |
 | T3 | Hyrule Field & Hyrule Castle (2/3): Vực Sâu Trung Tâm Hyrule, Phần Còn Lại Của Lâu Đài Hyrule | ✅ xong 2026-11-28 (đã duyệt; commit `9c8e701` + `2f90602` trên `master`, deploy HTTP 200) |
-| T4 | Hyrule Field & Hyrule Castle (3/3): Nam Đồng Bằng Hyrule, Vực Sâu Nam Đồng Bằng Hyrule | ✅ xong 2026-11-28 (chờ duyệt; 9 + 2 Đền Thờ Nhỏ, 60 + 22 rương, 268 + 77 ảnh, bảy cổng PASS) |
+| T4 | Hyrule Field & Hyrule Castle (3/3): Nam Đồng Bằng Hyrule, Vực Sâu Nam Đồng Bằng Hyrule | ✅ xong 2026-11-28 (duyệt qua PR #35; 9 + 2 Đền Thờ Nhỏ, 60 + 22 rương, 268 + 77 ảnh, bảy cổng PASS, CI xanh) |
 
 - Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) **đủ 7 chương (2–8)** sau T4, 10 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.

@@ -58,8 +58,12 @@ Trang trong `pages/` là **sản phẩm sinh ra** từ `content/`: sửa `conten
 
 ## Commit & Deploy
 - Commit message rõ ràng theo vé; mỗi vé một commit (hoặc vài commit trong cùng vé).
-- Push `origin master` → Vercel auto-deploy; kiểm HTTP 200 cho trang mới và 1 ảnh mẫu.
-- CI `.github/workflows/gates.yml` chạy lại các cổng sau mỗi lần push.
+- **Mỗi vé đi bằng nhánh riêng + Pull Request, không push thẳng `master`**:
+  `git checkout -b t<vé>-<mô-tả>` → push nhánh → `gh pr create --base master` → chờ CI xanh →
+  **chủ dự án duyệt rồi mới merge**. Merge bằng **rebase** cho khớp lịch sử (trên `master` không có
+  merge commit; mỗi vé để lại các commit riêng của nó).
+- Sau khi merge: Vercel auto-deploy từ `master`; kiểm HTTP 200 cho trang mới và 1 ảnh mẫu.
+- CI `.github/workflows/gates.yml` chạy lại các cổng sau mỗi lần push và mỗi PR.
 
 ## Agent skills
 
