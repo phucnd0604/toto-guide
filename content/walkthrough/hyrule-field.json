@@ -1,0 +1,16 @@
+{
+  "title": "Đồng Bằng Hyrule: Đền Thờ Nhỏ, hang, Korok và Vực Sâu",
+  "desc": "Đi trọn Cánh Đồng Hyrule theo đúng thứ tự: 2 Đền Thờ Nhỏ, 2 hang, 2 Rễ Sáng, 14 hạt Korok và 21 rương, kèm ảnh minh họa từng bước.",
+  "region": "Hyrule Field & Hyrule Castle",
+  "order": 3,
+  "source": "https://zeldacentral.com/games/tears-of-the-kingdom/walkthrough/hyrule-field/",
+  "meta": {
+    "quests": [
+      "Camera Work in the Depths"
+    ],
+    "shrines": 2,
+    "caves": 2,
+    "koroks": 14,
+    "chests": 21
+  }
+}

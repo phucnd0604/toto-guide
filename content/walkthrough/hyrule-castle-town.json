@@ -1,0 +1,16 @@
+{
+  "title": "Phế Tích Thị Trấn Lâu Đài Hyrule: Đền Thờ Nhỏ, hang, giếng và khuôn viên lâu đài",
+  "desc": "Đi trọn phế tích Thị Trấn Lâu Đài Hyrule: 3 Đền Thờ Nhỏ, 2 hang, 4 giếng, 29 hạt Korok và 44 rương, kèm ảnh minh họa từng bước.",
+  "region": "Hyrule Field & Hyrule Castle",
+  "order": 4,
+  "source": "https://zeldacentral.com/games/tears-of-the-kingdom/walkthrough/hyrule-castle-town/",
+  "meta": {
+    "quests": [
+      "Impa and the Geoglyphs"
+    ],
+    "shrines": 3,
+    "caves": 2,
+    "koroks": 29,
+    "chests": 44
+  }
+}

@@ -48,6 +48,7 @@ PHRASES = [
     "who goes there", "recovering the hero's sword", "piaffe packed away",
     "find the fifth sage", "guidance from ages past", "secret of the ring ruins", "destroy ganondorf",
     "bring peace to hyrule field", "impa and the geoglyphs", "first gatehouse",
+    "fell into a well", "an uninvited guest", "where are the wells", "the hunt for bubbul gems",
     "new serenne stable", "new serenne", "hebra south summit cave", "hebra south summit",
     "hebra summit cave", "eye of the storm", "south summit",
     "south akkala stable", "south akkala", "death mountain west site", "big wheel", "little frox",
@@ -221,7 +222,7 @@ route seeds shroom carrot flower horn eye storm mystery courage peace find bring
 
 # Âm tiết tiếng Việt không dấu (mang, theo, trong, hang…) — hay bị nhầm là tiếng Anh khi quét WARN.
 VI_ASCII = set("""
-theo trong hang sau khi qua mang cho khu bay xong quanh canh vua ra ngay con sang hai nhanh xoay anh men kim trao tay ta xe chi thanh cao leo hoa bom mua
+an than theo trong hang sau khi qua mang cho khu bay xong quanh canh vua ra ngay con sang hai nhanh xoay anh men kim trao tay ta xe chi thanh cao leo hoa bom mua
 va de co do la ma na no so to tu vi vo xu yeu vao len xuong truoc tren duoi ngoai giua cung voi deu rat kha hon nhat moi nhung hoac nen boi tai den o
 mo mot vai bon nam sau bay chin muoi tram nghin nguoi cai chiec con chau em chi chu bac ong ba me bo anh chi em minh ban
 lam viec di dung can phai nen duoc bi se da dang cho lay dat nang tha nhat gap thay nghe nhin noi goi hoi tra loi
