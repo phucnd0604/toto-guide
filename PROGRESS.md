@@ -15,9 +15,15 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 
 - Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) đã có 1 chương, 11 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
-- Năm cổng: `tool/build-pages.py --check` → `tool/check-links.py` → `tool/verify-pages.py` →
-  `tool/check-image-match.py` → `tool/check-vietnamese.py`. Ở T1 cả 5 PASS với 1 chương nội dung
-  (17 mục H2, 158 ảnh, 7,8 MB).
+- Bảy cổng (thêm 2 cổng ngày 2026-11-28 sau retro T1): `tool/build-pages.py --check` →
+  `tool/check-links.py` → `tool/verify-pages.py` → `tool/check-image-match.py` →
+  `tool/check-vietnamese.py` → `tool/check-mobile.py` → `tool/check-coverage.py`. Cả bảy PASS với
+  1 chương nội dung (17 mục H2, 158 ảnh, 7,8 MB).
+- `tool/check-mobile.py` + `tool/mobile-probe.mjs`: render bằng Chrome headless (CDP, không thêm
+  dependency), FAIL khi `scrollWidth > clientWidth` ở 375px/768px. Cổng này ra đời vì T1 đã PASS đủ
+  5 cổng cũ mà trang vẫn tràn ngang trên điện thoại.
+- `tool/check-coverage.py`: bắt lỗi "dịch thiếu đoạn" mà 5 cổng hình dạng không thấy.
+- CI `.github/workflows/gates.yml` chạy lại 7 cổng sau mỗi push (cache `.tmp-src/` để không tải lại nguồn).
 - `tool/verify-pages.py` đã sửa ở T1: đếm mục theo đúng cách cổng ảnh tách mục (số `<h2>` cộng vùng
   trước mục đầu tiên). Bản cũ đếm `<h2>` thô nên mọi chương có ảnh nằm trước H2 đầu (bảng tóm tắt)
   đều báo lệch nguồn 1 mục và FAIL vĩnh viễn.

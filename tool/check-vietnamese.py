@@ -260,10 +260,15 @@ def _runs(t):
 
 
 def untranslated(t):
-    """Cụm ASCII còn chứa từ tiếng Anh thông dụng -> chưa dịch."""
+    """Cụm ASCII còn chứa từ tiếng Anh thông dụng -> chưa dịch.
+
+    Bỏ qua âm tiết tiếng Việt không dấu nằm trong VI_ASCII: "to", "co", "do", "so"...
+    là tiếng Việt hợp lệ ("balo to", "có", "đó"), không phải dấu hiệu chưa dịch.
+    """
     out = []
     for r in _runs(t):
-        bad = [w for w in r if w.lower() not in KEEP and w.lower() in COMMON_EN]
+        bad = [w for w in r
+               if w.lower() not in KEEP and w.lower() in COMMON_EN and w.lower() not in VI_ASCII]
         if bad:
             out.append((' '.join(r), bad))
     return out

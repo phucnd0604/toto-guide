@@ -14,7 +14,9 @@ Nguồn đối chiếu lấy từ cache cục bộ (gitignore):
   .tmp-src/<loại>/<slug>.html   trang nguồn thô, tự tách mục theo <h2>
   --refresh                     tải lại trang nguồn (URL trong metadata) rồi ghi cache .html
 
-Dùng: python tool/check-image-match.py [--refresh] [--type LOẠI] [slug ...]
+Dùng: python tool/check-image-match.py [--refresh] [--refresh-missing] [--type LOẠI] [slug ...]
+  --refresh          tải lại toàn bộ trang nguồn
+  --refresh-missing  chỉ tải trang nguồn chưa có trong cache (dùng cho CI có cache)
 Thoát mã 1 nếu có FAIL.
 """
 from __future__ import annotations
@@ -165,10 +167,13 @@ def page_sections(entry):
     return parse_sections(text, lambda src: "/images/" in src)
 
 
-def check(entry, refresh):
+def check(entry, refresh, refresh_missing=False):
     kind, slug = entry["type"], entry["slug"]
     source_url = entry["meta"].get("source", "")
-    if refresh and source_url:
+    cached = os.path.exists(os.path.join(CACHE_DIR, kind, slug + ".html")) or os.path.exists(
+        os.path.join(CACHE_DIR, kind, slug + ".json")
+    )
+    if source_url and (refresh or (refresh_missing and not cached)):
         refresh_cache(kind, slug, source_url)
     sections = page_sections(entry)
     if sections is None:
@@ -244,6 +249,7 @@ def check(entry, refresh):
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     refresh = "--refresh" in sys.argv
+    refresh_missing = "--refresh-missing" in sys.argv
     type_filter = None
     if "--type" in sys.argv:
         index = sys.argv.index("--type")
@@ -269,7 +275,7 @@ def main():
 
     failures = 0
     for entry in entries:
-        fails = check(entry, refresh)
+        fails = check(entry, refresh, refresh_missing)
         label = "%s/%s" % (entry["type"], entry["slug"])
         print("%-34s %s" % (label, "PASS" if not fails else "FAIL (%d lỗi)" % len(fails)))
         for message in fails[:12]:

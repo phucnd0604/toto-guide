@@ -1,0 +1,57 @@
+name: cổng kiểm tra
+
+# Vì sao có workflow này: 5 cổng của T0 chỉ chạy bằng tay, không có CI, không có hook — một commit
+# có thể lên master mà chưa ai chạy cổng. Workflow chạy lại toàn bộ cổng sau mỗi lần push.
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gates:
+    name: bảy cổng
+    runs-on: ubuntu-latest
+    env:
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # mobile-probe.mjs cần WebSocket toàn cục: Node 22 trở lên
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Cache trang nguồn để không phải tải lại toàn bộ chương mỗi lần push
+      - name: Cache nguồn đối chiếu (.tmp-src)
+        uses: actions/cache@v4
+        with:
+          path: .tmp-src
+          key: tmp-src-${{ hashFiles('content/**/*.json') }}
+          restore-keys: |
+            tmp-src-
+
+      - name: Cổng 1 — pages khớp content
+        run: python tool/build-pages.py --check
+
+      - name: Cổng 2 — link và ảnh thiếu
+        run: python tool/check-links.py
+
+      - name: Cổng 4 — ảnh đúng mục, đúng thứ tự (tải nguồn nếu chưa cache)
+        run: python tool/check-image-match.py --refresh-missing
+
+      - name: Cổng 3 — cấu trúc trang
+        run: python tool/verify-pages.py
+
+      - name: Cổng 7 — độ phủ bản dịch
+        run: python tool/check-coverage.py
+
+      - name: Cổng 5 — tiếng Việt
+        run: python tool/check-vietnamese.py
+
+      - name: Cổng 6 — hiển thị 375px / 768px
+        run: python tool/check-mobile.py

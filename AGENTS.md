@@ -9,88 +9,53 @@
   3. Chỉ giữ nguyên tên riêng: nhân vật, vùng, địa điểm, Đền Thờ Nhỏ/Đền Thờ, quái, tên nhiệm vụ, item đặc thù. Phần từ chung đi kèm thì dịch (Rito Village → Làng Rito).
   4. Không dùng `x1/x3`; viết "1", "3" hoặc "1 chiếc", "3 viên".
   5. Heading, tiêu đề, alt text, figcaption, summary cũng phải tiếng Việt.
-- Trước khi commit: `python scripts/check-vietnamese.py` phải trả về **0 lỗi HARD**.
+- Trước khi commit: `python tool/check-vietnamese.py` phải trả về **0 lỗi HARD**.
 
 ## Thư mục làm việc & nơi lưu đặc tả (chốt 2026-11-28)
 - **`.scratch/`** – file tạm, file sinh ra trong quá trình làm việc, file rác, bản nháp. Đã gitignore, **không commit**.
 - **`tool/`** – script, công cụ chuẩn của dự án cần chạy trong quá trình làm việc (generator, các cổng kiểm tra). **Có commit**.
-- **`scripts/`** – di sản của bộ 9 vùng fextralife, sẽ xoá ở vé chuyển nhà (T29). Tool mới **không** đặt ở đây.
+- **`scripts/`** – di sản của bộ 9 vùng fextralife, xoá ở vé chuyển nhà (T29). Tool mới **không** đặt ở đây.
 - **Đặc tả, plan, ticket sống trên GitHub Issues**, không tạo file spec/plan trong repo:
   - Bản đồ công việc: https://github.com/phucnd0604/toto-guide/issues/1
   - Đặc tả kỹ thuật: https://github.com/phucnd0604/toto-guide/issues/33
   - Không thêm file mới vào `docs/superpowers/specs/` hay `docs/superpowers/plans/` (thư mục này đã xoá).
 
-## Cổng kiểm tra mới (hạ tầng T0 — chuẩn từ 2026-11-28)
-- Trang trong `pages/` (hub, chỉ mục và `walkthrough/quests/temples/reference`) là **sản phẩm sinh ra**
-  từ `content/`. Không sửa tay: sửa `content/<loại>/<slug>.json` + `.body.html` rồi chạy
-  `python tool/build-pages.py`.
-- Năm cổng bắt buộc trước mỗi commit:
-  1. `python tool/build-pages.py --check` → 0 file lệch
-  2. `python tool/check-links.py` → 0 link chết, 0 ảnh thiếu, 0 link ra domain ngoài (trừ Google Fonts)
-  3. `python tool/verify-pages.py` → HARD=0
-  4. `python tool/check-image-match.py` → FAIL=0 (đối chiếu cache nguồn `.tmp-src/`; `--refresh` để tải lại)
-  5. `python tool/check-vietnamese.py` → HARD=0 toàn site
+## Nguồn nội dung
+- Nguồn chính: **zeldacentral.com**, mỗi chương một trang
+  `https://zeldacentral.com/games/tears-of-the-kingdom/walkthrough/<slug>/`.
+- Tải trực tiếp được. Chỉ khi bị 429 mới dùng proxy Google Translate:
+  `https://translate.google.com/translate?sl=en&tl=vi&u=<URL>`.
+- Ảnh: `zeldacentral.com/wp-content/uploads/totk/images/...`; tải bản 1024px, lưu vào
+  `images/<loại>/<slug>/` với **tên gốc đã bỏ hậu tố kích thước `-1024x576`** (cổng ảnh so theo tên đã chuẩn hoá).
+- Bộ 9 vùng fextralife đã ngừng dùng; quy tắc cũ nằm ở `docs/legacy-fextralife.md`, chỉ còn hiệu lực tới T29.
+
+## Cổng kiểm tra (bảy cổng, bắt buộc trước mỗi commit)
+Trang trong `pages/` là **sản phẩm sinh ra** từ `content/`: sửa `content/<loại>/<slug>.json` +
+`.body.html` rồi chạy `python tool/build-pages.py`. Không sửa tay file trong `pages/`.
+
+1. `python tool/build-pages.py --check` → 0 file lệch
+2. `python tool/check-links.py` → 0 link chết, 0 ảnh thiếu, 0 link ra domain ngoài (trừ Google Fonts)
+3. `python tool/verify-pages.py` → HARD=0
+4. `python tool/check-image-match.py` → FAIL=0 (đối chiếu cache nguồn `.tmp-src/`; `--refresh` để tải lại)
+5. `python tool/check-vietnamese.py` → HARD=0 toàn site
+6. `python tool/check-mobile.py` → không trang nào tràn ngang ở 375px/768px (cần Chrome headless)
+7. `python tool/check-coverage.py` → mục nào của nguồn cũng còn nội dung trong bản dịch
+
+- Chi tiết hợp đồng từng cổng (cách tách "mục", cách đối chiếu ảnh, cách chuẩn hoá tên file):
+  **`tool/README.md`**.
 - Ảnh của một trang nằm đúng trong `images/<loại>/<slug>/`; mọi file trong folder phải được dùng,
   không dùng chéo giữa các trang.
-- 3 script trong `scripts/` là di sản bộ 9 vùng, chỉ dùng cho trang cũ tới vé T29; kết quả của chúng
-  **không** dùng làm bằng chứng cho trang mới.
+- 3 script trong `scripts/` là di sản bộ 9 vùng; kết quả của chúng **không** dùng làm bằng chứng cho trang mới.
 
-## Nguồn nội dung
-- Nguồn chính: fextralife (Game Progress Route + Walkthrough) cho TOTK.
-- fextralife bị chặn trực tiếp ở VN → truy cập qua **Google Translate proxy**:
-  `https://translate.google.com/translate?sl=en&tl=vi&u=<URL>`
-- Ảnh từ `static0.fextralifeimages.com` (tải về `images/<region>/`, giữ tên file gốc).
-
-## Cấu trúc trang
-> Cấu trúc mới (43 chương + 23 nhiệm vụ + 12 đền + 10 trang tham chiếu) đang được dựng theo map https://github.com/phucnd0604/toto-guide/issues/1. Phần dưới mô tả bộ 9 vùng cũ, chỉ còn hiệu lực tới vé chuyển nhà T29.
-
-- Canonical progress route: hub `pages/progress-route.html` + 9 trang vùng `pages/route-<slug>.html`
-  (slug: prologue, central, hebra, eldin, lanayru, mastersword, gerudo, fifth, final).
-- Mỗi trang vùng: cột trái sticky là mục lục + danh sách bước, cột phải là walkthrough.
-- Giữ multi-page: mechanics, abilities, shrines, tips, faq, index.
-- Mỗi trang: 1 `<h1>`, meta description, alt text tiếng Việt.
-- **Ảnh tách riêng theo trang**: `pages/route-<slug>.html` chỉ dùng ảnh trong `images/<slug>/`. Cấm dùng chung folder, cấm copy ảnh của vùng khác sang (lỗi đã gặp: 12 ảnh Prologue nằm trong `images/central`).
-- **Gallery mở sẵn**: ảnh bọc trong `<details ... open>` để người đọc thấy ngay, không phải bấm mở.
-- **Vùng text-only là hợp lệ**: vùng không có trang Walkthrough nguồn (Master Sword, Fifth Sage, Demon King) thì trang 0 ảnh,
-  khai báo `NO_IMAGE` trong `check-image-match.py` và ghi lý do ở `PROGRESS.md`. Không bịa ảnh, không nhồi banner/logo.
-
-## Kiểm tra trước commit (bộ 9 vùng cũ — hết hiệu lực ở vé T29)
-> Trang mới dùng 5 cổng ở mục "Cổng kiểm tra mới" phía trên; mục này chỉ còn áp cho 9 trang `route-*.html`.
-- `python scripts/verify-regions.py` → mỗi vùng `step/want` khớp, `cover` đủ bước, `img = uni`, `ms=0`, `en=0`, `ph=0`, layout `2col`.
-- `python scripts/check-vietnamese.py` → 0 lỗi HARD.
-- HTML balanced, mọi `src` ảnh tồn tại, và không file nào trong `images/<slug>/` bị bỏ không dùng.
-- Không còn reference đến trang/file đã xóa.
-
-## Cổng cứng: ảnh ↔ nội dung (bắt buộc)
-`python scripts/check-image-match.py` phải in **`FAIL=0`** trước khi commit một vùng.
-Lý do có cổng này: `verify-regions.py` chỉ đếm ảnh, nên đã có lần `img=uni`, `ms=0` đầy đủ mà ảnh vẫn sai chỗ —
-ảnh hang (Pondside Cave, Mining Cave…) nằm dưới tiêu đề đền thờ Gutanbac, và ảnh vùng này lẫn sang vùng khác.
-Đếm đủ ảnh **không** thay thế được cổng này.
-
-Ba điều kiện, vi phạm 1 là FAIL:
-1. **Không lẫn vùng:** mọi ảnh dùng trong `pages/route-<slug>.html` phải có trong đúng trang nguồn của vùng đó.
-2. **Đúng thứ tự:** dãy ảnh trong trang phải là dãy con đúng thứ tự xuất hiện ở nguồn — không đảo.
-3. **Đúng mục:** mỗi ảnh phải nằm dưới `<h3>` khớp subsection nguồn. **Không gộp nhiều subsection nguồn vào một `<h3>`**
-   (gộp là FAIL: ảnh của mục Cave sẽ hiện dưới heading Shrine).
-
-- Trang nguồn khai báo trong `SOURCES` của script; một vùng có thể trải trên nhiều trang Subcontent — phải khai đủ.
-- Chưa có cache thì script tự fetch qua Google Translate proxy (lưu `.tmp-src/`, đã gitignore); dùng `--refresh` khi nguồn thay đổi.
-- Script chỉ ra mục nguồn đúng, ví dụ:
-  `Clear Wind Temple: ảnh walkthrough_hrx50... thuộc mục nguồn "Post Kahatanaum Shrine"` → tách heading rồi chạy lại.
-- Vùng **không có nguồn ảnh** (fextralife không có trang Walkthrough cho vùng đó): khai báo slug trong `NO_IMAGE` của
-  `check-image-match.py`; trang phải **0 ảnh** — không nhồi banner/logo cho đủ số — và `PROGRESS.md` phải ghi rõ lý do.
-  Hiện có: `mastersword`, `fifth`, `final` (chỉ vùng 7 Gerudo có walkthrough kèm ảnh).
-- Vùng có nguồn ảnh mới: bổ sung trang nguồn vào `SOURCES` rồi bật cổng cho vùng đó.
-
-## Quy trình Phase B
-> Quy trình hiện hành: làm theo vé trên map https://github.com/phucnd0604/toto-guide/issues/1. Phần dưới là quy trình di sản của bộ 9 vùng, chỉ còn hiệu lực tới vé chuyển nhà T29.
-
-- Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify-regions + check-vietnamese + **check-image-match** → commit riêng → push/deploy → requesting-code-review.
-- Loop executing-plans + requesting-code-review cho đến khi chuẩn xác mới chuyển vùng tiếp.
+## Xem và đo trang local
+- `python tool/preview.py` → mở `http://127.0.0.1:8765/pages/progress-route.html`
+  (trình duyệt và Playwright **chặn `file://`**, nên phải xem qua server này).
+- `python tool/check-mobile.py --width 375 <trang.html>` đo một trang cụ thể.
 
 ## Commit & Deploy
-- Commit message rõ ràng theo task (Phase/Task + tên vùng).
-- Push origin master → Vercel auto-deploy; verify HTTP 200 cho trang và ảnh.
+- Commit message rõ ràng theo vé; mỗi vé một commit (hoặc vài commit trong cùng vé).
+- Push `origin master` → Vercel auto-deploy; kiểm HTTP 200 cho trang mới và 1 ảnh mẫu.
+- CI `.github/workflows/gates.yml` chạy lại các cổng sau mỗi lần push.
 
 ## Agent skills
 
@@ -107,3 +72,7 @@ Dùng bộ 5 label mặc định: `needs-triage`, `needs-info`, `ready-for-agent
 Single-context: từ vựng dự án ở `GLOSSARY.md`, quyết định kiến trúc ở `docs/adr/`, chuẩn dịch tiếng Việt ở
 `docs/translation-standard.md`. Xem `docs/agents/domain.md`.
 
+### Log phiên (khi làm retro)
+
+Log phiên là nhiều frame zstd nối tiếp và công cụ giải nén thông thường chỉ đọc frame đầu. Cách đọc:
+`docs/agents/session-log.md`.
