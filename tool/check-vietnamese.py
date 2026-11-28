@@ -174,6 +174,24 @@ PHRASES += [
     "sword of the hero",
     "tunic of memories",
     "the rito rope bridge",
+    # T4 — tên nhiệm vụ / địa danh của hai chương Nam Đồng Bằng (giữ nguyên tiếng Anh như tên trong game).
+    "a call from the depths",
+    "master kohga of the yiga clan",
+    "misko's treasure of awakening iii",
+    "the beckoning woman",
+    "a picture for outskirt stable",
+    "serenade to kaysa",
+    "the horse guard's request",
+    "disaster in gerudo canyon",
+    "grove of spirits",
+    "secret spring of revival",
+    "gourmets gone missing",
+    "feathered fugitives",
+    "a picture for riverside stable",
+    "a picture for highland stable",
+    "whirly swirly things",
+    "sage's will",
+    "an eerie voice",
 ]
 
 # Từ tiếng Anh thông dụng: nếu còn trong câu tiếng Việt => chưa dịch.
@@ -229,7 +247,7 @@ route seeds shroom carrot flower horn eye storm mystery courage peace find bring
 
 # Âm tiết tiếng Việt không dấu (mang, theo, trong, hang…) — hay bị nhầm là tiếng Anh khi quét WARN.
 VI_ASCII = set("""
-an than theo trong hang sau khi qua mang cho khu bay xong quanh canh vua ra ngay con sang hai nhanh xoay anh men kim trao tay ta xe chi thanh cao leo hoa bom mua
+an than theo trong hang sau khi qua mang cho khu bay xong quanh canh vua ra ngay con sang hai nhanh xoay anh men kim trao tay ta xe chi thanh cao leo hoa bom mua in
 va de co do la ma na no so to tu vi vo xu yeu vao len xuong truoc tren duoi ngoai giua cung voi deu rat kha hon nhat moi nhung hoac nen boi tai den o
 mo mot vai bon nam sau bay chin muoi tram nghin nguoi cai chiec con chau em chi chu bac ong ba me bo anh chi em minh ban
 lam viec di dung can phai nen duoc bi se da dang cho lay dat nang tha nhat gap thay nghe nhin noi goi hoi tra loi

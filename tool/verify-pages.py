@@ -121,10 +121,17 @@ NUM_WORDS = {"một": 1, "hai": 2, "ba": 3, "bốn": 4, "nam": 5, "năm": 5, "s�
              "bảy": 7, "tám": 8, "chín": 9, "mười": 10}
 NUMBER = (r"(?:\d+|(?:mười\s+)?(?:một|hai|ba|bốn|năm|sáu|bảy|tám|chín))")
 SUMMARY_HEADINGS = ("mẹo hoàn thành", "đồ thụ thập", "đồ thu thập", "danh sách kiểm")
+# Mục khung của khuôn chương: có thể có, có thể không, và không tính là "mục đi đường".
+# Trước đây cổng trừ cứng 2 mục này; chương hai phần (Nam Đồng Bằng) chỉ có "Mục lục" ở cấp h2
+# vì "Tuyến đường nhanh" nằm ở h3 đúng như nguồn, nên trừ cứng 2 là đếm sai.
+FRAMEWORK_HEADINGS = ("mục lục", "tuyến đường nhanh")
+ZERO_WORDS = r"(?:không\s+có|không)"
 
 
 def parse_vn_number(text):
     text = text.strip().lower()
+    if text in ("không", "không có"):
+        return 0
     if text.isdigit():
         return int(text)
     parts = text.split()
@@ -148,8 +155,8 @@ def check_toc_summary(label, text, problems):
     sentence = norm_text(match.group(1))
     found = {}
     for key, pattern in (
-        ("content", r"(%s)\s+mục đi đường" % NUMBER),
-        ("summary", r"(%s)\s+mục tổng kết" % NUMBER),
+        ("content", r"(%s|%s)\s+mục đi đường" % (NUMBER, ZERO_WORDS)),
+        ("summary", r"(%s|%s)\s+mục tổng kết" % (NUMBER, ZERO_WORDS)),
     ):
         hit = re.search(pattern, sentence, re.I)
         if not hit:
@@ -160,7 +167,8 @@ def check_toc_summary(label, text, problems):
             return
         found[key] = parse_vn_number(hit.group(1))
     summary = sum(1 for h in headings if h.strip().lower().startswith(SUMMARY_HEADINGS))
-    content = len(headings) - 2 - summary
+    framework = sum(1 for h in headings if h.strip().lower() in FRAMEWORK_HEADINGS)
+    content = len(headings) - framework - summary
     if found["content"] != content or found["summary"] != summary:
         problems.append(
             "%s: câu dẫn Mục lục đếm sai (ghi %d mục đi đường + %d mục tổng kết, thật là %d + %d)"
