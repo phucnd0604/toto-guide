@@ -2,6 +2,17 @@
 
 How the engineering skills should consume this repo's domain documentation when exploring the codebase.
 
+## Repo này: single-context
+
+- Từ vựng dự án: `GLOSSARY.md` ở gốc repo (chương, nhóm vùng, vé, bản đồ, đặc tả, cổng kiểm tra…).
+- Quyết định kiến trúc: `docs/adr/`, đánh số tăng dần.
+- Không có `GLOSSARY-MAP.md`, không có context con.
+
+**Phân biệt hai loại glossary.** `GLOSSARY.md` là từ vựng của dự án (cách gọi khái niệm, dùng khi đặt tên vé,
+issue, tên module). `docs/translation-standard.md` là chuẩn dịch tiếng Việt cho thuật ngữ trong game
+(Ultrahand → Siêu Tay, Shrine → Đền Thờ Nhỏ…), dùng khi viết nội dung site. Viết nội dung thì theo file dịch;
+đặt tên công việc thì theo `GLOSSARY.md`. Hai bên lệch nhau thì báo lại, đừng tự chọn.
+
 ## Before exploring, read these
 
 - **`GLOSSARY.md`** at the repo root, or

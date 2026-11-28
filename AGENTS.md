@@ -88,6 +88,6 @@ Dùng bộ 5 label mặc định: `needs-triage`, `needs-info`, `ready-for-agent
 
 ### Domain docs
 
-Thuật ngữ + chuẩn dịch: `docs/translation-standard.md` (bảng glossary là nguồn chuẩn).
-Repo chưa có `GLOSSARY.md`/`docs/adr/` — nếu cần ADR thì tạo `docs/adr/` khi có quyết định thật. Xem `docs/agents/domain.md`.
+Single-context: từ vựng dự án ở `GLOSSARY.md`, quyết định kiến trúc ở `docs/adr/`, chuẩn dịch tiếng Việt ở
+`docs/translation-standard.md`. Xem `docs/agents/domain.md`.
 
