@@ -50,6 +50,59 @@ Bốn điều kiện, vi phạm một là FAIL:
 **Tên file**: cổng so tên đã chuẩn hoá — bỏ hậu tố kích thước (`-1024x576`) và tiền tố `<so>px-`.
 Vì vậy file trên đĩa phải đặt tên **không có hậu tố kích thước**, phần còn lại giữ nguyên như nguồn.
 
+## Chạy nhanh khi đang viết nội dung
+
+Bảy cổng là cổng chặn trước commit, nhưng khi đang viết một chương thì chạy cả bộ sau mỗi câu
+là quá chậm: mỗi vòng "sửa chữ → build → quét toàn site" tốn vài phút. Bốn cổng nhận phạm vi
+hẹp, dùng để lấy phản hồi sớm:
+
+`
+python tool/check-vietnamese.py --content                # quét chữ trong content/ TRƯỚC khi build
+python tool/check-vietnamese.py great-sky-island          # một slug
+python tool/check-vietnamese.py pages/walkthrough/x.html  # một file
+python tool/check-image-match.py lookout-landing          # một slug
+python tool/check-coverage.py lookout-landing             # một slug
+`
+
+Khi nguồn đã có sẵn trên đĩa (ví dụ bản tải tay trong @@.scratch/@@), bảo cổng ảnh dùng file đó
+thay vì tải lại — nhận đúng một slug:
+
+`
+python tool/check-image-match.py --from .scratch/src-lookout-landing.html lookout-landing
+`
+
+## Soi nguồn và chụp trang
+
+Hai việc lặp lại ở mọi chương, trước đây làm bằng script nháp:
+
+`
+python tool/inspect-source.py lookout-landing          # mục + ảnh + alt gốc + bảng facts + đối chiếu folder
+python tool/inspect-source.py --no-alt hyrule-field    # chỉ đếm mục/ảnh
+python tool/shot.py lookout-landing                    # 375px, cả trang -> .scratch/shots/
+python tool/shot.py --width 1280 --width 375 hyrule-field
+python tool/shot.py --viewport --height 1400 --anchor "#meo-hoan-thanh" lookout-landing
+`
+
+@@tool/shot.py@@ gọi @@tool/mobile-probe.mjs@@ (CDP, cùng đường đo với cổng mobile) nên bề rộng là
+thật, ảnh lazy được ép tải trước khi chụp. Đừng dùng @@chrome --screenshot --window-size=375@@:
+Chrome ép bề rộng tối thiểu nên ảnh trông như tràn ngang dù trang không tràn.
+
+## Định nghĩa "mục" chỉ nằm ở một chỗ
+
+@@tool/source_sections.py@@ là bản duy nhất tách trang thành mục; cả ba cổng đọc mục đều import
+từ đó (@@check-image-match@@, @@verify-pages@@, @@check-coverage@@). Khác biệt duy nhất có chủ ý:
+@@check-coverage@@ đo **chữ** nên bỏ @@<figure>/<img>@@ và bỏ vùng "(trước mục đầu)" — vùng đó chỉ
+có bảng tóm tắt + icon, không có câu nào để đo.
+
+Hai luật của @@verify-pages@@ đáng biết vì chúng có thể FAIL:
+
+- **Heading** bị coi là "chưa dịch" theo đúng luật của @@check-vietnamese@@ (bỏ @@PHRASES@@ rồi
+  tìm từ tiếng Anh thông dụng). Nhờ vậy tên riêng đứng một mình như "Lookout Landing" hay
+  "Boss Bokoblin" qua được, còn "Table of Contents" thì không.
+- **Câu dẫn dưới @@<h2>Mục lục</h2>@@** phải khai đúng số mục: "… N mục đi đường và M mục tổng
+  kết", trong đó M là số heading cuối trang bắt đầu bằng "Mẹo hoàn thành" / "Đồ thu thập" /
+  "Danh sách kiểm". Số đếm viết tay đã sai hai lần ở T2 mà không cổng nào bắt được.
+
 ### Bản dịch: độ phủ
 
 `check-coverage` so từng mục: mục nguồn ≥20 từ mà bản dịch <30% số từ (hoặc 0 khối `<p>/<li>/<tr>`) thì FAIL.

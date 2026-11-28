@@ -6,8 +6,9 @@
  * Cách dùng:
  *   node tool/mobile-probe.mjs --width 375 --height 900 <file.html> [file.html ...]
  *   node tool/mobile-probe.mjs --width 375 --chrome "C:\\...\\chrome.exe" <file>
+ *   node tool/mobile-probe.mjs --width 375 --shot DIR --full <file>   # chụp ảnh để tự review
  *
- * In ra một dòng JSON: [{"file":..., "width":375, "scrollWidth":375}]
+ * In ra một dòng JSON: [{"file":..., "width":375, "scrollWidth":375, "shot": "..."}]
  * Thiếu Chrome -> in {"error": "..."} và thoát mã 3.
  */
 import fs from "node:fs";
@@ -28,14 +29,76 @@ const CANDIDATES = [
 ];
 
 function parseArgs(argv) {
-  const out = { width: 375, height: 900, chrome: null, files: [] };
+  const out = { width: 375, height: 900, chrome: null, files: [], shot: null, full: false, eager: false, anchor: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--width") out.width = parseInt(argv[++i], 10);
     else if (a === "--height") out.height = parseInt(argv[++i], 10);
     else if (a === "--chrome") out.chrome = argv[++i];
+    else if (a === "--shot") out.shot = argv[++i];
+    else if (a === "--full") out.full = true;
+    else if (a === "--eager") out.eager = true;
+    else if (a === "--anchor") out.anchor = argv[++i];
     else out.files.push(a);
   }
+  return out;
+}
+
+// Ảnh lazy không được tải khi chụp ngoài khung nhìn -> gallery ra trắng.
+// Đặt eager rồi đợi decode xong mới chụp, nếu không ảnh trong ảnh chụp sẽ trống.
+async function warmImages(cdp) {
+  await cdp.send("Runtime.evaluate", {
+    expression: "document.querySelectorAll('img[loading=lazy]').forEach(i=>{i.loading='eager';}); 1",
+    returnByValue: true,
+  });
+  await cdp.send("Runtime.evaluate", {
+    expression:
+      "Promise.all([...document.images].map(i=>i.complete?0:new Promise(r=>{i.onload=i.onerror=r;}))).then(()=>document.images.length)",
+    awaitPromise: true,
+    returnByValue: true,
+  });
+  await sleep(300);
+}
+
+async function scrollToAnchor(cdp, anchor) {
+  if (!anchor) return;
+  await cdp.send("Runtime.evaluate", {
+    expression:
+      "(()=>{const el=document.querySelector(location.hash||" + JSON.stringify(anchor) + ");" +
+      "if(el){document.documentElement.style.scrollBehavior='auto'; el.scrollIntoView({block:'start'});} return window.scrollY;})()",
+    returnByValue: true,
+  });
+  await sleep(400);
+}
+
+function shotPath(shot, file, width, full) {
+  const base = path.basename(file).replace(/\.html?$/i, "") + "-" + width + (full ? "-full" : "") + ".png";
+  if (/\.png$/i.test(shot)) return shot;
+  fs.mkdirSync(shot, { recursive: true });
+  return path.join(shot, base);
+}
+
+async function capture(cdp, opts, file) {
+  const out = shotPath(opts.shot, file, opts.width, opts.full);
+  let clip = null;
+  if (opts.full) {
+    const metrics = await cdp.send("Page.getLayoutMetrics");
+    const size = metrics.cssContentSize || metrics.contentSize;
+    clip = {
+      x: 0,
+      y: 0,
+      width: Math.min(size.width, opts.width),
+      height: Math.min(size.height, Number(process.env.SHOT_MAX_HEIGHT || 16000)),
+      scale: 1,
+    };
+  }
+  const shot = await cdp.send("Page.captureScreenshot", {
+    format: "png",
+    captureBeyondViewport: !!opts.full,
+    ...(clip ? { clip } : {}),
+  });
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, Buffer.from(shot.data, "base64"));
   return out;
 }
 
@@ -100,7 +163,7 @@ class Cdp {
   }
 }
 
-async function measure(port, file, width, height) {
+async function measure(port, file, opts, width, height) {
   const url = "file:///" + file.replace(/\\/g, "/");
   const res = await fetch(`http://127.0.0.1:${port}/json/new?${encodeURIComponent(url)}`, { method: "PUT" });
   if (!res.ok) throw new Error("không mở được tab (" + res.status + ")");
@@ -113,6 +176,8 @@ async function measure(port, file, width, height) {
       width, height, deviceScaleFactor: 1, mobile: false,
     });
     await waitFor(() => cdp.events.includes("Page.loadEventFired"), 20000, "tải trang " + path.basename(file));
+    if (opts.shot && (opts.eager || opts.full)) await warmImages(cdp);
+    if (opts.shot) await scrollToAnchor(cdp, opts.anchor);
     const { result } = await cdp.send("Runtime.evaluate", {
       expression: `(() => {
         const d = document.documentElement;
@@ -130,7 +195,9 @@ async function measure(port, file, width, height) {
       returnByValue: true,
     });
     const data = JSON.parse(result.value);
-    return { file, width, clientWidth: data.clientWidth, scrollWidth: data.scrollWidth, wide: data.wide };
+    const out = { file, width, clientWidth: data.clientWidth, scrollWidth: data.scrollWidth, wide: data.wide };
+    if (opts.shot) out.shot = await capture(cdp, opts, file);
+    return out;
   } finally {
     cdp.close();
     await fetch(`http://127.0.0.1:${port}/json/close/${target.id}`).catch(() => {});
@@ -177,7 +244,7 @@ async function main() {
     const results = [];
     for (const file of args.files) {
       try {
-        results.push(await measure(port, file, args.width, args.height));
+        results.push(await measure(port, file, args, args.width, args.height));
       } catch (err) {
         results.push({ file, width: args.width, error: String(err.message || err) });
       }

@@ -372,11 +372,45 @@ def scan(path):
     return rel, hard, warn
 
 
+def resolve_targets(args, content_mode):
+    """Biến tham số dòng lệnh thành danh sách file cần quét.
+
+    Không truyền gì  -> toàn site (index.html + pages/**/*.html), như trước.
+    --content        -> content/**/*.body.html + content/hub.body.html: quét CHỮ TRƯỚC khi build,
+                        để sửa câu chữ không phải chạy cả vòng "build rồi quét lại toàn site".
+    <file.html>      -> đúng file đó (đường dẫn tương đối tính từ gốc repo hoặc tuyệt đối).
+    <slug>           -> pages/<loại>/<slug>.html của slug đó.
+    """
+    if content_mode:
+        return sorted(glob.glob(os.path.join(ROOT, 'content', '**', '*.html'), recursive=True))
+    if not args:
+        return PAGES
+    out = []
+    for arg in args:
+        if arg.lower().endswith(('.html', '.htm')):
+            path = arg if os.path.isabs(arg) else os.path.join(ROOT, arg)
+            out.append(path)
+            continue
+        hits = glob.glob(os.path.join(ROOT, 'pages', '**', arg + '.html'), recursive=True)
+        if not hits:
+            print('[bỏ qua] không tìm thấy trang cho slug %r' % arg)
+            continue
+        out.extend(sorted(hits))
+    return out
+
+
 def main():
     verbose = '-v' in sys.argv
+    content_mode = '--content' in sys.argv
+    args = [a for a in sys.argv[1:] if not a.startswith('-')]
+    targets = resolve_targets(args, content_mode)
+    if not targets:
+        print('KHÔNG có file nào để quét')
+        return 0
     th = tw = 0
-    for p in PAGES:
+    for p in targets:
         if not os.path.exists(p):
+            print('[thiếu] %s' % p)
             continue
         rel, hard, warn = scan(p)
         th += len(hard); tw += len(warn)

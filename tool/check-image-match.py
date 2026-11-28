@@ -43,9 +43,11 @@ UA = {
         "(KHTML, like Gecko) Chrome/131.0 Safari/537.36"
     )
 }
-H2_RE = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.I | re.S)
-IMG_RE = re.compile(r"""<img\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I | re.S)
-TAG_RE = re.compile(r"<[^>]+>")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import source_sections as shared  # noqa: E402  (định nghĩa "mục" dùng chung cho mọi cổng)
+
+read_text = shared.read_text
+norm_name = shared.norm_name
 
 
 def load_build_module():
@@ -56,76 +58,17 @@ def load_build_module():
     return module
 
 
-def read_text(path):
-    with open(path, encoding="utf-8", errors="replace") as fh:
-        return fh.read()
-
-
-def norm_text(fragment):
-    return re.sub(r"\s+", " ", TAG_RE.sub(" ", fragment)).strip()
-
-
-def norm_name(value):
-    name = urllib.parse.unquote(value.split("?")[0].split("#")[0].split("/")[-1])
-    name = re.sub(r"^\d+px-", "", name, flags=re.I)
-    name = re.sub(r"-\d+x\d+(?=\.[A-Za-z0-9]+$)", "", name)
-    return name.lower()
-
-
-def article_html(text):
-    for tag in ("article", "main"):
-        match = re.search(
-            r"<%s\b[^>]*>(.*?)</%s>" % (tag, tag), text, re.I | re.S
-        )
-        if match:
-            return match.group(1)
-    match = re.search(r"<body\b[^>]*>(.*?)</body>", text, re.I | re.S)
-    return match.group(1) if match else text
-
-
-def parse_sections(text, keep):
-    """Tách trang thành các mục H2 theo thứ tự tài liệu; keep(src) quyết định ảnh nào được tính."""
-    body = article_html(text)
-    events = []
-    for match in H2_RE.finditer(body):
-        events.append((match.start(), "h", norm_text(match.group(1))))
-    for match in IMG_RE.finditer(body):
-        src = match.group(1)
-        if keep(src):
-            events.append((match.start(), "i", src))
-    events.sort(key=lambda item: item[0])
-    sections = []
-    for _, kind, value in events:
-        if kind == "h":
-            sections.append([value, []])
-        else:
-            if not sections:
-                sections.append(["(trước mục đầu)", []])
-            sections[-1][1].append(value)
-    return sections
-
-
 def load_sections(kind, slug):
-    base = os.path.join(CACHE_DIR, kind, slug)
-    if os.path.exists(base + ".json"):
+    """Mục của nguồn, đọc qua module dùng chung (cache .json hoặc .html)."""
+    path = shared.cache_path(ROOT, kind, slug)
+    if path is None:
+        return None
+    if path.endswith(".json"):
         try:
-            data = json.loads(read_text(base + ".json"))
+            json.loads(read_text(path))
         except ValueError:
             return {"error": "cache JSON lỗi: %s" % (kind + "/" + slug + ".json")}
-        sections = []
-        for item in data.get("sections", []):
-            sections.append(
-                [item.get("heading", ""), [norm_name(x) for x in item.get("images", [])]]
-            )
-        return {"sections": sections, "path": base + ".json"}
-    if os.path.exists(base + ".html"):
-        text = read_text(base + ".html")
-        sections = parse_sections(text, lambda src: "/uploads/" in src)
-        return {
-            "sections": [[heading, [norm_name(x) for x in images]] for heading, images in sections],
-            "path": base + ".html",
-        }
-    return None
+    return {"sections": shared.source_sections(ROOT, kind, slug), "path": path}
 
 
 def proxy_url(url):
@@ -163,8 +106,10 @@ def page_sections(entry):
     path = os.path.join(PAGES_DIR, kind, slug + ".html")
     if not os.path.isfile(path):
         return None
-    text = read_text(path)
-    return parse_sections(text, lambda src: "/images/" in src)
+    return shared.page_split(read_text(path))
+
+
+SOURCE_OVERRIDE = None  # --from FILE: coi file cục bộ là nguồn của slug đang kiểm
 
 
 def check(entry, refresh, refresh_missing=False):
@@ -173,7 +118,7 @@ def check(entry, refresh, refresh_missing=False):
     cached = os.path.exists(os.path.join(CACHE_DIR, kind, slug + ".html")) or os.path.exists(
         os.path.join(CACHE_DIR, kind, slug + ".json")
     )
-    if source_url and (refresh or (refresh_missing and not cached)):
+    if source_url and not SOURCE_OVERRIDE and (refresh or (refresh_missing and not cached)):
         refresh_cache(kind, slug, source_url)
     sections = page_sections(entry)
     if sections is None:
@@ -205,7 +150,11 @@ def check(entry, refresh, refresh_missing=False):
             fails.append("%s: file không được dùng: %s" % (kind + "/" + slug, name))
 
     if used:
-        source = load_sections(kind, slug)
+        if SOURCE_OVERRIDE:
+            source = {"sections": shared.source_split(read_text(SOURCE_OVERRIDE)),
+                      "path": SOURCE_OVERRIDE}
+        else:
+            source = load_sections(kind, slug)
         if source is None:
             fails.append(
                 "%s: chưa có cache nguồn (.tmp-src/%s/%s.html) — chạy --refresh" % (kind + "/" + slug, kind, slug)
@@ -247,8 +196,21 @@ def check(entry, refresh, refresh_missing=False):
 
 
 def main():
+    global SOURCE_OVERRIDE
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     refresh = "--refresh" in sys.argv
+    if "--from" in sys.argv:
+        index = sys.argv.index("--from")
+        if index + 1 >= len(sys.argv):
+            print("--from cần một đường dẫn file nguồn")
+            return 1
+        raw_from = sys.argv[index + 1]
+        SOURCE_OVERRIDE = raw_from if os.path.isabs(raw_from) else os.path.join(ROOT, raw_from)
+        if raw_from in args:
+            args.remove(raw_from)
+        if not os.path.isfile(SOURCE_OVERRIDE):
+            print("không thấy file nguồn: %s" % SOURCE_OVERRIDE)
+            return 1
     refresh_missing = "--refresh-missing" in sys.argv
     type_filter = None
     if "--type" in sys.argv:
@@ -272,6 +234,11 @@ def main():
         known = {e["slug"] for e in ctx["entries"]}
         for slug in sorted(wanted - known):
             print("bỏ qua %r: không có trong content/" % slug)
+
+    if SOURCE_OVERRIDE and len(entries) != 1:
+        print("--from chỉ dùng được với đúng MỘT slug (đang có %d) — bỏ --from để kiểm bình thường"
+              % len(entries))
+        return 1
 
     failures = 0
     for entry in entries:

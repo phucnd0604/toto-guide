@@ -40,6 +40,13 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 - T2 cũng sửa `tool/check-vietnamese.py` theo đúng quy ước trong `tool/README.md`: thêm âm tiết Việt
   không dấu `an`, `than` vào `VI_ASCII` và 4 tên nhiệm vụ phụ vào `PHRASES` — thêm vào danh sách
   miễn trừ thay vì bẻ câu cho vừa cổng.
+- Retro sau T2 (2026-11-28) — chỉ đổi công cụ, không đổi nội dung:
+  `tool/source_sections.py` là định nghĩa "mục" **duy nhất** (ba cổng import, trước đó mỗi cổng tự viết một bản);
+  `verify-pages` dùng đúng luật heading của `check-vietnamese` (hết cảnh hai cổng đá nhau vụ tên riêng) và kiểm câu dẫn
+  Mục lục có đếm đúng số mục; `check-vietnamese` nhận `--content`/slug/file để quét chữ **trước** khi build;
+  `check-image-match --from` dùng nguồn đã có trên đĩa thay vì tải lại; thêm `tool/inspect-source.py` (soi chương nguồn)
+  và `tool/shot.py` (chụp ảnh review 375/1280px qua CDP, thay cho `chrome --screenshot` hay hỏng).
+  Đã kiểm lại: cả bảy cổng PASS, `pages/` không đổi byte nào.
 
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo

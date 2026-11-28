@@ -22,6 +22,8 @@ if hasattr(sys.stdout, "reconfigure"):
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES_DIR = os.path.join(ROOT, "pages")
+sys.path.insert(0, os.path.join(ROOT, "tool"))
+import source_sections as shared  # noqa: E402  (định nghĩa "mục" dùng chung)
 VN_RE = re.compile(
     "[ăâđêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ]",
     re.I,
@@ -53,11 +55,16 @@ def norm_text(fragment):
 
 
 def english_heading(fragment):
+    """Heading bị coi là "chưa dịch" theo đúng luật của check-vietnamese, không phải luật riêng.
+
+    Bản cũ tự đặt luật ("không có ký tự Việt + ≥2 từ") nên FAIL cả tên riêng đứng một mình
+    như "Lookout Landing" trong khi check-vietnamese vẫn cho qua vì nằm trong PHRASES.
+    Hai cổng đá nhau thì người viết không biết tin cổng nào; nay chỉ còn một luật.
+    """
     text = norm_text(fragment)
     if VN_RE.search(text):
         return False
-    words = re.findall(r"[A-Za-z][A-Za-z'’\-]*", text)
-    return len(words) >= 2
+    return bool(vn_gate.untranslated(text))
 
 
 def check_common(label, text, problems, warns):
@@ -106,6 +113,59 @@ def check_content_page(entry, problems, warns):
     found = X_RE.search(norm_text(text))
     if found:
         problems.append('%s: còn dùng "xN": %s' % (label, found.group(0).strip()))
+    check_toc_summary(label, text, problems)
+
+
+TOC_P_RE = re.compile(r"<h2\b[^>]*>\s*Mục lục\s*</h2>\s*<p>(.*?)</p>", re.I | re.S)
+NUM_WORDS = {"một": 1, "hai": 2, "ba": 3, "bốn": 4, "nam": 5, "năm": 5, "sáu": 6,
+             "bảy": 7, "tám": 8, "chín": 9, "mười": 10}
+NUMBER = (r"(?:\d+|(?:mười\s+)?(?:một|hai|ba|bốn|năm|sáu|bảy|tám|chín))")
+SUMMARY_HEADINGS = ("mẹo hoàn thành", "đồ thụ thập", "đồ thu thập", "danh sách kiểm")
+
+
+def parse_vn_number(text):
+    text = text.strip().lower()
+    if text.isdigit():
+        return int(text)
+    parts = text.split()
+    if len(parts) == 2 and parts[0] == "mười":
+        return 10 + NUM_WORDS.get(parts[1], 0)
+    return NUM_WORDS.get(text)
+
+
+def check_toc_summary(label, text, problems):
+    """Câu dẫn dưới <h2>Mục lục</h2> phải khai đúng số mục đi đường và số mục tổng kết.
+
+    Vì sao: số đếm viết tay là thứ trôi ngay khi thêm/bớt một mục — đã sai hai lần ở T2
+    ("chín mục đi đường" cho 8 mục, "bảy mục đi đường" cho 8 mục) mà không cổng nào bắt được.
+    Đếm mục tổng kết theo heading cuối trang, rồi kiểm cả hai con số trong câu.
+    """
+    headings = [h for h, _ in shared.page_split(text) if h]
+    match = TOC_P_RE.search(text)
+    if not match:
+        problems.append('%s: thiếu câu dẫn "<p>" ngay sau <h2>Mục lục</h2>' % label)
+        return
+    sentence = norm_text(match.group(1))
+    found = {}
+    for key, pattern in (
+        ("content", r"(%s)\s+mục đi đường" % NUMBER),
+        ("summary", r"(%s)\s+mục tổng kết" % NUMBER),
+    ):
+        hit = re.search(pattern, sentence, re.I)
+        if not hit:
+            problems.append(
+                '%s: câu dẫn Mục lục phải nêu "… mục đi đường và … mục tổng kết" (đang: %s)'
+                % (label, sentence[:90])
+            )
+            return
+        found[key] = parse_vn_number(hit.group(1))
+    summary = sum(1 for h in headings if h.strip().lower().startswith(SUMMARY_HEADINGS))
+    content = len(headings) - 2 - summary
+    if found["content"] != content or found["summary"] != summary:
+        problems.append(
+            "%s: câu dẫn Mục lục đếm sai (ghi %d mục đi đường + %d mục tổng kết, thật là %d + %d)"
+            % (label, found["content"], found["summary"], content, summary)
+        )
 
 
 def load_source_sections(kind, slug):
@@ -167,8 +227,9 @@ def check_index(ctx, kind, key, problems, warns):
 
 def main():
     build = load_module("build-pages.py", "build_pages")
-    global image_gate
+    global image_gate, vn_gate
     image_gate = load_module("check-image-match.py", "check_image_match")
+    vn_gate = load_module("check-vietnamese.py", "check_vietnamese")
 
     ctx = build.load_site(os.path.join(ROOT, "content"))
     if ctx["errors"]:

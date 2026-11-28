@@ -51,6 +51,10 @@ Trang trong `pages/` là **sản phẩm sinh ra** từ `content/`: sửa `conten
 - `python tool/preview.py` → mở `http://127.0.0.1:8765/pages/progress-route.html`
   (trình duyệt và Playwright **chặn `file://`**, nên phải xem qua server này).
 - `python tool/check-mobile.py --width 375 <trang.html>` đo một trang cụ thể.
+- `python tool/shot.py <slug>` chụp ảnh để tự review (`--width 1280 --width 375`, `--anchor`,
+  `--viewport`); ảnh vào `.scratch/shots/`. Dùng cái này thay cho `chrome --screenshot`.
+- `python tool/inspect-source.py <slug>` soi một chương nguồn: mục, ảnh, alt gốc, bảng facts,
+  đối chiếu folder ảnh — thay cho script nháp mỗi chương một lần.
 
 ## Commit & Deploy
 - Commit message rõ ràng theo vé; mỗi vé một commit (hoặc vài commit trong cùng vé).
@@ -58,6 +62,13 @@ Trang trong `pages/` là **sản phẩm sinh ra** từ `content/`: sửa `conten
 - CI `.github/workflows/gates.yml` chạy lại các cổng sau mỗi lần push.
 
 ## Agent skills
+
+### Wayfinder (giao thức map)
+
+Skill `wayfinder` chỉ gọi được bằng slash (`/wayfinder`): nó để `disable-model-invocation: true`
+nên `skill("wayfinder")` sẽ báo lỗi. Vé dự án vẫn ghi "nạp wayfinder" theo nghĩa slash command.
+**Không sửa định nghĩa skill**; nếu prompt không có slash mà vẫn cần giao thức map, đọc thẳng
+`~/.dsh/skills/wayfinder/SKILL.md`.
 
 ### Issue tracker
 

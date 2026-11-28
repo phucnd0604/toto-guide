@@ -23,10 +23,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CACHE_DIR = os.path.join(ROOT, ".tmp-src")
-H2_RE = re.compile(r"<h2\b[^>]*>(.*?)</h2>", re.I | re.S)
-IMG_RE = re.compile(r"<img\b[^>]*>", re.I)
-FIG_RE = re.compile(r"<figure\b.*?</figure>", re.I | re.S)
+sys.path.insert(0, os.path.join(ROOT, "tool"))
+import source_sections as shared  # noqa: E402  (định nghĩa "mục" dùng chung)
 IDEAL_RE = re.compile(r"<aside\b.*?</aside>", re.I | re.S)
 MIN_SOURCE_WORDS = 20
 MIN_RATIO = 0.30
@@ -51,30 +49,20 @@ def words(fragment):
     return [w for w in re.split(r"\s+", text) if w.strip()]
 
 
-def split_sections(text, keep_article):
-    """Trả [(heading, html)] cho từng mục; bỏ ảnh để chỉ đo phần chữ."""
-    body = keep_article(text)
-    body = FIG_RE.sub(" ", body)
-    body = IMG_RE.sub(" ", body)
-    marks = [m.start() for m in H2_RE.finditer(body)]
-    sections = []
-    for index, start in enumerate(marks):
-        end = marks[index + 1] if index + 1 < len(marks) else len(body)
-        heading = re.sub(r"<[^>]+>", " ", H2_RE.match(body, start).group(1)).strip()
-        sections.append((heading, body[start:end]))
-    return sections
-
-
 def source_sections(kind, slug, image_gate):
-    base = os.path.join(CACHE_DIR, kind, slug)
-    if os.path.exists(base + ".html"):
-        text = read_text(base + ".html")
-        return split_sections(text, image_gate.article_html)
-    if os.path.exists(base + ".json"):
-        data = json.loads(read_text(base + ".json"))
-        return [(item.get("heading", ""), "<p>" + " ".join(str(x) for x in item.get("text", [])) + "</p>")
-                for item in data.get("sections", [])]
-    return None
+    """Mục của nguồn, chỉ phần CHỮ — dùng chung text_sections() với hai cổng kia.
+
+    Khác biệt có chủ ý: cổng này đo chữ nên bỏ <figure>/<img> và bỏ vùng "(trước mục đầu)"
+    (vùng đó chỉ có bảng tóm tắt + icon). Hai cổng kia vẫn đếm vùng đó — xem tool/README.md.
+    """
+    path = shared.cache_path(ROOT, kind, slug)
+    if path is None:
+        return None
+    if path.endswith(".html"):
+        return shared.text_sections(read_text(path))
+    data = json.loads(read_text(path))
+    return [(item.get("heading", ""), "<p>" + " ".join(str(x) for x in item.get("text", [])) + "</p>")
+            for item in data.get("sections", [])]
 
 
 def page_sections(kind, slug, pages_dir):
@@ -85,7 +73,7 @@ def page_sections(kind, slug, pages_dir):
     main = re.search(r'<main class="content" id="main">(.*?)</main>', text, re.S)
     body = main.group(1) if main else text
     body = IDEAL_RE.sub(" ", body)
-    return split_sections(body, lambda t: t)
+    return shared.text_sections(body)
 
 
 def check(entry, pages_dir, image_gate):
