@@ -89,7 +89,8 @@ nên `skill("wayfinder")` sẽ báo lỗi. Vé dự án vẫn ghi "nạp wayfind
 ### Bàn giao vé cho session mới
 
 Prompt cho agent làm vé kế tiếp: **`docs/agents/ticket-prompt-template.md`**. Giữ tổng quát — vai trò,
-thứ tự nạp nguồn, điểm dừng, mẫu báo cáo; chi tiết kỹ thuật để repo tự nói, đừng chép lại vào prompt.
+thứ tự nạp nguồn, **bảng skill theo bước**, điểm dừng, mẫu báo cáo; chi tiết kỹ thuật để repo tự nói,
+đừng chép lại vào prompt.
 
 ### Issue tracker
 
