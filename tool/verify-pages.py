@@ -120,7 +120,7 @@ TOC_P_RE = re.compile(r"<h2\b[^>]*>\s*Mục lục\s*</h2>\s*<p>(.*?)</p>", re.I 
 NUM_WORDS = {"một": 1, "hai": 2, "ba": 3, "bốn": 4, "nam": 5, "năm": 5, "sáu": 6,
              "bảy": 7, "tám": 8, "chín": 9, "mười": 10}
 NUMBER = (r"(?:\d+|(?:mười\s+)?(?:một|hai|ba|bốn|năm|sáu|bảy|tám|chín))")
-SUMMARY_HEADINGS = ("mẹo hoàn thành", "đồ thụ thập", "đồ thu thập", "danh sách kiểm")
+SUMMARY_HEADINGS = ("mẹo hoàn thành", "đồ thu thập", "danh sách kiểm")
 # Mục khung của khuôn chương: có thể có, có thể không, và không tính là "mục đi đường".
 # Trước đây cổng trừ cứng 2 mục này; chương hai phần (Nam Đồng Bằng) chỉ có "Mục lục" ở cấp h2
 # vì "Tuyến đường nhanh" nằm ở h3 đúng như nguồn, nên trừ cứng 2 là đếm sai.
