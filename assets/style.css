@@ -154,11 +154,25 @@ html{scroll-padding-top:6rem}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .badge{display:inline-block;padding:.2rem .6rem;border-radius:999px;font-size:.75rem;font-weight:600;background:var(--tint);color:var(--primary);border:1px solid var(--border)}
 .badge.warm{background:var(--tint-accent);color:var(--accent)}
-table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.92rem;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+table{width:100%;min-width:0;border-collapse:collapse;margin:.8rem 0;font-size:.92rem;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 th,td{padding:.65rem .85rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
 th{background:var(--card-bg);color:var(--primary);font-weight:600}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--tint-faint)}
+/* Điện thoại: bảng không được rộng hơn khung; bảng khóa/giá trị trong .card xếp dọc cho dễ đọc */
+@media(max-width:700px){
+  th,td{padding:.5rem .6rem;font-size:.9rem;overflow-wrap:break-word}
+  .card table,.card table tbody,.card table tr,.card table th,.card table td{display:block;width:auto}
+  .card table tr{border-bottom:1px solid var(--border);padding:.45rem 0}
+  .card table tr:last-child{border-bottom:0}
+  .card table th{padding-bottom:.1rem;border-bottom:0;background:transparent}
+  .card table td{padding-top:0;border-bottom:0}
+  .card table tr:hover td{background:transparent}
+}
+/* Bảng nhiều cột (từ 4 cột) vẫn giữ bề ngang tối thiểu để không bị bóp nát như bảng 2-3 cột */
+@media(max-width:700px){table:has(tr > td:nth-child(4)){min-width:520px}}
+/* Bảng dữ liệu 3 cột (ví dụ "Đồ thu thập"): cho cột đầu rộng hơn để tên món không bị bóp */
+@media(max-width:700px){main.content > table th:first-child,main.content > table td:first-child{width:36%}}
 ul,ol{padding-left:1.4rem}
 li{margin:.3rem 0}
 details{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:.55rem .95rem;margin:.6rem 0;box-shadow:0 1px 2px rgba(0,0,0,.06)}
@@ -188,7 +202,6 @@ footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);
   .navbar nav{display:none;width:100%}
   .navbar nav.open{display:flex;flex-direction:column}
   .container{padding:0 1rem}
-  table{min-width:520px}
   img{max-width:100%}
 }
 
