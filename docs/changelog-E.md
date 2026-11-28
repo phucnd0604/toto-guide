@@ -75,6 +75,28 @@
   `tool/check-vietnamese.py` thêm 6 cụm vào `PHRASES` (5 tên trang bị bộ Vực Sâu + `the rito rope bridge`).
 - Ghi chú dữ liệu: chương Vực Sâu không vào Đền Thờ Nhỏ nào (chỉ thắp Rễ Sáng) nên card trên hub ghi
   "0 đền · 1 hang · 3 Korok · 12 rương" — đúng nguồn, giữ nguyên số 0 thay vì ẩn trường.
+- T5 giữ đúng khuôn T1–T4 cho ba chương của nhóm Tabantha: Biên Giới Tabantha (9 mục / 69 ảnh), Đền Thờ
+  Bị Lãng Quên (11 mục / 106 ảnh), Hẻm Núi Tanagar & Sườn Hyrule (12 mục / 99 ảnh) — cả ba **không có
+  ảnh trước `<h2>` đầu** nên số mục bằng đúng số `<h2>`; bảy cổng PASS. Bốn điều gặp thật:
+  (1) trang nguồn có thể kết thúc bằng **khối quảng bá site-chrome** ("Track them": `<h2>` + `<h3>` +
+  `<h4>` + bảng 5 link guide của zeldacentral, không nằm trong mục lục của chính nguồn) →
+  `IGNORED_SOURCE_HEADINGS` trong `tool/source_sections.py` bỏ khối đó ở **cả hai phía** (nguồn và trang
+  đã sinh) nên số mục vẫn khớp 1:1 mà không phải dịch quảng cáo; luật ghi vào `tool/README.md`;
+  (2) heading chứa `&amp;` làm `slug_id()` sinh `id` có chữ "amp" → mục lục trỏ sai chỗ mà **không cổng
+  nào bắt** (bài học T3 về entity mở rộng sang `&`): viết **ký tự `&` thật** trong heading;
+  (3) `check-vietnamese` so `PHRASES` bằng dấu nháy thẳng nên **không khớp tên có `’` thật`
+  ("The Dragon’s Tears" bị coi là chưa dịch) → thêm `norm_quotes()` chuẩn hoá `‘ ’` trước khi so, và khai
+  thêm tên vật phẩm/ký ức của ba chương vào `PHRASES`;
+  (4) chương Tanagar có **6 `<h3>`** nhưng mục lục vẫn **một cấp theo `<h2>`** (tiền lệ 8 chương cũ);
+  `<h3>` giữ đúng thứ tự trong bài, không cần `id` tay vì mục lục không nhảy tới chúng. Icon đứng trước
+  `<h3>` trong nguồn (Hải Cẩu Cát, Boss Bokoblin, U Ám, Modar, Korok, Giọt Lệ Rồng) đặt inline ở đầu
+  đoạn của chính mục đó để không lệch thứ tự ảnh.
+- T5 để lại đúng **6 WARN** của `check-vietnamese` ở **4 trang cũ** (cụm tên riêng có sẵn), ba trang mới
+  đều `warn=0`; checker trước khi sửa báo 11 WARN trên cùng các trang đó nên đây không phải hồi quy.
+- T5 sửa `docs/agents/ticket-prompt-template.md`: prompt cũ chỉ nói "nạp using-superpowers + skill chính"
+  nên agent bỏ `translation`, `verification-before-completion`, `requesting-code-review`,
+  `finishing-a-development-branch` → template nay có **bảng skill theo bước** và "Định nghĩa xong" gắn với
+  từng skill; `AGENTS.md` thêm một dòng cho khớp.
 
 ## Việc đã làm ngoài nội dung vùng (bộ 9 vùng fextralife)
 
