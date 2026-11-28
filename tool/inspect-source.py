@@ -82,7 +82,7 @@ def inspect(slug, kind, path, show_alt=True):
     folder = os.path.join(ROOT, "images", kind, slug)
     if os.path.isdir(folder):
         on_disk = sorted(f.lower() for f in os.listdir(folder))
-        need = sorted(seen)
+        need = sorted(set(alts))
         missing = [n for n in need if n not in on_disk]
         extra = [n for n in on_disk if n not in need]
         print("\n--- folder images/%s/%s: %d file ---" % (kind, slug, len(on_disk)))
@@ -102,6 +102,7 @@ def main(argv):
     parser.add_argument("--type", default="walkthrough", choices=shared.PAGE_TYPES)
     parser.add_argument("--from", dest="source_file", help="đọc file nguồn này thay vì cache .tmp-src")
     parser.add_argument("--no-alt", action="store_true", help="không in alt gốc")
+    parser.add_argument("--files", action="store_true", help="chỉ in tên file ảnh đầy đủ theo từng mục (để tải ảnh)")
     args = parser.parse_args(argv)
 
     missing = 0
@@ -114,6 +115,13 @@ def main(argv):
             print("CHƯA CÓ NGUỒN cho %s/%s — chạy: python tool/check-image-match.py --refresh %s"
                   % (args.type, slug, slug))
             missing += 1
+            continue
+        if args.files:
+            text = read(path)
+            for index, (heading, images) in enumerate(shared.source_split(text)):
+                print("[%02d] %s" % (index, heading or "(trước mục đầu)"))
+                for name in images:
+                    print("     " + name)
             continue
         inspect(slug, args.type, path, show_alt=not args.no_alt)
     return 1 if missing and missing == len(args.slugs) else 0

@@ -167,6 +167,13 @@ PHRASES += [
     "scales",
     "sludge like",
     "korok puzzle",
+    # Trang bị bộ Vực Sâu: tên món giữ nguyên tiếng Anh như các món khác.
+    "tunic of the depths",
+    "hood of the depths",
+    "gaiters of the depths",
+    "sword of the hero",
+    "tunic of memories",
+    "the rito rope bridge",
 ]
 
 # Từ tiếng Anh thông dụng: nếu còn trong câu tiếng Việt => chưa dịch.
