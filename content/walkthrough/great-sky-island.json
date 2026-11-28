@@ -1,0 +1,17 @@
+{
+  "title": "Đảo Trời Lớn: Đền Thờ Nhỏ, Hạt Korok và rương",
+  "desc": "Đi trọn Đảo Trời Lớn: 4 Đền Thờ Nhỏ, 4 hang, 17 hạt Korok và 25 rương, theo đúng thứ tự đường và có ảnh minh họa từng bước.",
+  "region": "Great Sky Island",
+  "order": 1,
+  "source": "https://zeldacentral.com/games/tears-of-the-kingdom/walkthrough/great-sky-island/",
+  "meta": {
+    "quests": [
+      "Find Princess Zelda",
+      "The Closed Door"
+    ],
+    "shrines": 4,
+    "caves": 4,
+    "koroks": 17,
+    "chests": 25
+  }
+}

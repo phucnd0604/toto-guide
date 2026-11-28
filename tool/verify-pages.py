@@ -30,7 +30,6 @@ X_RE = re.compile(r"(?:^|[^\w])(?:x\d+|\d+x)(?![\w])", re.I)
 META_DESC_RE = re.compile(r'<meta\s+name="description"\s+content="([^"]*)"', re.I)
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.I | re.S)
 H1_RE = re.compile(r"<h1\b", re.I)
-H2_OPEN_RE = re.compile(r"<h2\b", re.I)
 HEADING_RE = re.compile(r"<h([123])\b[^>]*>(.*?)</h\1>", re.I | re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 HUB_BLOCKS = ["den-tho-chinh", "nhiem-vu-chinh", "lo-trinh-100", "tham-khao"]
@@ -89,14 +88,17 @@ def check_content_page(entry, problems, warns):
     for marker in ('class="container layout"', 'class="sidebar rail"', 'class="content"'):
         if marker not in text:
             problems.append("%s: thiếu layout 2 cột (%s)" % (label, marker))
-    h2_count = len(H2_OPEN_RE.findall(text))
+    # Đếm mục theo đúng cách cổng ảnh tách mục: số <h2> cộng vùng trước mục đầu tiên.
+    # Nguồn có thể có ảnh nằm trước <h2> đầu (bảng tóm tắt), khi đó đếm <h2> thô sẽ lệch một mục.
+    page_sections = image_gate.page_sections(entry)
+    section_count = len(page_sections) if page_sections is not None else 0
     source = load_source_sections(kind, slug)
     if source is None:
         warns.append("%s: chưa có cache nguồn để đối chiếu số mục H2" % label)
-    elif source["count"] != h2_count:
+    elif source["count"] != section_count:
         problems.append(
-            "%s: số mục H2 lệch nguồn (%d mục trong trang, %d mục nguồn)"
-            % (label, h2_count, source["count"])
+            "%s: số mục lệch nguồn (%d mục trong trang, %d mục nguồn)"
+            % (label, section_count, source["count"])
         )
     for match in HEADING_RE.finditer(text):
         if english_heading(match.group(2)):
