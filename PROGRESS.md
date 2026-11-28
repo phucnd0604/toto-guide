@@ -13,13 +13,14 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 | T0 | Hạ tầng: generator, template, 5 cổng, hub khung | ✅ xong 2026-11-28 (đã duyệt, đã merge `master`) |
 | T1 | Đảo Trời Lớn (1 chương, chương mẫu chốt khuôn) | ✅ xong 2026-11-28 (đã duyệt; commit `c266294` trên `master`, deploy HTTP 200) |
 | T2 | Hyrule Field & Hyrule Castle (1/3): Điểm Quan Sát, Đồng Bằng Hyrule, Phế Tích Thị Trấn Lâu Đài | ✅ xong 2026-11-28 (đã duyệt; commit `77eb6b5` trên `master`, deploy HTTP 200) |
+| T3 | Hyrule Field & Hyrule Castle (2/3): Vực Sâu Trung Tâm Hyrule, Phần Còn Lại Của Lâu Đài Hyrule | ✅ xong 2026-11-28 (đã duyệt; commit `9c8e701` + `2f90602` trên `master`, deploy HTTP 200) |
 
-- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) có 3 chương, 10 nhóm còn lại đang trống.
+- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) có 5 chương (2–6), 10 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
 - Bảy cổng (thêm 2 cổng ngày 2026-11-28 sau retro T1): `tool/build-pages.py --check` →
   `tool/check-links.py` → `tool/verify-pages.py` → `tool/check-image-match.py` →
   `tool/check-vietnamese.py` → `tool/check-mobile.py` → `tool/check-coverage.py`. Cả bảy PASS với
-  4 chương nội dung (671 ảnh, ~31 MB).
+  6 chương nội dung (860 ảnh, ~40 MB).
 - `tool/check-mobile.py` + `tool/mobile-probe.mjs`: render bằng Chrome headless (CDP, không thêm
   dependency), FAIL khi `scrollWidth > clientWidth` ở 375px/768px. Cổng này ra đời vì T1 đã PASS đủ
   5 cổng cũ mà trang vẫn tràn ngang trên điện thoại.
@@ -47,6 +48,22 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
   `check-image-match --from` dùng nguồn đã có trên đĩa thay vì tải lại; thêm `tool/inspect-source.py` (soi chương nguồn)
   và `tool/shot.py` (chụp ảnh review 375/1280px qua CDP, thay cho `chrome --screenshot` hay hỏng).
   Đã kiểm lại: cả bảy cổng PASS, `pages/` không đổi byte nào.
+- T3 giữ đúng khuôn T1/T2 cho hai chương (Vực Sâu Trung Tâm Hyrule 16 mục / 104 ảnh; Phần Còn Lại Của
+  Lâu Đài Hyrule 16 mục = 15 `<h2>` + vùng trước H2 đầu / 85 ảnh), bảy cổng PASS. Bốn điều gặp thật,
+  các đợt sau áp dụng luôn:
+  (1) nguồn có **icon xen giữa ảnh chụp** trong cùng một mục (chương Lâu Đài: 19 ảnh, 6 icon h3) →
+  giữ nguyên thứ tự ảnh bằng cách chia **một gallery cho mỗi mục `<h3>`**, icon đặt inline ở đầu đoạn;
+  (2) một ảnh nguồn lặp ở **hai mục khác nhau** (`royal-shield.webp` ở mục 4 và mục 9) → chỉ dùng ở
+  vị trí đầu, folder vì thế có 85 file cho 86 lượt ảnh nguồn;
+  (3) nguồn có **`<h3>` rỗng**, không một câu nội dung, không ảnh ("Spot Corvash Canyon Mine") → bỏ
+  heading rỗng, cổng không đếm `h3` nên vẫn khớp 1:1;
+  (4) heading chứa entity HTML (`&#8217;`) bị generator escape hai lần ở sidebar/TOC → viết **ký tự
+  `’` thật** trong heading, đừng dùng entity.
+- T3 sửa thêm `tool/inspect-source.py`: thêm `--files` in **tên file ảnh đầy đủ** theo từng mục
+  (bản cũ cắt 14 ký tự nên không tải ảnh được) và sửa lỗi `NameError: seen` khi folder ảnh đã tồn tại;
+  `tool/check-vietnamese.py` thêm 6 cụm vào `PHRASES` (5 tên trang bị bộ Vực Sâu + `the rito rope bridge`).
+- Ghi chú dữ liệu: chương Vực Sâu không vào Đền Thờ Nhỏ nào (chỉ thắp Rễ Sáng) nên card trên hub ghi
+  "0 đền · 1 hang · 3 Korok · 12 rương" — đúng nguồn, giữ nguyên số 0 thay vì ẩn trường.
 
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo
