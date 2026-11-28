@@ -86,6 +86,11 @@ nên `skill("wayfinder")` sẽ báo lỗi. Vé dự án vẫn ghi "nạp wayfind
 **Không sửa định nghĩa skill**; nếu prompt không có slash mà vẫn cần giao thức map, đọc thẳng
 `~/.dsh/skills/wayfinder/SKILL.md`.
 
+### Bàn giao vé cho session mới
+
+Prompt cho agent làm vé kế tiếp: **`docs/agents/ticket-prompt-template.md`**. Giữ tổng quát — vai trò,
+thứ tự nạp nguồn, điểm dừng, mẫu báo cáo; chi tiết kỹ thuật để repo tự nói, đừng chép lại vào prompt.
+
 ### Issue tracker
 
 Issue và đặc tả sống trên GitHub Issues của `phucnd0604/toto-guide`, thao tác bằng `gh` CLI. Xem `docs/agents/issue-tracker.md`.
