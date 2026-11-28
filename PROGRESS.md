@@ -12,13 +12,14 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 |---|---|---|
 | T0 | Hạ tầng: generator, template, 5 cổng, hub khung | ✅ xong 2026-11-28 (đã duyệt, đã merge `master`) |
 | T1 | Đảo Trời Lớn (1 chương, chương mẫu chốt khuôn) | ✅ xong 2026-11-28 (đã duyệt; commit `c266294` trên `master`, deploy HTTP 200) |
+| T2 | Hyrule Field & Hyrule Castle (1/3): Điểm Quan Sát, Đồng Bằng Hyrule, Phế Tích Thị Trấn Lâu Đài | ✅ xong 2026-11-28 (đã duyệt; commit `77eb6b5` trên `master`, deploy HTTP 200) |
 
-- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) đã có 1 chương, 11 nhóm còn lại đang trống.
+- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) có 1 chương, nhóm 2 (Cánh Đồng Hyrule & Lâu Đài Hyrule) có 3 chương, 10 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
 - Bảy cổng (thêm 2 cổng ngày 2026-11-28 sau retro T1): `tool/build-pages.py --check` →
   `tool/check-links.py` → `tool/verify-pages.py` → `tool/check-image-match.py` →
   `tool/check-vietnamese.py` → `tool/check-mobile.py` → `tool/check-coverage.py`. Cả bảy PASS với
-  1 chương nội dung (17 mục H2, 158 ảnh, 7,8 MB).
+  4 chương nội dung (671 ảnh, ~31 MB).
 - `tool/check-mobile.py` + `tool/mobile-probe.mjs`: render bằng Chrome headless (CDP, không thêm
   dependency), FAIL khi `scrollWidth > clientWidth` ở 375px/768px. Cổng này ra đời vì T1 đã PASS đủ
   5 cổng cũ mà trang vẫn tràn ngang trên điện thoại.
@@ -30,6 +31,15 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 - Chương mẫu T1 chốt khuôn: bảng tóm tắt có icon boss (ảnh trước H2 đầu) → Mục lục → Tuyến đường nhanh →
   các mục đi đường đúng thứ tự nguồn → Mẹo hoàn thành → Đồ thu thập; mỗi mục H2 một gallery ảnh
   `<details open>`, caption = mô tả dịch từ alt gốc + `(ảnh k/N)`; icon trong bảng dùng `.inline-icon`.
+- T2 giữ đúng khuôn T1, thêm ba điều đã gặp thật, các chương sau áp dụng luôn:
+  (1) bảng facts của nguồn **có thể không có ảnh nào** trước H2 đầu (Điểm Quan Sát) → trang chỉ có
+  số mục = số `<h2>`, không có vùng "(trước mục đầu)"; (2) nguồn có mục **không có "Completion tips"**
+  (Phế Tích Thị Trấn Lâu Đài) → bám nguồn, không tự thêm mục, vì cổng 3/4 so số mục 1:1;
+  (3) một ảnh nguồn có thể xuất hiện 2 lần (icon Dark Tunic) → cổng ảnh cấm dùng trùng nên chỉ dùng
+  ở vị trí đầu tiên, các chỗ sau bỏ icon.
+- T2 cũng sửa `tool/check-vietnamese.py` theo đúng quy ước trong `tool/README.md`: thêm âm tiết Việt
+  không dấu `an`, `than` vào `VI_ASCII` và 4 tên nhiệm vụ phụ vào `PHRASES` — thêm vào danh sách
+  miễn trừ thay vì bẻ câu cho vừa cổng.
 
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo
