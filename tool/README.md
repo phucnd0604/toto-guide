@@ -60,60 +60,77 @@ Vì vậy file trên đĩa phải đặt tên **không có hậu tố kích thư
 ## Chạy nhanh khi đang viết nội dung
 
 Bảy cổng là cổng chặn trước commit, nhưng khi đang viết một chương thì chạy cả bộ sau mỗi câu
-là quá chậm: mỗi vòng "sửa chữ → build → quét toàn site" tốn vài phút. Bốn cổng nhận phạm vi
+là quá chậm: mỗi vòng "sửa chữ → build → quét toàn site" tốn vài phút. Năm cổng nhận phạm vi
 hẹp, dùng để lấy phản hồi sớm:
 
-`
+```
 python tool/check-vietnamese.py --content                # quét chữ trong content/ TRƯỚC khi build
 python tool/check-vietnamese.py great-sky-island          # một slug
 python tool/check-vietnamese.py pages/walkthrough/x.html  # một file
 python tool/check-image-match.py lookout-landing          # một slug
 python tool/check-coverage.py lookout-landing             # một slug
-`
+python tool/check-mobile.py --width 375 pages/walkthrough/lookout-landing.html   # một trang
+```
 
-Khi nguồn đã có sẵn trên đĩa (ví dụ bản tải tay trong @@.scratch/@@), bảo cổng ảnh dùng file đó
+Đo cả site bằng cổng mobile mất 1–2 phút mỗi lượt; đang viết thì đo đúng trang vừa sửa, cuối cùng
+mới chạy cả bộ. Cổng ảnh và cổng phủ đều nhận đúng một slug như trên.
+
+Khi nguồn đã có sẵn trên đĩa (ví dụ bản tải tay trong `.scratch/`), bảo cổng ảnh dùng file đó
 thay vì tải lại — nhận đúng một slug:
 
-`
+```
 python tool/check-image-match.py --from .scratch/src-lookout-landing.html lookout-landing
-`
+```
 
 ## Soi nguồn và chụp trang
 
-Hai việc lặp lại ở mọi chương, trước đây làm bằng script nháp:
+Ba việc lặp lại ở mọi chương, trước đây mỗi việc là một script nháp:
 
-`
+```
 python tool/inspect-source.py lookout-landing          # mục + ảnh + alt gốc + bảng facts + đối chiếu folder
 python tool/inspect-source.py --no-alt hyrule-field    # chỉ đếm mục/ảnh
+python tool/inspect-source.py --ticket hyrule-field    # khối số liệu dán thẳng vào vé
+python tool/inspect-source.py --text hyrule-field      # nguồn thành văn bản theo mục, để dịch
+python tool/inspect-source.py --text --section 3-9 hyrule-field   # chỉ một khoảng mục
+python tool/fetch-images.py hyrule-field               # tải toàn bộ ảnh 1024px vào images/walkthrough/<slug>/
 python tool/shot.py lookout-landing                    # 375px, cả trang -> .scratch/shots/
 python tool/shot.py --width 1280 --width 375 hyrule-field
 python tool/shot.py --viewport --height 1400 --anchor "#meo-hoan-thanh" lookout-landing
-`
+```
 
-@@tool/shot.py@@ gọi @@tool/mobile-probe.mjs@@ (CDP, cùng đường đo với cổng mobile) nên bề rộng là
-thật, ảnh lazy được ép tải trước khi chụp. Đừng dùng @@chrome --screenshot --window-size=375@@:
+`--ticket` in ra số `<h2>`, `<h3>`, `<h4>`, số ảnh (lượt xuất hiện / file duy nhất) và danh sách ảnh
+lặp — dán nguyên khối vào vé. Đừng đếm tay: vé T4 ghi 21 `h3` trong khi nguồn có 36.
+
+`--text` đổi 300–700 KB markup thành vài chục KB chữ mà **vẫn giữ ảnh đúng chỗ** (`[IMG …]`,
+`[ICON …]`), nên vừa đọc để dịch vừa đối chiếu được thứ tự ảnh.
+
+`tool/fetch-images.py` tải đúng những ảnh nằm trong bài, bỏ hậu tố `-1024x576`, và **chỉ tải một lần**
+ảnh lặp trong nguồn — đúng ba quy ước của cổng ảnh.
+
+`tool/shot.py` gọi `tool/mobile-probe.mjs` (CDP, cùng đường đo với cổng mobile) nên bề rộng là
+thật, ảnh lazy được ép tải trước khi chụp. Đừng dùng `chrome --screenshot --window-size=375`:
 Chrome ép bề rộng tối thiểu nên ảnh trông như tràn ngang dù trang không tràn.
 
 ## Định nghĩa "mục" chỉ nằm ở một chỗ
 
-@@tool/source_sections.py@@ là bản duy nhất tách trang thành mục; cả ba cổng đọc mục đều import
-từ đó (@@check-image-match@@, @@verify-pages@@, @@check-coverage@@). Khác biệt duy nhất có chủ ý:
-@@check-coverage@@ đo **chữ** nên bỏ @@<figure>/<img>@@ và bỏ vùng "(trước mục đầu)" — vùng đó chỉ
+`tool/source_sections.py` là bản duy nhất tách trang thành mục; cả ba cổng đọc mục đều import
+từ đó (`check-image-match`, `verify-pages`, `check-coverage`). Khác biệt duy nhất có chủ ý:
+`check-coverage` đo **chữ** nên bỏ `<figure>/<img>` và bỏ vùng "(trước mục đầu)" — vùng đó chỉ
 có bảng tóm tắt + icon, không có câu nào để đo.
 
-Hai luật của @@verify-pages@@ đáng biết vì chúng có thể FAIL:
+Hai luật của `verify-pages` đáng biết vì chúng có thể FAIL:
 
-- **Heading** bị coi là "chưa dịch" theo đúng luật của @@check-vietnamese@@ (bỏ @@PHRASES@@ rồi
+- **Heading** bị coi là "chưa dịch" theo đúng luật của `check-vietnamese` (bỏ `PHRASES` rồi
   tìm từ tiếng Anh thông dụng). Nhờ vậy tên riêng đứng một mình như "Lookout Landing" hay
   "Boss Bokoblin" qua được, còn "Table of Contents" thì không.
-- **Câu dẫn dưới @@<h2>Mục lục</h2>@@** phải khai đúng số mục: "… N mục đi đường và M mục tổng
+- **Câu dẫn dưới `<h2>Mục lục</h2>`** phải khai đúng số mục: "… N mục đi đường và M mục tổng
   kết", trong đó M là số heading cuối trang bắt đầu bằng "Mẹo hoàn thành" / "Đồ thu thập" /
   "Danh sách kiểm". Số đếm viết tay đã sai hai lần ở T2 mà không cổng nào bắt được.
   N đếm bằng **số heading trừ những mục khung CÓ MẶT** ("Mục lục", "Tuyến đường nhanh") rồi trừ M.
-  Bản cũ trừ cứng 2 mục khung, nên chương nhiều phần (một @@<h2>Mục lục@@ + các @@<h2>@@ phần lớn,
-  tuyến đường nhanh nằm ở @@<h3>@@ đúng như nguồn) bị đếm lệch một mục: viết đúng nguồn vẫn FAIL.
-  Chương nhiều phần được phép tự viết @@id@@ cho @@<h3>@@ để mục lục trong bài thành danh sách hai
-  cấp; generator chỉ tự thêm @@id@@ cho @@<h2>@@ nên mục lục rail vẫn chỉ có các mục lớn.
+  Bản cũ trừ cứng 2 mục khung, nên chương nhiều phần (một `<h2>Mục lục` + các `<h2>` phần lớn,
+  tuyến đường nhanh nằm ở `<h3>` đúng như nguồn) bị đếm lệch một mục: viết đúng nguồn vẫn FAIL.
+  Chương nhiều phần được phép tự viết `id` cho `<h3>` để mục lục trong bài thành danh sách hai
+  cấp; generator chỉ tự thêm `id` cho `<h2>` nên mục lục rail vẫn chỉ có các mục lớn.
   Câu dẫn cũng nhận "… và **không có** mục tổng kết" thay cho "0 mục tổng kết".
 
 ### Bản dịch: độ phủ

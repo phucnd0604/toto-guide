@@ -55,6 +55,15 @@ Trang trong `pages/` là **sản phẩm sinh ra** từ `content/`: sửa `conten
   `--viewport`); ảnh vào `.scratch/shots/`. Dùng cái này thay cho `chrome --screenshot`.
 - `python tool/inspect-source.py <slug>` soi một chương nguồn: mục, ảnh, alt gốc, bảng facts,
   đối chiếu folder ảnh — thay cho script nháp mỗi chương một lần.
+- `python tool/inspect-source.py --ticket <slug>` in khối số liệu (số h2/h3/h4, ảnh, ảnh lặp) để
+  dán vào vé; `--text [--section N-M] <slug>` in nguồn thành văn bản theo mục để dịch.
+- `python tool/fetch-images.py <slug>` tải toàn bộ ảnh 1024px của chương vào `images/<loại>/<slug>/`,
+  bỏ ảnh lặp, bỏ hậu tố `-1024x576`.
+
+## Sửa file dài
+- Đọc đúng đoạn bằng `offset`/`limit` rồi mới `edit`; `old_string` phải khớp nguyên văn — kể cả
+  dấu tiếng Việt và lỗi chính tả có sẵn trong file.
+- Đừng `read` trọn một file lớn rồi `write` đè: công cụ đọc có thể cắt đuôi mà không báo.
 
 ## Commit & Deploy
 - Commit message rõ ràng theo vé; mỗi vé một commit (hoặc vài commit trong cùng vé).
