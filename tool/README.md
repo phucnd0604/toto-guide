@@ -13,7 +13,7 @@ Quy ước:
 |---|---|
 | `python tool/build-pages.py --check` | 0 file lệch: file trong `pages/` đúng là bản sinh từ `content/` |
 | `python tool/check-links.py` | 0 link nội bộ chết, 0 ảnh thiếu, 0 link ra domain ngoài (trừ Google Fonts) |
-| `python tool/verify-pages.py` | mỗi trang đúng 1 `h1`, có meta description, layout 2 cột, số mục H2 khớp nguồn, heading không còn tiếng Anh, không `xN` |
+| `python tool/verify-pages.py` | mỗi trang đúng 1 `h1`, có meta description, layout 2 cột, số mục khớp nguồn (đếm cả vùng trước `<h2>` đầu, như cổng ảnh), heading không còn tiếng Anh, không `xN` |
 | `python tool/check-image-match.py` | `FAIL=0`: ảnh đúng trang, đúng folder, đúng thứ tự, đúng mục H2 so với nguồn |
 | `python tool/check-vietnamese.py` | `HARD=0` toàn site (`pages/**/*.html` + `index.html`) |
 

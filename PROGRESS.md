@@ -11,13 +11,19 @@ Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới v
 | Vé | Nội dung | Trạng thái |
 |---|---|---|
 | T0 | Hạ tầng: generator, template, 5 cổng, hub khung | ✅ xong 2026-11-28 (đã duyệt, đã merge `master`) |
-| T1 | Đảo Trời Lớn (1 chương) | chưa mở |
+| T1 | Đảo Trời Lớn (1 chương, chương mẫu chốt khuôn) | ✅ xong 2026-11-28 (đã duyệt; commit `c266294` trên `master`, deploy HTTP 200) |
 
-- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự, trạng thái trống (0 chương).
+- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự; nhóm 1 (Đảo Trời Lớn) đã có 1 chương, 11 nhóm còn lại đang trống.
 - Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
 - Năm cổng: `tool/build-pages.py --check` → `tool/check-links.py` → `tool/verify-pages.py` →
-  `tool/check-image-match.py` → `tool/check-vietnamese.py`. Cả 5 đã PASS với 0 trang nội dung;
-  khuôn mẫu đã thử bằng một chương nháp trong `.scratch/` (đã xoá) và cổng bắt đúng 3 lỗi cố tình gây ra.
+  `tool/check-image-match.py` → `tool/check-vietnamese.py`. Ở T1 cả 5 PASS với 1 chương nội dung
+  (17 mục H2, 158 ảnh, 7,8 MB).
+- `tool/verify-pages.py` đã sửa ở T1: đếm mục theo đúng cách cổng ảnh tách mục (số `<h2>` cộng vùng
+  trước mục đầu tiên). Bản cũ đếm `<h2>` thô nên mọi chương có ảnh nằm trước H2 đầu (bảng tóm tắt)
+  đều báo lệch nguồn 1 mục và FAIL vĩnh viễn.
+- Chương mẫu T1 chốt khuôn: bảng tóm tắt có icon boss (ảnh trước H2 đầu) → Mục lục → Tuyến đường nhanh →
+  các mục đi đường đúng thứ tự nguồn → Mẹo hoàn thành → Đồ thu thập; mỗi mục H2 một gallery ảnh
+  `<details open>`, caption = mô tả dịch từ alt gốc + `(ảnh k/N)`; icon trong bảng dùng `.inline-icon`.
 
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo
