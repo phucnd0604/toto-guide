@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Verify từng vùng trong pages/progress-route.html theo checklist workflow-region.md.
+"""Verify từng vùng trong pages/progress-route.html (bộ 9 vùng di sản, xoá ở vé T29).
 
 Dùng: python scripts/verify-regions.py [-v] [region_id ...]
 

@@ -11,3 +11,4 @@ count.py
 balance_check.py
 .tmp-src/
 __pycache__/
+.scratch/

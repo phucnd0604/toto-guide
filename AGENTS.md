@@ -11,6 +11,15 @@
   5. Heading, tiêu đề, alt text, figcaption, summary cũng phải tiếng Việt.
 - Trước khi commit: `python scripts/check-vietnamese.py` phải trả về **0 lỗi HARD**.
 
+## Thư mục làm việc & nơi lưu đặc tả (chốt 2026-11-28)
+- **`.scratch/`** – file tạm, file sinh ra trong quá trình làm việc, file rác, bản nháp. Đã gitignore, **không commit**.
+- **`tool/`** – script, công cụ chuẩn của dự án cần chạy trong quá trình làm việc (generator, các cổng kiểm tra). **Có commit**.
+- **`scripts/`** – di sản của bộ 9 vùng fextralife, sẽ xoá ở vé chuyển nhà (T29). Tool mới **không** đặt ở đây.
+- **Đặc tả, plan, ticket sống trên GitHub Issues**, không tạo file spec/plan trong repo:
+  - Bản đồ công việc: https://github.com/phucnd0604/toto-guide/issues/1
+  - Đặc tả kỹ thuật: https://github.com/phucnd0604/toto-guide/issues/33
+  - Không thêm file mới vào `docs/superpowers/specs/` hay `docs/superpowers/plans/` (thư mục này đã xoá).
+
 ## Nguồn nội dung
 - Nguồn chính: fextralife (Game Progress Route + Walkthrough) cho TOTK.
 - fextralife bị chặn trực tiếp ở VN → truy cập qua **Google Translate proxy**:
@@ -18,6 +27,8 @@
 - Ảnh từ `static0.fextralifeimages.com` (tải về `images/<region>/`, giữ tên file gốc).
 
 ## Cấu trúc trang
+> Cấu trúc mới (43 chương + 23 nhiệm vụ + 12 đền + 10 trang tham chiếu) đang được dựng theo map https://github.com/phucnd0604/toto-guide/issues/1. Phần dưới mô tả bộ 9 vùng cũ, chỉ còn hiệu lực tới vé chuyển nhà T29.
+
 - Canonical progress route: hub `pages/progress-route.html` + 9 trang vùng `pages/route-<slug>.html`
   (slug: prologue, central, hebra, eldin, lanayru, mastersword, gerudo, fifth, final).
 - Mỗi trang vùng: cột trái sticky là mục lục + danh sách bước, cột phải là walkthrough.
@@ -56,6 +67,8 @@ Ba điều kiện, vi phạm 1 là FAIL:
 - Vùng có nguồn ảnh mới: bổ sung trang nguồn vào `SOURCES` rồi bật cổng cho vùng đó.
 
 ## Quy trình Phase B
+> Quy trình hiện hành: làm theo vé trên map https://github.com/phucnd0604/toto-guide/issues/1. Phần dưới là quy trình di sản của bộ 9 vùng, chỉ còn hiệu lực tới vé chuyển nhà T29.
+
 - Lần lượt từng vùng (index 1): lấy nội dung nguồn → tải ảnh → dịch theo `docs/translation-standard.md` → trình bày (index trái + walkthrough phải) → verify-regions + check-vietnamese + **check-image-match** → commit riêng → push/deploy → requesting-code-review.
 - Loop executing-plans + requesting-code-review cho đến khi chuẩn xác mới chuyển vùng tiếp.
 

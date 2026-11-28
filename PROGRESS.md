@@ -1,7 +1,7 @@
 # PROGRESS.md – Mục tiêu & tiến độ dự án TOTK Guide
 
 > File này là **nguồn duy nhất** ghi tiến độ. Cập nhật ngay sau mỗi vùng (bảng trạng thái + mục "Còn tồn đọng").
-> Quy trình chi tiết: `docs/workflow-region.md`. Chuẩn dịch: `docs/translation-standard.md`.
+> Quy trình chi tiết: bản đồ việc [#1](https://github.com/phucnd0604/toto-guide/issues/1) và đặc tả [#33](https://github.com/phucnd0604/toto-guide/issues/33). Chuẩn dịch: `docs/translation-standard.md`.
 
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo
@@ -70,8 +70,8 @@ host trên Vercel, không link ra domain khác.
   nên lệch bước (Prologue/Central còn lẫn ảnh vùng khác; Hebra lệch từ mục 7). Đã tải đủ ảnh còn thiếu
   (Prologue 77, Central 34, Hebra 80), bỏ ảnh trùng/logo ngoài nguồn, chuẩn hoá tên file.
 - Tách folder ảnh theo trang: `images/gsi` → `images/prologue`.
-- `docs/workflow-region.md`: chuẩn hoá cách lấy nội dung/ảnh (nhiều trang Subcontent, giữ tên file gốc,
-  bản full qua trang `File:`, ảnh đặt ngay sau đoạn minh họa, caption theo tên bước).
+- Bài học lấy nội dung/ảnh (nhiều trang Subcontent, giữ tên file gốc, bản full qua trang `File:`,
+  ảnh đặt ngay sau đoạn minh họa, caption theo tên bước): đã chuyển vào đặc tả [#33](https://github.com/phucnd0604/toto-guide/issues/33).
 - `docs/agents/`: cấu hình issue tracker (GitHub Issues), nhãn triage, domain docs.
 - **Cổng cứng ảnh ↔ nội dung**: thêm `scripts/check-image-match.py` + luật trong `AGENTS.md`. Đếm ảnh
   (`img=uni`, `ms=0`) không bắt được ảnh sai chỗ, nên cổng này đối chiếu trực tiếp trang nguồn.
