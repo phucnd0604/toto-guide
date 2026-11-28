@@ -22,6 +22,13 @@ Quy ước:
 Cổng ảnh đọc cache nguồn ở `.tmp-src/<loại>/<slug>.html` hoặc `.json`; thêm `--refresh` để tải lại
 từ URL trong metadata. Khi nguồn bị chặn (429), báo rõ "chưa chạy được" — không coi là pass.
 
+Ba đường tải nguồn, thử lần lượt và **đường nào cũng phải qua `looks_like_chapter()`** (có `<h2>` và có
+"/uploads/") trước khi ghi cache: trang chương → **WP REST API** `/wp-json/wp/v2/pages?slug=…&_fields=content`
+(bọc `content.rendered` trong `<article>`) → proxy Google Translate. Lý do: từ GitHub Actions, đường tải
+trang chương bị chặn và chỉ trả về ~12 KB trang chặn; cache ấy từng làm cổng ảnh báo 269 lỗi "không có
+trong nguồn" thay vì nói đúng là nguồn không tải được. Cache hỏng nằm sẵn trên đĩa cũng bị coi là thiếu
+và tải lại, kể cả khi không truyền `--refresh`.
+
 ## Hợp đồng của các cổng (đọc trước khi thiết kế nội dung)
 
 ### "Mục" (section) được định nghĩa thế nào
