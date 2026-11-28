@@ -102,6 +102,12 @@ Hai luật của @@verify-pages@@ đáng biết vì chúng có thể FAIL:
 - **Câu dẫn dưới @@<h2>Mục lục</h2>@@** phải khai đúng số mục: "… N mục đi đường và M mục tổng
   kết", trong đó M là số heading cuối trang bắt đầu bằng "Mẹo hoàn thành" / "Đồ thu thập" /
   "Danh sách kiểm". Số đếm viết tay đã sai hai lần ở T2 mà không cổng nào bắt được.
+  N đếm bằng **số heading trừ những mục khung CÓ MẶT** ("Mục lục", "Tuyến đường nhanh") rồi trừ M.
+  Bản cũ trừ cứng 2 mục khung, nên chương nhiều phần (một @@<h2>Mục lục@@ + các @@<h2>@@ phần lớn,
+  tuyến đường nhanh nằm ở @@<h3>@@ đúng như nguồn) bị đếm lệch một mục: viết đúng nguồn vẫn FAIL.
+  Chương nhiều phần được phép tự viết @@id@@ cho @@<h3>@@ để mục lục trong bài thành danh sách hai
+  cấp; generator chỉ tự thêm @@id@@ cho @@<h2>@@ nên mục lục rail vẫn chỉ có các mục lớn.
+  Câu dẫn cũng nhận "… và **không có** mục tổng kết" thay cho "0 mục tổng kết".
 
 ### Bản dịch: độ phủ
 
