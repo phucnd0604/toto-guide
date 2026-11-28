@@ -3,6 +3,22 @@
 > File này là **nguồn duy nhất** ghi tiến độ. Cập nhật ngay sau mỗi vùng (bảng trạng thái + mục "Còn tồn đọng").
 > Quy trình chi tiết: bản đồ việc [#1](https://github.com/phucnd0604/toto-guide/issues/1) và đặc tả [#33](https://github.com/phucnd0604/toto-guide/issues/33). Chuẩn dịch: `docs/translation-standard.md`.
 
+## Giai đoạn E — dựng lại Lộ trình theo zeldacentral (bắt đầu 2026-11-28)
+
+Bộ 9 vùng fextralife bên dưới **vẫn là site đang chạy** cho tới vé chuyển nhà (T29). Trang mới nằm trong
+`content/` và `pages/walkthrough|quests|temples|reference`, chưa link từ menu cho tới cutover.
+
+| Vé | Nội dung | Trạng thái |
+|---|---|---|
+| T0 | Hạ tầng: generator, template, 5 cổng, hub khung | ✅ xong 2026-11-28 (đã duyệt, đã merge `master`) |
+| T1 | Đảo Trời Lớn (1 chương) | chưa mở |
+
+- Hub mới: `pages/progress-route.html` — đúng 4 khối, 12 nhóm vùng đúng thứ tự, trạng thái trống (0 chương).
+- Trang chỉ mục sinh tự động: `pages/quests.html`, `pages/temples.html`.
+- Năm cổng: `tool/build-pages.py --check` → `tool/check-links.py` → `tool/verify-pages.py` →
+  `tool/check-image-match.py` → `tool/check-vietnamese.py`. Cả 5 đã PASS với 0 trang nội dung;
+  khuôn mẫu đã thử bằng một chương nháp trong `.scratch/` (đã xoá) và cổng bắt đúng 3 lỗi cố tình gây ra.
+
 ## Mục tiêu tổng quát
 Website hướng dẫn chơi The Legend of Zelda: Tears of the Kingdom bằng tiếng Việt, đầy đủ theo
 Game Progress Route + Walkthrough của fextralife, có ảnh minh họa khớp đúng từng bước,

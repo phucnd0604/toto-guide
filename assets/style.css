@@ -271,3 +271,25 @@ footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);
   .nav-item.open>.nav-sub{display:block}
   .region-pager a{min-width:0;width:100%}
 }
+
+/* ───────── Hub Lộ trình mới: 4 khối + 12 nhóm vùng ───────── */
+.route-block{margin:2.4rem 0}
+.route-block h2{font-size:clamp(1.3rem,2.4vw,1.65rem);border-bottom:2px solid var(--border);padding-bottom:.45rem;margin-bottom:.7rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.block-lead{color:var(--muted);max-width:75ch;margin:0 0 1.1rem;font-size:.98rem}
+.region-group{margin:1.6rem 0 1.9rem;padding-left:1rem;border-left:3px solid var(--border)}
+.region-group h3{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin:0 0 .35rem;font-size:1.12rem;color:var(--primary)}
+.region-count{font-size:.75rem;font-weight:600;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:.05rem .55rem}
+.region-meta{margin:0 0 .85rem;font-size:.85rem;color:var(--muted)}
+.empty{border:1px dashed var(--border);border-radius:var(--radius);padding:.9rem 1.2rem;color:var(--muted);background:var(--card-bg);font-size:.95rem;margin:.6rem 0}
+.ref-list{list-style:none;padding:0;margin:1rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.6rem}
+.ref-list li{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:.8rem .95rem;display:flex;flex-direction:column;gap:.15rem;margin:0}
+.ref-list a{font-weight:600}
+.ref-list span{font-size:.85rem;color:var(--muted)}
+.index-list{list-style:none;padding:0;margin:1.2rem 0;display:flex;flex-direction:column;gap:.55rem}
+.index-list li{display:flex;align-items:center;gap:.8rem;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;margin:0;flex-wrap:wrap}
+.index-list a{display:flex;align-items:center;gap:.75rem;flex:1;color:var(--fg);min-width:0}
+.index-list a:hover{color:var(--primary)}
+.idx-num{flex:0 0 auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--tint);color:var(--primary);font-weight:700;font-size:.85rem}
+.idx-title{font-weight:600}
+.idx-meta{font-size:.85rem;color:var(--muted)}
+.block-more{margin:1rem 0 0;font-size:.92rem}

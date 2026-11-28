@@ -1,0 +1,35 @@
+{
+  "title": "Lộ trình: 100% Tears of the Kingdom",
+  "lead": "Bản đồ đường đi đầy đủ cho Tears of the Kingdom, dựng lại theo đúng thứ tự của bản gốc: 4 Đền Thờ chính, 23 nhiệm vụ chính, 100% đường đi chia 12 nhóm vùng và các bảng tra cứu.",
+  "desc": "Lộ trình chơi Tears of the Kingdom đầy đủ: 4 Đền Thờ chính, 23 nhiệm vụ chính theo thứ tự cốt truyện, 100% đường đi chia 12 nhóm vùng và 10 trang tham chiếu.",
+  "blocks": {
+    "temples": {
+      "title": "Bốn Đền Thờ chính",
+      "lead": "Bốn Đền Thờ lớn gắn với cốt truyện chính. Mỗi trang giữ phần bên trong đền và trận đánh boss, rồi link ngược về chương để bạn đọc liền mạch."
+    },
+    "quests": {
+      "title": "Nhiệm vụ chính theo thứ tự cốt truyện",
+      "lead": "23 nhiệm vụ chính, xếp đúng thứ tự bạn gặp trong game. Trang nhiệm vụ giữ trọn lời thoại, điều kiện mở khóa và phần thưởng."
+    },
+    "walkthrough": {
+      "title": "Lộ trình 100% theo vùng",
+      "lead": "Toàn bộ đường đi, chia thành 12 nhóm vùng đúng thứ tự của bản gốc. Mỗi chương là một trang riêng, kèm ảnh minh họa của chương đó."
+    },
+    "reference": {
+      "title": "Trang tham chiếu",
+      "lead": "Các bảng tra cứu dùng bất cứ lúc nào: Đền Thờ Nhỏ, Hang, Hạt Korok, Rễ Sáng, Giếng, Tháp Quan Sát và checklist 100%."
+    }
+  },
+  "indexes": {
+    "quests": {
+      "title": "Nhiệm vụ chính",
+      "lead": "23 nhiệm vụ chính xếp theo thứ tự cốt truyện. Bấm vào từng nhiệm vụ để đọc lời thoại, điều kiện và phần thưởng.",
+      "desc": "23 nhiệm vụ chính của Tears of the Kingdom xếp theo thứ tự cốt truyện: lời thoại, điều kiện mở khóa và phần thưởng của từng nhiệm vụ."
+    },
+    "temples": {
+      "title": "Đền Thờ, mỏ và trận cuối",
+      "lead": "12 trang Đền Thờ, mỏ Zonai và trận cuối, xếp theo thứ tự cốt truyện.",
+      "desc": "12 trang Đền Thờ, mỏ Zonai và trận cuối của Tears of the Kingdom, xếp theo thứ tự cốt truyện, kèm link về chương tương ứng."
+    }
+  }
+}
